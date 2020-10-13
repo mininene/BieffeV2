@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="CicloAutoclaveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CiclosAutoclaves">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAutoclave" Type="varchar" MaxLength="100" />
+          <Property Name="IdSeccion" Type="varchar" MaxLength="100" />
+          <Property Name="TInicio" Type="varchar" MaxLength="100" />
+          <Property Name="NumeroCiclo" Type="varchar" MaxLength="100" />
+          <Property Name="Programa" Type="varchar" MaxLength="100" />
+          <Property Name="Modelo" Type="varchar" MaxLength="100" />
+          <Property Name="Programador" Type="varchar" MaxLength="100" />
+          <Property Name="Operador" Type="varchar" MaxLength="100" />
+          <Property Name="CodigoProducto" Type="varchar" MaxLength="100" />
+          <Property Name="Lote" Type="varchar" MaxLength="100" />
+          <Property Name="Notas" Type="varchar" MaxLength="100" />
+          <Property Name="IdUsuario" Type="varchar" MaxLength="100" />
+          <Property Name="Fase1" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF1" Type="varchar" MaxLength="100" />
+          <Property Name="Fase2" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF2" Type="varchar" MaxLength="100" />
+          <Property Name="Fase3" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF3" Type="varchar" MaxLength="100" />
+          <Property Name="Fase4" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF4" Type="varchar" MaxLength="100" />
+          <Property Name="Fase5" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF5" Type="varchar" MaxLength="100" />
+          <Property Name="TIF5" Type="varchar" MaxLength="100" />
+          <Property Name="TISubF5" Type="varchar" MaxLength="100" />
+          <Property Name="TFF5" Type="varchar" MaxLength="100" />
+          <Property Name="TFSubF5" Type="varchar" MaxLength="100" />
+          <Property Name="Fase6" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF6" Type="varchar" MaxLength="100" />
+          <Property Name="TIF6" Type="varchar" MaxLength="100" />
+          <Property Name="TISubF6" Type="varchar" MaxLength="100" />
+          <Property Name="TFF6" Type="varchar" MaxLength="100" />
+          <Property Name="TFSubF6" Type="varchar" MaxLength="100" />
+          <Property Name="Fase7" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF7" Type="varchar" MaxLength="100" />
+          <Property Name="TIF7" Type="varchar" MaxLength="100" />
+          <Property Name="TISubF7" Type="varchar" MaxLength="100" />
+          <Property Name="Fase8" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF8" Type="varchar" MaxLength="100" />
+          <Property Name="TIF8" Type="varchar" MaxLength="100" />
+          <Property Name="TISubF8" Type="varchar" MaxLength="100" />
+          <Property Name="TFF8" Type="varchar" MaxLength="100" />
+          <Property Name="Fase9" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF9" Type="varchar" MaxLength="100" />
+          <Property Name="TIF9" Type="varchar" MaxLength="100" />
+          <Property Name="TISubF9" Type="varchar" MaxLength="100" />
+          <Property Name="TFF9" Type="varchar" MaxLength="100" />
+          <Property Name="Fase10" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF10" Type="varchar" MaxLength="100" />
+          <Property Name="Fase11" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF11" Type="varchar" MaxLength="100" />
+          <Property Name="Fase12" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF12" Type="varchar" MaxLength="100" />
+          <Property Name="Fase13" Type="varchar" MaxLength="100" />
+          <Property Name="TFF13" Type="varchar" MaxLength="100" />
+          <Property Name="TFSubF13" Type="varchar" MaxLength="100" />
+          <Property Name="HoraInicio" Type="varchar" MaxLength="100" />
+          <Property Name="HoraFin" Type="varchar" MaxLength="100" />
+          <Property Name="EsterilizacionN" Type="varchar" MaxLength="100" />
+          <Property Name="TMinima" Type="varchar" MaxLength="100" />
+          <Property Name="TMaxima" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotal" Type="varchar" MaxLength="100" />
+          <Property Name="FtzMin" Type="varchar" MaxLength="100" />
+          <Property Name="FtzMax" Type="varchar" MaxLength="100" />
+          <Property Name="AperturaPuerta" Type="varchar" MaxLength="100" />
+          <Property Name="TiempoCiclo" Type="varchar" MaxLength="100" />
+          <Property Name="ErrorCiclo" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="CiclosSabiDos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdAutoclave" Type="varchar" MaxLength="100" />
+          <Property Name="IdSeccion" Type="varchar" MaxLength="100" />
+          <Property Name="TInicio" Type="varchar" MaxLength="100" />
+          <Property Name="NumeroCiclo" Type="varchar" MaxLength="100" />
+          <Property Name="Programa" Type="varchar" MaxLength="100" />
+          <Property Name="Modelo" Type="varchar" MaxLength="100" />
+          <Property Name="Programador" Type="varchar" MaxLength="100" />
+          <Property Name="Operador" Type="varchar" MaxLength="100" />
+          <Property Name="CodigoProducto" Type="varchar" MaxLength="100" />
+          <Property Name="Lote" Type="varchar" MaxLength="100" />
+          <Property Name="Notas" Type="varchar" MaxLength="100" />
+          <Property Name="IdUsuario" Type="varchar" MaxLength="100" />
+          <Property Name="Fase1" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF1" Type="varchar" MaxLength="100" />
+          <Property Name="Fase2" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF2" Type="varchar" MaxLength="100" />
+          <Property Name="TIF2" Type="varchar" MaxLength="100" />
+          <Property Name="TISubF2" Type="varchar" MaxLength="100" />
+          <Property Name="TFF2" Type="varchar" MaxLength="100" />
+          <Property Name="TFSubF2" Type="varchar" MaxLength="100" />
+          <Property Name="Fase3" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF3" Type="varchar" MaxLength="100" />
+          <Property Name="TIF3" Type="varchar" MaxLength="100" />
+          <Property Name="TISubF3" Type="varchar" MaxLength="100" />
+          <Property Name="TFF3" Type="varchar" MaxLength="100" />
+          <Property Name="TFSubF3" Type="varchar" MaxLength="100" />
+          <Property Name="Fase4" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF4" Type="varchar" MaxLength="100" />
+          <Property Name="TIF4" Type="varchar" MaxLength="100" />
+          <Property Name="TISubF4" Type="varchar" MaxLength="100" />
+          <Property Name="Fase5" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF5" Type="varchar" MaxLength="100" />
+          <Property Name="Fase6" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF6" Type="varchar" MaxLength="100" />
+          <Property Name="Fase7A" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF7A" Type="varchar" MaxLength="100" />
+          <Property Name="Fase8A" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF8A" Type="varchar" MaxLength="100" />
+          <Property Name="Fase7B" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF7B" Type="varchar" MaxLength="100" />
+          <Property Name="Fase8B" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF8B" Type="varchar" MaxLength="100" />
+          <Property Name="Fase9" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF9" Type="varchar" MaxLength="100" />
+          <Property Name="TIF9" Type="varchar" MaxLength="100" />
+          <Property Name="TISubF9" Type="varchar" MaxLength="100" />
+          <Property Name="TFF9" Type="varchar" MaxLength="100" />
+          <Property Name="Fase10" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF10" Type="varchar" MaxLength="100" />
+          <Property Name="Fase11" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotalF11" Type="varchar" MaxLength="100" />
+          <Property Name="Fase12" Type="varchar" MaxLength="100" />
+          <Property Name="TIF12" Type="varchar" MaxLength="100" />
+          <Property Name="TISubF12" Type="varchar" MaxLength="100" />
+          <Property Name="HoraInicio" Type="varchar" MaxLength="100" />
+          <Property Name="HoraFin" Type="varchar" MaxLength="100" />
+          <Property Name="EsterilizacionN" Type="varchar" MaxLength="100" />
+          <Property Name="TMinima" Type="varchar" MaxLength="100" />
+          <Property Name="TMaxima" Type="varchar" MaxLength="100" />
+          <Property Name="DuracionTotal" Type="varchar" MaxLength="100" />
+          <Property Name="FtzMin" Type="varchar" MaxLength="100" />
+          <Property Name="FtzMax" Type="varchar" MaxLength="100" />
+          <Property Name="AperturaPuerta" Type="varchar" MaxLength="100" />
+          <Property Name="TiempoCiclo" Type="varchar" MaxLength="100" />
+          <Property Name="ErrorCiclo" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <EntityContainer Name="CicloAutoclaveModelStoreContainer">
+          <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CiclosSabiDos" EntityType="Self.CiclosSabiDos" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CicloAutoclaveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="CiclosAutoclaves">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAutoclave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdSeccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TInicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroCiclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Programa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Modelo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Programador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Operador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Lote" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Notas" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIF5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TISubF5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFF5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFSubF5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIF6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TISubF6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFF6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFSubF6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIF7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TISubF7" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIF8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TISubF8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFF8" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIF9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TISubF9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFF9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase11" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF11" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase12" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF12" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase13" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFF13" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFSubF13" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HoraInicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HoraFin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EsterilizacionN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TMinima" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TMaxima" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FtzMin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FtzMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AperturaPuerta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TiempoCiclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorCiclo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="CiclosSabiDos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdAutoclave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdSeccion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TInicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NumeroCiclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Programa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Modelo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Programador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Operador" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CodigoProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Lote" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Notas" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IdUsuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF1" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIF2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TISubF2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFF2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFSubF2" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIF3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TISubF3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFF3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFSubF3" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIF4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TISubF4" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF5" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF6" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase7A" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF7A" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase8A" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF8A" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase7B" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF7B" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase8B" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF8B" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIF9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TISubF9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TFF9" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF10" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase11" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotalF11" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Fase12" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TIF12" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TISubF12" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HoraInicio" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HoraFin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EsterilizacionN" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TMinima" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TMaxima" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="DuracionTotal" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FtzMin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FtzMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="AperturaPuerta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TiempoCiclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorCiclo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="CicloAutoclave" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" />
+          <EntitySet Name="CiclosSabiDos" EntityType="Self.CiclosSabiDos" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CicloAutoclaveModelStoreContainer" CdmEntityContainer="CicloAutoclave">
+          <EntitySetMapping Name="CiclosAutoclaves">
+            <EntityTypeMapping TypeName="CicloAutoclaveModel.CiclosAutoclaves">
+              <MappingFragment StoreEntitySet="CiclosAutoclaves">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdAutoclave" ColumnName="IdAutoclave" />
+                <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
+                <ScalarProperty Name="TInicio" ColumnName="TInicio" />
+                <ScalarProperty Name="NumeroCiclo" ColumnName="NumeroCiclo" />
+                <ScalarProperty Name="Programa" ColumnName="Programa" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Programador" ColumnName="Programador" />
+                <ScalarProperty Name="Operador" ColumnName="Operador" />
+                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="Notas" ColumnName="Notas" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Fase1" ColumnName="Fase1" />
+                <ScalarProperty Name="DuracionTotalF1" ColumnName="DuracionTotalF1" />
+                <ScalarProperty Name="Fase2" ColumnName="Fase2" />
+                <ScalarProperty Name="DuracionTotalF2" ColumnName="DuracionTotalF2" />
+                <ScalarProperty Name="Fase3" ColumnName="Fase3" />
+                <ScalarProperty Name="DuracionTotalF3" ColumnName="DuracionTotalF3" />
+                <ScalarProperty Name="Fase4" ColumnName="Fase4" />
+                <ScalarProperty Name="DuracionTotalF4" ColumnName="DuracionTotalF4" />
+                <ScalarProperty Name="Fase5" ColumnName="Fase5" />
+                <ScalarProperty Name="DuracionTotalF5" ColumnName="DuracionTotalF5" />
+                <ScalarProperty Name="TIF5" ColumnName="TIF5" />
+                <ScalarProperty Name="TISubF5" ColumnName="TISubF5" />
+                <ScalarProperty Name="TFF5" ColumnName="TFF5" />
+                <ScalarProperty Name="TFSubF5" ColumnName="TFSubF5" />
+                <ScalarProperty Name="Fase6" ColumnName="Fase6" />
+                <ScalarProperty Name="DuracionTotalF6" ColumnName="DuracionTotalF6" />
+                <ScalarProperty Name="TIF6" ColumnName="TIF6" />
+                <ScalarProperty Name="TISubF6" ColumnName="TISubF6" />
+                <ScalarProperty Name="TFF6" ColumnName="TFF6" />
+                <ScalarProperty Name="TFSubF6" ColumnName="TFSubF6" />
+                <ScalarProperty Name="Fase7" ColumnName="Fase7" />
+                <ScalarProperty Name="DuracionTotalF7" ColumnName="DuracionTotalF7" />
+                <ScalarProperty Name="TIF7" ColumnName="TIF7" />
+                <ScalarProperty Name="TISubF7" ColumnName="TISubF7" />
+                <ScalarProperty Name="Fase8" ColumnName="Fase8" />
+                <ScalarProperty Name="DuracionTotalF8" ColumnName="DuracionTotalF8" />
+                <ScalarProperty Name="TIF8" ColumnName="TIF8" />
+                <ScalarProperty Name="TISubF8" ColumnName="TISubF8" />
+                <ScalarProperty Name="TFF8" ColumnName="TFF8" />
+                <ScalarProperty Name="Fase9" ColumnName="Fase9" />
+                <ScalarProperty Name="DuracionTotalF9" ColumnName="DuracionTotalF9" />
+                <ScalarProperty Name="TIF9" ColumnName="TIF9" />
+                <ScalarProperty Name="TISubF9" ColumnName="TISubF9" />
+                <ScalarProperty Name="TFF9" ColumnName="TFF9" />
+                <ScalarProperty Name="Fase10" ColumnName="Fase10" />
+                <ScalarProperty Name="DuracionTotalF10" ColumnName="DuracionTotalF10" />
+                <ScalarProperty Name="Fase11" ColumnName="Fase11" />
+                <ScalarProperty Name="DuracionTotalF11" ColumnName="DuracionTotalF11" />
+                <ScalarProperty Name="Fase12" ColumnName="Fase12" />
+                <ScalarProperty Name="DuracionTotalF12" ColumnName="DuracionTotalF12" />
+                <ScalarProperty Name="Fase13" ColumnName="Fase13" />
+                <ScalarProperty Name="TFF13" ColumnName="TFF13" />
+                <ScalarProperty Name="TFSubF13" ColumnName="TFSubF13" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="EsterilizacionN" ColumnName="EsterilizacionN" />
+                <ScalarProperty Name="TMinima" ColumnName="TMinima" />
+                <ScalarProperty Name="TMaxima" ColumnName="TMaxima" />
+                <ScalarProperty Name="DuracionTotal" ColumnName="DuracionTotal" />
+                <ScalarProperty Name="FtzMin" ColumnName="FtzMin" />
+                <ScalarProperty Name="FtzMax" ColumnName="FtzMax" />
+                <ScalarProperty Name="AperturaPuerta" ColumnName="AperturaPuerta" />
+                <ScalarProperty Name="TiempoCiclo" ColumnName="TiempoCiclo" />
+                <ScalarProperty Name="ErrorCiclo" ColumnName="ErrorCiclo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CiclosSabiDos">
+            <EntityTypeMapping TypeName="CicloAutoclaveModel.CiclosSabiDos">
+              <MappingFragment StoreEntitySet="CiclosSabiDos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdAutoclave" ColumnName="IdAutoclave" />
+                <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
+                <ScalarProperty Name="TInicio" ColumnName="TInicio" />
+                <ScalarProperty Name="NumeroCiclo" ColumnName="NumeroCiclo" />
+                <ScalarProperty Name="Programa" ColumnName="Programa" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Programador" ColumnName="Programador" />
+                <ScalarProperty Name="Operador" ColumnName="Operador" />
+                <ScalarProperty Name="CodigoProducto" ColumnName="CodigoProducto" />
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="Notas" ColumnName="Notas" />
+                <ScalarProperty Name="IdUsuario" ColumnName="IdUsuario" />
+                <ScalarProperty Name="Fase1" ColumnName="Fase1" />
+                <ScalarProperty Name="DuracionTotalF1" ColumnName="DuracionTotalF1" />
+                <ScalarProperty Name="Fase2" ColumnName="Fase2" />
+                <ScalarProperty Name="DuracionTotalF2" ColumnName="DuracionTotalF2" />
+                <ScalarProperty Name="TIF2" ColumnName="TIF2" />
+                <ScalarProperty Name="TISubF2" ColumnName="TISubF2" />
+                <ScalarProperty Name="TFF2" ColumnName="TFF2" />
+                <ScalarProperty Name="TFSubF2" ColumnName="TFSubF2" />
+                <ScalarProperty Name="Fase3" ColumnName="Fase3" />
+                <ScalarProperty Name="DuracionTotalF3" ColumnName="DuracionTotalF3" />
+                <ScalarProperty Name="TIF3" ColumnName="TIF3" />
+                <ScalarProperty Name="TISubF3" ColumnName="TISubF3" />
+                <ScalarProperty Name="TFF3" ColumnName="TFF3" />
+                <ScalarProperty Name="TFSubF3" ColumnName="TFSubF3" />
+                <ScalarProperty Name="Fase4" ColumnName="Fase4" />
+                <ScalarProperty Name="DuracionTotalF4" ColumnName="DuracionTotalF4" />
+                <ScalarProperty Name="TIF4" ColumnName="TIF4" />
+                <ScalarProperty Name="TISubF4" ColumnName="TISubF4" />
+                <ScalarProperty Name="Fase5" ColumnName="Fase5" />
+                <ScalarProperty Name="DuracionTotalF5" ColumnName="DuracionTotalF5" />
+                <ScalarProperty Name="Fase6" ColumnName="Fase6" />
+                <ScalarProperty Name="DuracionTotalF6" ColumnName="DuracionTotalF6" />
+                <ScalarProperty Name="Fase7A" ColumnName="Fase7A" />
+                <ScalarProperty Name="DuracionTotalF7A" ColumnName="DuracionTotalF7A" />
+                <ScalarProperty Name="Fase8A" ColumnName="Fase8A" />
+                <ScalarProperty Name="DuracionTotalF8A" ColumnName="DuracionTotalF8A" />
+                <ScalarProperty Name="Fase7B" ColumnName="Fase7B" />
+                <ScalarProperty Name="DuracionTotalF7B" ColumnName="DuracionTotalF7B" />
+                <ScalarProperty Name="Fase8B" ColumnName="Fase8B" />
+                <ScalarProperty Name="DuracionTotalF8B" ColumnName="DuracionTotalF8B" />
+                <ScalarProperty Name="Fase9" ColumnName="Fase9" />
+                <ScalarProperty Name="DuracionTotalF9" ColumnName="DuracionTotalF9" />
+                <ScalarProperty Name="TIF9" ColumnName="TIF9" />
+                <ScalarProperty Name="TISubF9" ColumnName="TISubF9" />
+                <ScalarProperty Name="TFF9" ColumnName="TFF9" />
+                <ScalarProperty Name="Fase10" ColumnName="Fase10" />
+                <ScalarProperty Name="DuracionTotalF10" ColumnName="DuracionTotalF10" />
+                <ScalarProperty Name="Fase11" ColumnName="Fase11" />
+                <ScalarProperty Name="DuracionTotalF11" ColumnName="DuracionTotalF11" />
+                <ScalarProperty Name="Fase12" ColumnName="Fase12" />
+                <ScalarProperty Name="TIF12" ColumnName="TIF12" />
+                <ScalarProperty Name="TISubF12" ColumnName="TISubF12" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="EsterilizacionN" ColumnName="EsterilizacionN" />
+                <ScalarProperty Name="TMinima" ColumnName="TMinima" />
+                <ScalarProperty Name="TMaxima" ColumnName="TMaxima" />
+                <ScalarProperty Name="DuracionTotal" ColumnName="DuracionTotal" />
+                <ScalarProperty Name="FtzMin" ColumnName="FtzMin" />
+                <ScalarProperty Name="FtzMax" ColumnName="FtzMax" />
+                <ScalarProperty Name="AperturaPuerta" ColumnName="AperturaPuerta" />
+                <ScalarProperty Name="TiempoCiclo" ColumnName="TiempoCiclo" />
+                <ScalarProperty Name="ErrorCiclo" ColumnName="ErrorCiclo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
