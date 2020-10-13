@@ -7,13 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HojaResumen", "HojaResumen\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wrapper", "Wrapper\Wrapper.csproj", "{5A5CC232-684B-4B34-8D69-DDD8C6E40778}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libreria", "Libreria", "{8C138890-5AC8-4A09-8006-61E0279899B2}"
-	ProjectSection(SolutionItems) = preProject
-		TH4LOG_V2.33\examples\ex1.xls = TH4LOG_V2.33\examples\ex1.xls
-		TH4LOG_V2.33\examples\th4log.h = TH4LOG_V2.33\examples\th4log.h
-		TH4LOG_V2.33\examples\th4test.c = TH4LOG_V2.33\examples\th4test.c
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

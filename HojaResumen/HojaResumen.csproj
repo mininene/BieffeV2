@@ -93,6 +93,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CiclosModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Libreria\ex1.xls" />
     <None Include="Modelo\BaseDatosT\CiclosModel.edmx.diagram">
       <DependentUpon>CiclosModel.edmx</DependentUpon>
     </None>
@@ -103,6 +104,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Libreria\th4log.h" />
+    <Content Include="Libreria\th4test.c" />
     <Content Include="Modelo\BaseDatosT\CiclosModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CiclosModel.edmx</DependentUpon>
