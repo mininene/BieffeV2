@@ -127,84 +127,84 @@ namespace HojaResumen.Servicios.Parser
                     {
                         ProgramaSabiDos row = new ProgramaSabiDos
                         {
-                            IdAutoclave = RegistroEncabezado[5],
+                            IdAutoclave = RegistroEncabezado[5].Replace(" ", String.Empty).Substring(10).Trim(),
                             IdSeccion = RegistroPie[0].Replace(" ", String.Empty).Substring(25),
                             TInicio = "",
-                            NumeroCiclo = RegistroEncabezado[7],
-                            Programa = RegistroEncabezado[0],
-                            Modelo = RegistroEncabezado[6],  //modelo
-                            Programador = RegistroEncabezado[1],
-                            Operador = RegistroEncabezado[2],
-                            CodigoProducto = RegistroEncabezado[3],
-                            Lote = RegistroEncabezado[4],
+                            NumeroCiclo = RegistroEncabezado[7].Replace(" ", String.Empty).Substring(12).Trim(),
+                            Programa = RegistroEncabezado[0].Replace(" ", String.Empty).Substring(8).Trim(),
+                            Modelo = RegistroEncabezado[6].Replace(" ", String.Empty).Substring(6).Trim(),  //modelo
+                            Programador = RegistroEncabezado[1].Replace(" ", String.Empty).Substring(10).Trim(),
+                            Operador = RegistroEncabezado[2].Replace(" ", String.Empty).Substring(8).Trim(),
+                            CodigoProducto = RegistroEncabezado[3].Replace(" ", String.Empty).Substring(11).Trim(),
+                            Lote = RegistroEncabezado[4].Replace(" ", String.Empty).Substring(6).Trim(),
                             Notas = texts[12] + texts[13],
 
-                            Fase1 = RegistroCiclos[1],
-                            Fase2 = RegistroCiclos[6],
-                            Fase3 = RegistroCiclos[11],
-                            Fase4 = RegistroCiclos[16],
-                            Fase5 = RegistroCiclos[21],
-                            Fase6 = RegistroCiclos[26],
-                            Fase7A = RegistroCiclos[31],
-                            Fase7B = RegistroCiclos[41],
-                            Fase8A = RegistroCiclos[36],
-                            Fase8B = RegistroCiclos[46],
-                            Fase9 = RegistroCiclos[51],
-                            Fase10 = RegistroCiclos[56],
-                            Fase11 = RegistroCiclos[61],
-                            Fase12 = RegistroCiclos[66],
+                            Fase1 = RegistroCiclos[1].Substring(12).Trim(),
+                            Fase2 = RegistroCiclos[6].Substring(12).Trim(),
+                            Fase3 = RegistroCiclos[11].Substring(12).Trim(),
+                            Fase4 = RegistroCiclos[16].Substring(12).Trim(),
+                            Fase5 = RegistroCiclos[21].Substring(12).Trim(),
+                            Fase6 = RegistroCiclos[26].Substring(12).Trim(),
+                            Fase7A = RegistroCiclos[31].Substring(12).Trim(),
+                            Fase7B = RegistroCiclos[41].Substring(12).Trim(),
+                            Fase8A = RegistroCiclos[36].Substring(12).Trim(),
+                            Fase8B = RegistroCiclos[46].Substring(12).Trim(),
+                            Fase9 = RegistroCiclos[51].Substring(12).Trim(),
+                            Fase10 = RegistroCiclos[56].Substring(12).Trim(),
+                            Fase11 = RegistroCiclos[61].Substring(12).Trim(),
+                            Fase12 = RegistroCiclos[66].Substring(12).Trim(),
 
 
-                            TIF2 = RegistroCiclos[8],
-                            TIF3 = RegistroCiclos[13],
-                            TIF9 = RegistroCiclos[53],
-                            TIF12 = RegistroCiclos[68],
+                            TIF2 = RegistroCiclos[8].Substring(2).Trim(),
+                            TIF3 = RegistroCiclos[13].Substring(2).Trim(),
+                            TIF9 = RegistroCiclos[53].Substring(2).Trim(),
+                            TIF12 = RegistroCiclos[68].Substring(2).Trim(),
 
 
-                            TISubF2 = RegistroCiclos[9],
-                            TISubF3 = RegistroCiclos[14],
-                            TISubF9 = RegistroCiclos[54],
-                            TISubF12 = RegistroCiclos[69],
+                            TISubF2 = RegistroCiclos[9].Substring(14).Trim(),
+                            TISubF3 = RegistroCiclos[14].Substring(14).Trim(),
+                            TISubF9 = RegistroCiclos[54].Substring(14).Trim(),
+                            TISubF12 = RegistroCiclos[69].Substring(14).Trim(),
 
-                            DuracionTotalF1 = RegistroDatosFF[0],
-                            DuracionTotalF2 = RegistroDatosFF[3],
-                            DuracionTotalF3 = RegistroDatosFF[6],
-                            DuracionTotalF4 = RegistroDatosFF[9],
-                            DuracionTotalF5 = RegistroDatosFF[12],
-                            DuracionTotalF6 = RegistroDatosFF[15],
-                            DuracionTotalF7A = RegistroDatosFF[18],
-                            DuracionTotalF7B = RegistroDatosFF[24],
-                            DuracionTotalF8A = RegistroDatosFF[21],
-                            DuracionTotalF8B = RegistroDatosFF[27],
-                            DuracionTotalF9 = RegistroDatosFF[30],
-                            DuracionTotalF10 = RegistroDatosFF[33],
-                            DuracionTotalF11 = RegistroDatosFF[36],
-
-
-
-                            TFF2 = RegistroTF[1],  //RegistroTF
-                            TFF3 = RegistroTF[2], //RegistroTF
-                            TIF4 = RegistroTF[3], //es Igual TFF4
-                            TFF9 = RegistroDatosFF[32],
+                            DuracionTotalF1 = RegistroDatosFF[0].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF2 = RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF3 = RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF4 = RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF5 = RegistroDatosFF[12].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF6 = RegistroDatosFF[15].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF7A = RegistroDatosFF[18].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF7B = RegistroDatosFF[24].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF8A = RegistroDatosFF[21].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF8B = RegistroDatosFF[27].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF9 = RegistroDatosFF[30].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF10 = RegistroDatosFF[33].Replace(" ", String.Empty).Substring(21).Trim(),
+                            DuracionTotalF11 = RegistroDatosFF[36].Replace(" ", String.Empty).Substring(21).Trim(),
 
 
 
+                            TFF2 = RegistroTF[1].Substring(3).Trim(),  //RegistroTF
+                            TFF3 = RegistroTF[2].Substring(3).Trim(), //RegistroTF
+                            TIF4 = RegistroTF[3].Substring(3).Trim(), //es Igual TFF4
+                            TFF9 = RegistroDatosFF[32].Substring(2).Trim(),
 
-                            TFSubF2 = RegistroTFSub[1],
-                            TFSubF3 = RegistroTFSub[2], // TISubF7 es TFSubF7
-                            TISubF4 = RegistroTFSub[3], // es igual TFSubF4
 
 
 
-                            HoraInicio = RegistroPie[0],
-                            HoraFin = RegistroPie[1],
-                            EsterilizacionN = RegistroPie[2],
-                            TMinima = RegistroPie[3],
-                            TMaxima = RegistroPie[4],
-                            DuracionTotal = RegistroPie[5],
-                            FtzMin = RegistroPie[6],
-                            FtzMax = RegistroPie[7],
-                            AperturaPuerta = RegistroPie[8],
+                            TFSubF2 = RegistroTFSub[1].Substring(14).Trim(),
+                            TFSubF3 = RegistroTFSub[2].Substring(14).Trim(), // TISubF7 es TFSubF7
+                            TISubF4 = RegistroTFSub[3].Substring(14).Trim(), // es igual TFSubF4
+
+
+
+                            HoraInicio = RegistroPie[0].Substring(22).Trim(),
+                            HoraFin = RegistroPie[1].Substring(22).Trim(),
+                            EsterilizacionN = RegistroPie[2].Substring(26).Trim(),
+                            TMinima = RegistroPie[3].Replace(" ", String.Empty).Substring(25).Trim(),
+                            TMaxima = RegistroPie[4].Replace(" ", String.Empty).Substring(25).Trim(),
+                            DuracionTotal = RegistroPie[5].Replace(" ", String.Empty).Substring(25).Trim(),
+                            FtzMin = RegistroPie[6].Replace(" ", String.Empty).Substring(11).Trim(),
+                            FtzMax = RegistroPie[7].Replace(" ", String.Empty).Substring(11).Trim(),
+                            AperturaPuerta = RegistroPie[8].Trim(),
                             TiempoCiclo = "h", //+ Convert.ToDateTime(TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))).ToString(),
                             //(TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) +TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))).ToString() ,
                             //Convert.ToDateTime(RegistroPie[0].Replace(" ", String.Empty).Substring(25))
