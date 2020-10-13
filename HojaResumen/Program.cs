@@ -64,12 +64,15 @@ namespace HojaResumen
             IParser GetData = new Parser();
             GetData.ParserFile();
 
-            IParserSabiDos GetDataSabiDos = new ParserSabiDos();
-            GetDataSabiDos.ParserSabiDosFile();
+            //IParserSabiDos GetDataSabiDos = new ParserSabiDos();
+            //GetDataSabiDos.ParserSabiDosFile();
 
 
             Console.WriteLine("Escribiendo en la base de datos");
 
+            //string time = "01:00";
+            //double seconds = TimeSpan.Parse(time).TotalSeconds;
+            //Console.WriteLine(seconds);
 
 
 

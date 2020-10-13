@@ -19,7 +19,7 @@ namespace HojaResumen.Servicios.Parser
             try
             {
 
-                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveAP201000.txt";
+                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveFP21000.txt";
                 string Programa = "PROGRAMA";
                 string Programador = "PROGRAMAD.";
                 string Operador = "OPERADOR";
@@ -103,7 +103,7 @@ namespace HojaResumen.Servicios.Parser
 
 
                     RegistroAlarma = texts.Where(lines => lines.StartsWith("*")).ToList();
-                   
+
 
                     //for (int i = 0; i < con.Length; i++)
                     //{
@@ -122,17 +122,20 @@ namespace HojaResumen.Servicios.Parser
                     //RegistroAlarma.ForEach(r => Console.WriteLine(r.ToArray()));
                     //Console.WriteLine((TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))));
 
+                  // Console.WriteLine( TimeSpan.Parse("00:" + RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)));
+                   // Console.WriteLine(TimeSpan.Parse("00:" + RegistroCiclos[63].Substring(2, 6).ToString().Trim()));
 
+                    string Tinicio = RegistroPie[0].Substring(19,12).Trim()+"  " + TimeSpan.Parse(RegistroPie[0].Substring(30).Trim()).Add(TimeSpan.Parse("00:" + RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))
+                        + TimeSpan.Parse("00:" + RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21))+TimeSpan.Parse("00:" + RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))).ToString();
 
-
-                    List<ProgramaSabiUno> RegistroFinal = new List<ProgramaSabiUno>(); //declaro la lista que quiero cargar
+                    List <ProgramaSabiUno> RegistroFinal = new List<ProgramaSabiUno>(); //declaro la lista que quiero cargar
                     try
                     {
                         ProgramaSabiUno row = new ProgramaSabiUno
                         {
                             IdAutoclave = RegistroEncabezado[5].Replace(" ", String.Empty).Substring(10).Trim(),
-                            IdSeccion = RegistroPie[0].Replace(" ", String.Empty).Substring(25),
-                            TInicio = "",
+                            IdSeccion = "SabiUno",
+                            TInicio = Tinicio, //Hora Inicio +f2+f3+f4
                             NumeroCiclo = RegistroEncabezado[7].Replace(" ", String.Empty).Substring(12).Trim(),
                             Programa = RegistroEncabezado[0].Replace(" ", String.Empty).Substring(8).Trim(),
                             Modelo = RegistroEncabezado[6].Replace(" ", String.Empty).Substring(6).Trim(),  //modelo
@@ -207,7 +210,9 @@ namespace HojaResumen.Servicios.Parser
                             FtzMin = RegistroPie[6].Replace(" ", String.Empty).Substring(11).Trim(),
                             FtzMax = RegistroPie[7].Replace(" ", String.Empty).Substring(11).Trim(),
                             AperturaPuerta = RegistroPie[8].Trim(),
-                            TiempoCiclo = "h", //+ Convert.ToDateTime(TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))).ToString(),
+                           // TiempoCiclo = RegistroCiclos[63].Substring(2,8).Trim() + ((RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))).ToString(), //HoraTFF13-Tcarga de AGua
+                            
+                            //+ Convert.ToDateTime(TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))).ToString(),
                             //(TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) +TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))).ToString() ,
                             //Convert.ToDateTime(RegistroPie[0].Replace(" ", String.Empty).Substring(25))
                             //Convert.ToDateTime(RegistroPie[0].Replace(" ", String.Empty).Substring(25)).ToString(),
