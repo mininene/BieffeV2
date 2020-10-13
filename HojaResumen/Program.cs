@@ -65,8 +65,6 @@ namespace HojaResumen
             GetDataSabiDos.ParserSabiDosFile();
 
 
-
-
             Console.WriteLine("Escribiendo en la base de datos");
 
 
