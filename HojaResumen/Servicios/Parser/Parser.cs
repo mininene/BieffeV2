@@ -194,7 +194,7 @@ namespace HojaResumen.Servicios.Parser
 
 
                             TFSubF5 = RegistroTFSub[1],
-                            TISubF7 = RegistroTFSub[3], // TISubF7 es TFSubF7
+                            TISubF7 = RegistroTFSub[3], // TISubF7 es TFSubF7 
                             TFSubF6 = RegistroCiclos[34],  //Inicio Sbzero de la Fase siete TISubF7
 
 
