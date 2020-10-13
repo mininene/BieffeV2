@@ -1,14 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Wrapper
 {
     public class ConnectionWrapper
     {
+
         [DllImport("th4log.dll", CallingConvention = CallingConvention.Cdecl)]
         static extern float th4_version();
         public float get_version()
@@ -68,5 +66,6 @@ namespace Wrapper
 
 
         }
+
     }
 }

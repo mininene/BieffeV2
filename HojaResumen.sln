@@ -5,7 +5,14 @@ VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HojaResumen", "HojaResumen\HojaResumen.csproj", "{9E45E299-F547-4876-BF1A-26E94A2DD48F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wrapper", "Wrapper\Wrapper.csproj", "{C23C45BE-B8A4-44A7-A4E6-BA364E307C74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wrapper", "Wrapper\Wrapper.csproj", "{5A5CC232-684B-4B34-8D69-DDD8C6E40778}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libreria", "Libreria", "{8C138890-5AC8-4A09-8006-61E0279899B2}"
+	ProjectSection(SolutionItems) = preProject
+		TH4LOG_V2.33\examples\ex1.xls = TH4LOG_V2.33\examples\ex1.xls
+		TH4LOG_V2.33\examples\th4log.h = TH4LOG_V2.33\examples\th4log.h
+		TH4LOG_V2.33\examples\th4test.c = TH4LOG_V2.33\examples\th4test.c
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +24,10 @@ Global
 		{9E45E299-F547-4876-BF1A-26E94A2DD48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E45E299-F547-4876-BF1A-26E94A2DD48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E45E299-F547-4876-BF1A-26E94A2DD48F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C23C45BE-B8A4-44A7-A4E6-BA364E307C74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C23C45BE-B8A4-44A7-A4E6-BA364E307C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C23C45BE-B8A4-44A7-A4E6-BA364E307C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C23C45BE-B8A4-44A7-A4E6-BA364E307C74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A5CC232-684B-4B34-8D69-DDD8C6E40778}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A5CC232-684B-4B34-8D69-DDD8C6E40778}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A5CC232-684B-4B34-8D69-DDD8C6E40778}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A5CC232-684B-4B34-8D69-DDD8C6E40778}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
