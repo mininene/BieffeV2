@@ -72,12 +72,12 @@ namespace HojaResumen
 
             Console.WriteLine("Escribiendo en la base de datos");
 
-            
-            
-            
-            
-            
-            
+
+
+
+
+
+
             //string span = "108:46";
             //string tf = "13:14";
 

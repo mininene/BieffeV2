@@ -17,7 +17,7 @@ namespace HojaResumen.Servicios.Parser
             try
             {
 
-                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveKP10.txt";
+                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveJP10100.txt";
                 string Programa = "PROGRAMA";
                 string Programador = "PROGRAMAD.";
                 string Operador = "OPERADOR";
@@ -101,6 +101,9 @@ namespace HojaResumen.Servicios.Parser
 
                     RegistroAlarma = texts.Where(lines => lines.StartsWith("*")).ToList();
 
+                    string combin = string.Join("\n", RegistroAlarma);
+                   // Console.WriteLine(combin);
+
 
                     //for (int i = 0; i < con.Length; i++)
                     //{
@@ -116,7 +119,7 @@ namespace HojaResumen.Servicios.Parser
                     //}
 
 
-                   // RegistroDatosFF.ForEach(r => Console.WriteLine(r.ToArray()));
+                    //RegistroDatosFF.ForEach(r => Console.WriteLine(r.ToArray()));
                     //Console.WriteLine((TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))));
 
 
@@ -128,7 +131,7 @@ namespace HojaResumen.Servicios.Parser
                         ProgramaSabiDos row = new ProgramaSabiDos
                         {
                             IdAutoclave = RegistroEncabezado[5].Replace(" ", String.Empty).Substring(10).Trim(),
-                            IdSeccion = RegistroPie[0].Replace(" ", String.Empty).Substring(25),
+                            IdSeccion = "SabiDos",
                             TInicio = RegistroPie[0].Substring(19).Trim(),
                             NumeroCiclo = RegistroEncabezado[7].Replace(" ", String.Empty).Substring(12).Trim(),
                             Programa = RegistroEncabezado[0].Replace(" ", String.Empty).Substring(8).Trim(),
@@ -205,8 +208,8 @@ namespace HojaResumen.Servicios.Parser
                             FtzMin = RegistroPie[6].Replace(" ", String.Empty).Substring(11).Trim(),
                             FtzMax = RegistroPie[7].Replace(" ", String.Empty).Substring(11).Trim(),
                             AperturaPuerta = RegistroPie[8].Trim(),
-                            TiempoCiclo = "", 
-                            ErrorCiclo = "",
+                            TiempoCiclo = RegistroCiclos[68].Substring(2,6).ToString().Trim(), 
+                            ErrorCiclo = combin,
 
                         }; RegistroFinal.Add(row); //añado elementos
                     }
@@ -306,7 +309,7 @@ namespace HojaResumen.Servicios.Parser
 
                     }
                     context.CiclosSabiDos.Add(ciclos);
-                    context.SaveChanges();
+                   context.SaveChanges();
 
 
 

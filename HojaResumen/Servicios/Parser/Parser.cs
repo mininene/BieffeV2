@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -70,6 +71,7 @@ namespace HojaResumen.Servicios.Parser
                     var RegistroTFSub = new List<string>();
                     var RegistroPie = new List<string>();
                     var RegistroAlarma = new List<string>();
+                    var Alarmas = new List<string>();
 
 
                     var texts = File.ReadAllLines(path, new UnicodeEncoding());
@@ -103,7 +105,12 @@ namespace HojaResumen.Servicios.Parser
 
 
                     RegistroAlarma = texts.Where(lines => lines.StartsWith("*")).ToList();
-
+                 
+                 
+                  
+                     string combin = string.Join("\n", RegistroAlarma);
+                     //Console.WriteLine(combin);
+                    
 
                     //for (int i = 0; i < con.Length; i++)
                     //{
@@ -118,17 +125,18 @@ namespace HojaResumen.Servicios.Parser
                     //    }
                     //}
 
-
-                    //RegistroAlarma.ForEach(r => Console.WriteLine(r.ToArray()));
+                   
+                   // RegistroAlarma.ForEach(r => Console.WriteLine(r.ToArray()));
+                 
                     //Console.WriteLine((TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))));
 
-                   
-                    var spanTC = RegistroCiclos[63].Substring(2, 6).ToString().Trim();
+
+                    string spanTC = RegistroCiclos[63].Substring(2, 6).ToString().Trim();
                     
                     var td = TimeSpan.FromMinutes(Convert.ToDouble(spanTC.Split(':')[0])).Add(TimeSpan.FromSeconds(Convert.ToDouble((spanTC.Split(':')[1]))))
                      - TimeSpan.Parse("00:" + RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21));             // resta timeSpan TFinalCiclo13 - Carga de Agua
 
-                    var TCicloCalculado = TimeSpan.Parse(td.ToString().Substring(0, 5)).TotalMinutes + td.ToString().Substring(5, 3);
+                    string TCicloCalculado = TimeSpan.Parse(td.ToString().Substring(0, 5)).TotalMinutes + td.ToString().Substring(5, 3).Trim();
 
 
                     var Tinicio = RegistroPie[0].Substring(19,12).Trim()+"  " + TimeSpan.Parse(RegistroPie[0].Substring(30).Trim()).Add(TimeSpan.Parse("00:" + RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))
@@ -218,7 +226,7 @@ namespace HojaResumen.Servicios.Parser
                             AperturaPuerta = RegistroPie[8].Trim(),
                             TiempoCiclo = TCicloCalculado,
                             
-                            ErrorCiclo= "" ,
+                           ErrorCiclo= combin,
 
                         }; RegistroFinal.Add(row); //añado elementos
                     }
@@ -318,7 +326,7 @@ namespace HojaResumen.Servicios.Parser
 
                     }
                     context.CiclosAutoclaves.Add(ciclos);
-                   context.SaveChanges();
+                    context.SaveChanges();
 
 
 
