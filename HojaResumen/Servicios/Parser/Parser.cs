@@ -1,10 +1,13 @@
 ﻿using HojaResumen.Modelo;
 using HojaResumen.Modelo.BaseDatosT;
+using PdfSharp.Drawing;
+using PdfSharp.Pdf;
 //using HojaResumen.Modelo.BaseDatos;
 //using HojaResumen.Modelo.BaseDatosT;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -20,7 +23,7 @@ namespace HojaResumen.Servicios.Parser
             try
             {
 
-                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveEP201000.txt";
+                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveiP8250.txt";
                 string Programa = "PROGRAMA";
                 string Programador = "PROGRAMAD.";
                 string Operador = "OPERADOR";
@@ -126,7 +129,7 @@ namespace HojaResumen.Servicios.Parser
                     //}
 
                    
-                   // RegistroAlarma.ForEach(r => Console.WriteLine(r.ToArray()));
+                  // RegistroEncabezado.ForEach(r => Console.WriteLine(r.ToArray()));
                  
                     //Console.WriteLine((TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))));
 
@@ -148,13 +151,14 @@ namespace HojaResumen.Servicios.Parser
                         ProgramaSabiUno row = new ProgramaSabiUno
                         {
                             IdAutoclave = RegistroEncabezado[5].Replace(" ", String.Empty).Substring(10).Trim(),
-                            IdSeccion = "SabiUno",
+                            IdSeccion = texts[4].Trim(),
+                            IdUsuario="SabiUno",
                             TInicio = Tinicio, //Hora Inicio +f2+f3+f4
                             NumeroCiclo = RegistroEncabezado[7].Replace(" ", String.Empty).Substring(12).Trim(),
                             Programa = RegistroEncabezado[0].Replace(" ", String.Empty).Substring(8).Trim(),
                             Modelo = RegistroEncabezado[6].Replace(" ", String.Empty).Substring(6).Trim(),  //modelo
-                            Programador = RegistroEncabezado[1].Replace(" ", String.Empty).Substring(10).Trim(),
-                            Operador = RegistroEncabezado[2].Replace(" ", String.Empty).Substring(8).Trim(),
+                            Programador = RegistroEncabezado[1].Substring(12).Trim(),
+                            Operador = RegistroEncabezado[2].Substring(10).Trim(),
                             CodigoProducto = RegistroEncabezado[3].Replace(" ", String.Empty).Substring(11).Trim(),
                             Lote = RegistroEncabezado[4].Replace(" ", String.Empty).Substring(6).Trim(),
                             Notas = texts[12] + texts[13],
@@ -328,7 +332,7 @@ namespace HojaResumen.Servicios.Parser
                     context.CiclosAutoclaves.Add(ciclos);
                     context.SaveChanges();
 
-
+                   
 
                 }
             }

@@ -131,13 +131,14 @@ namespace HojaResumen.Servicios.Parser
                         ProgramaSabiDos row = new ProgramaSabiDos
                         {
                             IdAutoclave = RegistroEncabezado[5].Replace(" ", String.Empty).Substring(10).Trim(),
-                            IdSeccion = "SabiDos",
+                            IdSeccion = texts[4].Trim(),
+                            IdUsuario = "SabiDos",
                             TInicio = RegistroPie[0].Substring(19).Trim(),
                             NumeroCiclo = RegistroEncabezado[7].Replace(" ", String.Empty).Substring(12).Trim(),
                             Programa = RegistroEncabezado[0].Replace(" ", String.Empty).Substring(8).Trim(),
                             Modelo = RegistroEncabezado[6].Replace(" ", String.Empty).Substring(6).Trim(),  //modelo
-                            Programador = RegistroEncabezado[1].Replace(" ", String.Empty).Substring(10).Trim(),
-                            Operador = RegistroEncabezado[2].Replace(" ", String.Empty).Substring(8).Trim(),
+                            Programador = RegistroEncabezado[1].Substring(11).Trim(),
+                            Operador = RegistroEncabezado[2].Substring(10).Trim(),
                             CodigoProducto = RegistroEncabezado[3].Replace(" ", String.Empty).Substring(11).Trim(),
                             Lote = RegistroEncabezado[4].Replace(" ", String.Empty).Substring(6).Trim(),
                             Notas = texts[12] + texts[13],
