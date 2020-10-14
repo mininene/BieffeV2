@@ -17,7 +17,7 @@ namespace HojaResumen.Servicios.Parser
             try
             {
 
-                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveJP10.txt";
+                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveKP10.txt";
                 string Programa = "PROGRAMA";
                 string Programador = "PROGRAMAD.";
                 string Operador = "OPERADOR";
@@ -129,7 +129,7 @@ namespace HojaResumen.Servicios.Parser
                         {
                             IdAutoclave = RegistroEncabezado[5].Replace(" ", String.Empty).Substring(10).Trim(),
                             IdSeccion = RegistroPie[0].Replace(" ", String.Empty).Substring(25),
-                            TInicio = "",
+                            TInicio = RegistroPie[0].Substring(19).Trim(),
                             NumeroCiclo = RegistroEncabezado[7].Replace(" ", String.Empty).Substring(12).Trim(),
                             Programa = RegistroEncabezado[0].Replace(" ", String.Empty).Substring(8).Trim(),
                             Modelo = RegistroEncabezado[6].Replace(" ", String.Empty).Substring(6).Trim(),  //modelo
@@ -205,10 +205,7 @@ namespace HojaResumen.Servicios.Parser
                             FtzMin = RegistroPie[6].Replace(" ", String.Empty).Substring(11).Trim(),
                             FtzMax = RegistroPie[7].Replace(" ", String.Empty).Substring(11).Trim(),
                             AperturaPuerta = RegistroPie[8].Trim(),
-                            TiempoCiclo = "h", //+ Convert.ToDateTime(TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))).ToString(),
-                            //(TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) +TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))).ToString() ,
-                            //Convert.ToDateTime(RegistroPie[0].Replace(" ", String.Empty).Substring(25))
-                            //Convert.ToDateTime(RegistroPie[0].Replace(" ", String.Empty).Substring(25)).ToString(),
+                            TiempoCiclo = "", 
                             ErrorCiclo = "",
 
                         }; RegistroFinal.Add(row); //añado elementos

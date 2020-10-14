@@ -2,7 +2,9 @@
 using HojaResumen.Servicios.Parser;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -64,15 +66,28 @@ namespace HojaResumen
             IParser GetData = new Parser();
             GetData.ParserFile();
 
-            //IParserSabiDos GetDataSabiDos = new ParserSabiDos();
-            //GetDataSabiDos.ParserSabiDosFile();
+            IParserSabiDos GetDataSabiDos = new ParserSabiDos();
+            GetDataSabiDos.ParserSabiDosFile();
 
 
             Console.WriteLine("Escribiendo en la base de datos");
 
-            //string time = "01:00";
-            //double seconds = TimeSpan.Parse(time).TotalSeconds;
-            //Console.WriteLine(seconds);
+            
+            
+            
+            
+            
+            
+            //string span = "108:46";
+            //string tf = "13:14";
+
+            //var td = TimeSpan.FromMinutes(Convert.ToDouble(span.Split(':')[0])).Add(TimeSpan.FromSeconds(Convert.ToDouble((span.Split(':')[1]))))
+            //    - TimeSpan.Parse("00:" + tf);             // resta timeSpan
+            //Console.WriteLine(td);
+            //var z = TimeSpan.Parse(td.ToString().Substring(0, 5)).TotalMinutes + td.ToString().Substring(5, 3);
+            //Console.WriteLine(z);
+
+
 
 
 

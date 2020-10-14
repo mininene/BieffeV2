@@ -19,7 +19,7 @@ namespace HojaResumen.Servicios.Parser
             try
             {
 
-                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveFP21000.txt";
+                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveEP201000.txt";
                 string Programa = "PROGRAMA";
                 string Programador = "PROGRAMAD.";
                 string Operador = "OPERADOR";
@@ -122,10 +122,16 @@ namespace HojaResumen.Servicios.Parser
                     //RegistroAlarma.ForEach(r => Console.WriteLine(r.ToArray()));
                     //Console.WriteLine((TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))));
 
-                  // Console.WriteLine( TimeSpan.Parse("00:" + RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)));
-                   // Console.WriteLine(TimeSpan.Parse("00:" + RegistroCiclos[63].Substring(2, 6).ToString().Trim()));
+                   
+                    var spanTC = RegistroCiclos[63].Substring(2, 6).ToString().Trim();
+                    
+                    var td = TimeSpan.FromMinutes(Convert.ToDouble(spanTC.Split(':')[0])).Add(TimeSpan.FromSeconds(Convert.ToDouble((spanTC.Split(':')[1]))))
+                     - TimeSpan.Parse("00:" + RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21));             // resta timeSpan TFinalCiclo13 - Carga de Agua
 
-                    string Tinicio = RegistroPie[0].Substring(19,12).Trim()+"  " + TimeSpan.Parse(RegistroPie[0].Substring(30).Trim()).Add(TimeSpan.Parse("00:" + RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))
+                    var TCicloCalculado = TimeSpan.Parse(td.ToString().Substring(0, 5)).TotalMinutes + td.ToString().Substring(5, 3);
+
+
+                    var Tinicio = RegistroPie[0].Substring(19,12).Trim()+"  " + TimeSpan.Parse(RegistroPie[0].Substring(30).Trim()).Add(TimeSpan.Parse("00:" + RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))
                         + TimeSpan.Parse("00:" + RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21))+TimeSpan.Parse("00:" + RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))).ToString();
 
                     List <ProgramaSabiUno> RegistroFinal = new List<ProgramaSabiUno>(); //declaro la lista que quiero cargar
@@ -210,12 +216,8 @@ namespace HojaResumen.Servicios.Parser
                             FtzMin = RegistroPie[6].Replace(" ", String.Empty).Substring(11).Trim(),
                             FtzMax = RegistroPie[7].Replace(" ", String.Empty).Substring(11).Trim(),
                             AperturaPuerta = RegistroPie[8].Trim(),
-                           // TiempoCiclo = RegistroCiclos[63].Substring(2,8).Trim() + ((RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))).ToString(), //HoraTFF13-Tcarga de AGua
+                            TiempoCiclo = TCicloCalculado,
                             
-                            //+ Convert.ToDateTime(TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))).ToString(),
-                            //(TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) +TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))).ToString() ,
-                            //Convert.ToDateTime(RegistroPie[0].Replace(" ", String.Empty).Substring(25))
-                            //Convert.ToDateTime(RegistroPie[0].Replace(" ", String.Empty).Substring(25)).ToString(),
                             ErrorCiclo= "" ,
 
                         }; RegistroFinal.Add(row); //añado elementos
@@ -316,7 +318,7 @@ namespace HojaResumen.Servicios.Parser
 
                     }
                     context.CiclosAutoclaves.Add(ciclos);
-                    context.SaveChanges();
+                   context.SaveChanges();
 
 
 
