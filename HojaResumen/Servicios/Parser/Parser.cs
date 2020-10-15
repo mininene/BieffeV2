@@ -23,7 +23,7 @@ namespace HojaResumen.Servicios.Parser
             try
             {
 
-                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveiP8250.txt";
+                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveIP8250.txt";
                 string Programa = "PROGRAMA";
                 string Programador = "PROGRAMAD.";
                 string Operador = "OPERADOR";
