@@ -94,7 +94,9 @@
     <Compile Include="Servicios\Parser\Parser.cs" />
     <Compile Include="Servicios\Parser\ParserSabiDos.cs" />
     <Compile Include="Servicios\PDFCreator\Creator.cs" />
+    <Compile Include="Servicios\PDFCreator\CreatorSabiDos.cs" />
     <Compile Include="Servicios\PDFCreator\ICreator.cs" />
+    <Compile Include="Servicios\PDFCreator\ICreatorSabiDos.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
