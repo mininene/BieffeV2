@@ -85,6 +85,7 @@
       <DependentUpon>CiclosModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Modelo\ConnectionData.cs" />
+    <Compile Include="Modelo\IdAutoclaveSabiUno.cs" />
     <Compile Include="Modelo\ProgramaSabiDos.cs" />
     <Compile Include="Modelo\ProgramaSabiUno.cs" />
     <Compile Include="Program.cs" />
@@ -93,9 +94,11 @@
     <Compile Include="Servicios\Parser\IParserSabiDos.cs" />
     <Compile Include="Servicios\Parser\Parser.cs" />
     <Compile Include="Servicios\Parser\ParserSabiDos.cs" />
+    <Compile Include="Servicios\PDFCreator\CreatorNF8387A.cs" />
     <Compile Include="Servicios\PDFCreator\Creator.cs" />
     <Compile Include="Servicios\PDFCreator\CreatorSabiDos.cs" />
     <Compile Include="Servicios\PDFCreator\ICreator.cs" />
+    <Compile Include="Servicios\PDFCreator\ICreatorNF8387A.cs" />
     <Compile Include="Servicios\PDFCreator\ICreatorSabiDos.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +107,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CiclosModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Libreria\ex1.xls" />
     <None Include="Modelo\BaseDatosT\CiclosModel.edmx.diagram">
       <DependentUpon>CiclosModel.edmx</DependentUpon>

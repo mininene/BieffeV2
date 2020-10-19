@@ -1,54 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HojaResumen.Modelo.BaseDatosT;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
-using HojaResumen.Modelo.BaseDatosT;
+using System;
+using System.Collections.Generic;
 using System.IO;
-using System.Drawing;
-using HojaResumen.Modelo;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HojaResumen.Servicios.PDFCreator
 {
-    public class Creator : ICreator 
+    public class CreatorNF8387A : ICreatorNF8387A
     {
-        public void CreatePdf()
+        public void creatorNF8387A()
         {
             using (var context = new CicloAutoclave())
 
             {
-                var ListaAutoclaves = new List<IdAutoclaveSabiUno>
-                        {
-                             new IdAutoclaveSabiUno {Autoclave="NF8387A"},
-                             new IdAutoclaveSabiUno {Autoclave="8388B"},
-                             new IdAutoclaveSabiUno {Autoclave="8389C"},
-                             new IdAutoclaveSabiUno {Autoclave="8607D"},
-                             new IdAutoclaveSabiUno {Autoclave="NF1029E"},
-                             new IdAutoclaveSabiUno {Autoclave="NF1030F"},
-                             new IdAutoclaveSabiUno {Autoclave="NF1031G"},
-                             new IdAutoclaveSabiUno {Autoclave="NA0658EGH"},
-                             new IdAutoclaveSabiUno {Autoclave="NA0672EGI"},
-                             new IdAutoclaveSabiUno {Autoclave="NA0611EFM"},
-                         };
+                
 
-                foreach (var t in ListaAutoclaves)
-                {
-                    try
+                  try
                     {
-                        var q = (from x in context.CiclosAutoclaves.Where(x => x.IdAutoclave == t.Autoclave)
-
+                        var q = (from x in context.CiclosAutoclaves.Where(x => x.IdAutoclave == "NF8387A")
                                  .OrderByDescending(s => s.Id)
                                  select x).First();
 
 
-                        //foreach (var q in query)
-
-                        //{
-
-                        // Console.WriteLine("ID: " + q.IdAutoclave + " " + "Programador: " + q.Programador + " " + "Operador: " + " " + q.Operador);
                         PdfDocument pdf = new PdfDocument();
                         pdf.Info.Title = "My First PDF";
                         PdfPage pdfPage = pdf.AddPage();
@@ -57,7 +35,7 @@ namespace HojaResumen.Servicios.PDFCreator
                         XFont fontDos = new XFont("Verdana", 7, XFontStyle.Regular);
                         XTextFormatter tf = new XTextFormatter(graph);
                         XRect rect = new XRect(40, 100, 250, 220);
-                        //graph.DrawRectangle(XBrushes.SeaShell, rect);
+                      
 
 
                         rect = new XRect(360, 495, 250, 220);
@@ -116,35 +94,27 @@ namespace HojaResumen.Servicios.PDFCreator
                         graph.DrawString("FIRMA OPERADOR        _______________________ ", font, XBrushes.Black, new XRect(20, 630, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                         graph.DrawString("FIRMA GAR.DE CALID.   _______________________ ", font, XBrushes.Black, new XRect(20, 660, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
-                        graph.DrawString("Registrado  " + q.FechaRegistro, font, XBrushes.Black, new XRect(400, 20, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                        graph.DrawString("Impreso  " + DateTime.Now, font, XBrushes.Black, new XRect(400, 40, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                           // graph.DrawString("Impreso  " + , font, XBrushes.Black, new XRect(400, 20, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-
+                        graph.DrawString("Impreso  " + DateTime.Now, font, XBrushes.Black, new XRect(400, 20, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                         tf.DrawString(q.ErrorCiclo, fontDos, XBrushes.Black, rect, XStringFormats.TopLeft);
 
 
                         string nombreArchivo = "AutoClave" + q.IdAutoclave + q.NumeroCiclo + ".pdf";
-                        string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\";
+                        string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveA";
 
                         nombreArchivo = Path.GetFileName(nombreArchivo);
                         rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
-
-
-                        // string pdfFilename = "C:\\Users\\fuenteI3\\Desktop\\PDFGenerados\\HojaResumenAutoclaveI.pdf ";
 
                         //Process.Start(pdfFilename);
                         pdf.Save(rutaAbsoluta);  //Guarda el PDF
 
                     }
-                    catch { Console.WriteLine("Registros no existentes"); }
+                    catch { Console.WriteLine("Registro NF8387A no existente"); }
 
                 }
 
-                    //}
+               
 
-
-                    
-                }
+            }
         }
     }
-}
+

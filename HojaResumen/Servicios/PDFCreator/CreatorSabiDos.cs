@@ -8,6 +8,10 @@ using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
 using HojaResumen.Modelo.BaseDatosT;
+using System.Drawing.Printing;
+using System.Diagnostics;
+using System.Drawing;
+using System.Management;
 
 namespace HojaResumen.Servicios.PDFCreator
 {
@@ -18,25 +22,24 @@ namespace HojaResumen.Servicios.PDFCreator
             using (var context = new CicloAutoclave())
 
             {
-                //var query = from x in context.CiclosSabiDos.Where(x => x.IdAutoclave == "0827J").OrderByDescending(s => s.Id)
-                //            select x;
 
-                var query = from x in context.CiclosSabiDos.Where(s=>s.Id == 126)
-                            select x;
+            
+                var q = (from x in context.CiclosSabiDos.Where(x => x.IdAutoclave == "0827J").OrderByDescending(s => s.Id)
+                            select x).First();
 
-                foreach (var q in query)
+              
 
-                {
+                //foreach (var q in query)
 
-                    // Console.WriteLine("ID: " + q.IdAutoclave + " " + "Programador: " + q.Programador + " " + "Operador: " + " " + q.Operador);
+                //{
+
+           
                     PdfDocument pdf = new PdfDocument();
                     pdf.Info.Title = "My First PDF";
                     PdfPage pdfPage = pdf.AddPage();
                     XGraphics graph = XGraphics.FromPdfPage(pdfPage);
                     XFont font = new XFont("Verdana", 8, XFontStyle.Regular);
-                    //XTextFormatter tf = new XTextFormatter(graph);
-                    //XRect rect = new XRect(40, 100, 250, 220);
-                    //graph.DrawRectangle(XBrushes.SeaShell, rect);
+                  
 
 
 
@@ -97,19 +100,47 @@ namespace HojaResumen.Servicios.PDFCreator
 
 
 
-                    string nombreArchivo = @"HojaResumenAutoclaveJ.pdf";
+                    string nombreArchivo = "AutoClave" + q.IdAutoclave + q.NumeroCiclo + ".pdf";
                     string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\";
 
                     nombreArchivo = Path.GetFileName(nombreArchivo);
-                    rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
-
-
-                    // string pdfFilename = "C:\\Users\\fuenteI3\\Desktop\\PDFGenerados\\HojaResumenAutoclaveI.pdf ";
+                    rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);                
 
                     //Process.Start(pdfFilename);
                     pdf.Save(rutaAbsoluta);  //Guarda el PDF
 
-                }
+
+                //string path = @"C:\Users\fuenteI3\Desktop\PDFGenerados\HojaResumenAutoclaveK.pdf";
+                //foreach (String printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+                //{
+                //    var x = printer.ToString() + System.Environment.NewLine;
+                //    Console.WriteLine(x);
+                //}
+
+                //File.Copy(path, "Microsoft Print to PDF", true);
+
+                //Process printJob = new Process();
+                //printJob.StartInfo.FileName = path;
+                //printJob.StartInfo.UseShellExecute = true;
+                //printJob.StartInfo.Verb = "printto";
+                //printJob.StartInfo.CreateNoWindow = true;
+                //printJob.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                //printJob.StartInfo.Arguments = "\"" + "Microsoft XPS Document Writer" + "\"";
+                //printJob.StartInfo.WorkingDirectory = Path.GetDirectoryName(path);
+                //printJob.Start();
+
+                //"Microsoft Print to PDF"
+                // "Microsoft XPS Document Writer"
+                // "Webex Document Loader"
+
+
+
+
+
+                //PrintDocument pd = new PrintDocument();
+                //pd.PrinterSettings.PrinterName = "#ADMICOLOR (ESSAFILEPRINT01)";
+
+                //}
 
             }
 

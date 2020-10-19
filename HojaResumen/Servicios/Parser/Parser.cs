@@ -22,8 +22,8 @@ namespace HojaResumen.Servicios.Parser
         {
             try
             {
-
-                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveIP8250.txt";
+                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveEP8VACIO.txt";
+                //string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveIP81000.txt";
                 string Programa = "PROGRAMA";
                 string Programador = "PROGRAMAD.";
                 string Operador = "OPERADOR";
@@ -229,8 +229,9 @@ namespace HojaResumen.Servicios.Parser
                             FtzMax = RegistroPie[7].Replace(" ", String.Empty).Substring(11).Trim(),
                             AperturaPuerta = RegistroPie[8].Trim(),
                             TiempoCiclo = TCicloCalculado,
-                            
-                           ErrorCiclo= combin,
+                            FechaRegistro = DateTime.Now,
+
+                            ErrorCiclo = combin,
 
                         }; RegistroFinal.Add(row); //añado elementos
                     }
@@ -327,6 +328,7 @@ namespace HojaResumen.Servicios.Parser
                         ciclos.AperturaPuerta = s.AperturaPuerta;
                         ciclos.TiempoCiclo = s.TiempoCiclo;
                         ciclos.ErrorCiclo = s.ErrorCiclo;
+                        ciclos.FechaRegistro = s.FechaRegistro;
 
                     }
                     context.CiclosAutoclaves.Add(ciclos);

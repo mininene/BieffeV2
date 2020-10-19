@@ -8,6 +8,7 @@ using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -88,7 +89,13 @@ namespace HojaResumen
             Console.WriteLine("PDF Generado");
 
 
+//            using (var context = new CicloAutoclave()) //entidad de data entity
 
+//            {
+
+//               Console.WriteLine( context.Database.Connection.ConnectionString);
+
+//}
 
 
 

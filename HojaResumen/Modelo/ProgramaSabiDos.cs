@@ -74,6 +74,8 @@ namespace HojaResumen.Modelo
         public string AperturaPuerta { get; set; }
         public string TiempoCiclo { get; set; }
         public string ErrorCiclo { get; set; }
+        public Nullable<System.DateTime> FechaRegistro { get; set; }
+
     }
 }
 

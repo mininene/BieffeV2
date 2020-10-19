@@ -158,12 +158,10 @@ namespace HojaResumen.Servicios.Parser
                             Fase11 = RegistroCiclos[61].Substring(12).Trim(),
                             Fase12 = RegistroCiclos[66].Substring(12).Trim(),
 
-
                             TIF2 = RegistroCiclos[8].Substring(2).Trim(),
                             TIF3 = RegistroCiclos[13].Substring(2).Trim(),
                             TIF9 = RegistroCiclos[53].Substring(2).Trim(),
                             TIF12 = RegistroCiclos[68].Substring(2).Trim(),
-
 
                             TISubF2 = RegistroCiclos[9].Substring(14).Trim(),
                             TISubF3 = RegistroCiclos[14].Substring(14).Trim(),
@@ -184,21 +182,14 @@ namespace HojaResumen.Servicios.Parser
                             DuracionTotalF10 = RegistroDatosFF[33].Replace(" ", String.Empty).Substring(21).Trim(),
                             DuracionTotalF11 = RegistroDatosFF[36].Replace(" ", String.Empty).Substring(21).Trim(),
 
-
-
                             TFF2 = RegistroTF[1].Substring(3).Trim(),  //RegistroTF
                             TFF3 = RegistroTF[2].Substring(3).Trim(), //RegistroTF
                             TIF4 = RegistroTF[3].Substring(3).Trim(), //es Igual TFF4
                             TFF9 = RegistroDatosFF[32].Substring(2).Trim(),
 
-
-
-
                             TFSubF2 = RegistroTFSub[1].Substring(14).Trim(),
                             TFSubF3 = RegistroTFSub[2].Substring(14).Trim(), // TISubF7 es TFSubF7
                             TISubF4 = RegistroTFSub[3].Substring(14).Trim(), // es igual TFSubF4
-
-
 
                             HoraInicio = RegistroPie[0].Substring(22).Trim(),
                             HoraFin = RegistroPie[1].Substring(22).Trim(),
@@ -211,6 +202,8 @@ namespace HojaResumen.Servicios.Parser
                             AperturaPuerta = RegistroPie[8].Trim(),
                             TiempoCiclo = RegistroCiclos[68].Substring(2,6).ToString().Trim(), 
                             ErrorCiclo = combin,
+                            FechaRegistro = DateTime.Now,
+                            
 
                         }; RegistroFinal.Add(row); //añado elementos
                     }
@@ -307,6 +300,7 @@ namespace HojaResumen.Servicios.Parser
                         ciclos.AperturaPuerta = s.AperturaPuerta;
                         ciclos.TiempoCiclo = s.TiempoCiclo;
                         ciclos.ErrorCiclo = s.ErrorCiclo;
+                        ciclos.FechaRegistro = s.FechaRegistro;
 
                     }
                     context.CiclosSabiDos.Add(ciclos);

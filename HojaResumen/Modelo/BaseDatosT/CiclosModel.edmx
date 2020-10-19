@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CicloAutoclaveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CicloAutoclaveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CiclosAutoclaves">
           <Key>
             <PropertyRef Name="Id" />
@@ -75,7 +75,8 @@
           <Property Name="FtzMax" Type="varchar" MaxLength="100" />
           <Property Name="AperturaPuerta" Type="varchar" MaxLength="100" />
           <Property Name="TiempoCiclo" Type="varchar" MaxLength="100" />
-          <Property Name="ErrorCiclo" Type="varchar" MaxLength="300" />
+          <Property Name="ErrorCiclo" Type="varchar(max)" />
+          <Property Name="FechaRegistro" Type="datetime" />
         </EntityType>
         <EntityType Name="CiclosSabiDos">
           <Key>
@@ -146,14 +147,14 @@
           <Property Name="FtzMax" Type="varchar" MaxLength="100" />
           <Property Name="AperturaPuerta" Type="varchar" MaxLength="100" />
           <Property Name="TiempoCiclo" Type="varchar" MaxLength="100" />
-          <Property Name="ErrorCiclo" Type="varchar" MaxLength="300" />
+          <Property Name="ErrorCiclo" Type="varchar(max)" />
+          <Property Name="FechaRegistro" Type="datetime" />
         </EntityType>
         <EntityContainer Name="CicloAutoclaveModelStoreContainer">
           <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CiclosSabiDos" EntityType="Self.CiclosSabiDos" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CicloAutoclaveModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -227,7 +228,8 @@
           <Property Name="FtzMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="AperturaPuerta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="TiempoCiclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ErrorCiclo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorCiclo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="CiclosSabiDos">
           <Key>
@@ -298,7 +300,8 @@
           <Property Name="FtzMax" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="AperturaPuerta" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="TiempoCiclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ErrorCiclo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="ErrorCiclo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityContainer Name="CicloAutoclave" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" />
@@ -313,6 +316,7 @@
           <EntitySetMapping Name="CiclosAutoclaves">
             <EntityTypeMapping TypeName="CicloAutoclaveModel.CiclosAutoclaves">
               <MappingFragment StoreEntitySet="CiclosAutoclaves">
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdAutoclave" ColumnName="IdAutoclave" />
                 <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
@@ -386,6 +390,7 @@
           <EntitySetMapping Name="CiclosSabiDos">
             <EntityTypeMapping TypeName="CicloAutoclaveModel.CiclosSabiDos">
               <MappingFragment StoreEntitySet="CiclosSabiDos">
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdAutoclave" ColumnName="IdAutoclave" />
                 <ScalarProperty Name="IdSeccion" ColumnName="IdSeccion" />
