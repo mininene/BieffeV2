@@ -100,6 +100,7 @@ namespace HojaResumen.Servicios.PDFCreator
 
 
 
+
                     string nombreArchivo = "AutoClave" + q.IdAutoclave + q.NumeroCiclo + ".pdf";
                     string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\";
 
