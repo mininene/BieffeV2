@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace HojaResumen.Servicios.PDFCreator
 {
-    public class CreatorNF8387A : ICreatorNF8387A
+    public class CreatorNF8387A
     {
         public void creatorNF8387A()
         {
@@ -23,10 +23,10 @@ namespace HojaResumen.Servicios.PDFCreator
                   try
                     {
                         var q = (from x in context.CiclosAutoclaves.Where(x => x.IdAutoclave == "NF8387A")
-                                 .OrderByDescending(s => s.Id)
+                                 .OrderByDescending(x => x.Id)
                                  select x).First();
 
-
+                    
                         PdfDocument pdf = new PdfDocument();
                         pdf.Info.Title = "My First PDF";
                         PdfPage pdfPage = pdf.AddPage();
@@ -41,10 +41,7 @@ namespace HojaResumen.Servicios.PDFCreator
                         rect = new XRect(360, 495, 250, 220);
                         graph.DrawRectangle(XBrushes.White, rect);
                         tf.Alignment = XParagraphAlignment.Justify;
-                        // tf.DrawString(q.ErrorCiclo, font, XBrushes.Black, rect, XStringFormats.TopLeft);
-
-
-
+                       
 
                         graph.DrawString("PROGRAMA: " + "                      " + q.Programa, font, XBrushes.Black, new XRect(20, 25, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                         graph.DrawString("" + q.IdSeccion, font, XBrushes.Black, new XRect(20, 35, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
@@ -93,8 +90,9 @@ namespace HojaResumen.Servicios.PDFCreator
 
                         graph.DrawString("FIRMA OPERADOR        _______________________ ", font, XBrushes.Black, new XRect(20, 630, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                         graph.DrawString("FIRMA GAR.DE CALID.   _______________________ ", font, XBrushes.Black, new XRect(20, 660, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-
-                        graph.DrawString("Impreso  " + DateTime.Now, font, XBrushes.Black, new XRect(400, 20, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                   
+                        graph.DrawString("Registrado  " + q.FechaRegistro, font, XBrushes.Black, new XRect(400, 20, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                        graph.DrawString("Impreso  " + DateTime.Now, font, XBrushes.Black, new XRect(400, 40, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                         tf.DrawString(q.ErrorCiclo, fontDos, XBrushes.Black, rect, XStringFormats.TopLeft);
 
 
@@ -104,7 +102,7 @@ namespace HojaResumen.Servicios.PDFCreator
                         nombreArchivo = Path.GetFileName(nombreArchivo);
                         rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
 
-                        //Process.Start(pdfFilename);
+                     
                         pdf.Save(rutaAbsoluta);  //Guarda el PDF
 
                     }

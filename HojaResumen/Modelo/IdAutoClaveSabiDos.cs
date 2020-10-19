@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HojaResumen.Servicios.PDFCreator
+namespace HojaResumen.Modelo
 {
-    public interface IcreatorNF8387A
+    public class IdAutoClaveSabiDos
     {
-        void creatorNF8387A();
+        public string Autoclave { get; set; }
     }
 }

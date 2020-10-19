@@ -10,16 +10,21 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace HojaResumen
 {
     class Program
     {
+
+
+      
         static void Main(string[] args)
         {
 
@@ -69,33 +74,67 @@ namespace HojaResumen
 
             //////////        Console.WriteLine("Cerrar Conexion valor: " + con.CloseConnection(ref handle));
             //////////    }
+            ///
 
 
-            IParser GetData = new Parser();
-            GetData.ParserFile();
+            // string cabecera = "NF8387A";
+            // int i = 0;
+            // int ciclo = 2443;
+            // string last = cabecera + ciclo;
+            //if (last.Equals( cabecera + ciclo))
+            // {
 
-            IParserSabiDos GetDataSabiDos = new ParserSabiDos();
-            GetDataSabiDos.ParserSabiDosFile();
+            //     string NuevoCiclo = last + i++;
+            //     last = NuevoCiclo;
+            //     Console.WriteLine(last);
+
+            // }
+            // else { Console.WriteLine("Imprimir"); }
+
+            //string x = "NF8387A02443";
+            //if (x == "NF8387A02443")
+            //{
+            //    var newString = Regex.Replace(x, "\\d+",
+            //    m => (int.Parse(m.Value) + 1).ToString(new string('0', m.Value.Length)));
+
+            //    Console.WriteLine(newString);
+            //}
 
 
-            Console.WriteLine("Escribiendo en la base de datos");
-            System.Threading.Thread.Sleep(1000);
-            ICreator Create = new Creator();
-            Create.CreatePdf();
-            System.Threading.Thread.Sleep(1000);
-            ICreatorSabiDos CreateDos = new CreatorSabiDos();
-            CreateDos.CreateSabiDosPDF();
-
-            Console.WriteLine("PDF Generado");
 
 
-//            using (var context = new CicloAutoclave()) //entidad de data entity
+            //IParser GetData = new Parser();
+            //GetData.ParserFile();
 
-//            {
+            //IParserSabiDos GetDataSabiDos = new ParserSabiDos();
+            //GetDataSabiDos.ParserSabiDosFile();
 
-//               Console.WriteLine( context.Database.Connection.ConnectionString);
 
-//}
+            //Console.WriteLine("Escribiendo en la base de datos");
+
+
+            //System.Threading.Thread.Sleep(1000);
+            //ICreator Create = new Creator();
+            //Create.CreatePdf();
+
+            //ICreator createA = new CreatorNF8387A();
+            //createA.creatorNF8387A();
+
+
+            //System.Threading.Thread.Sleep(1000);  
+            //ICreatorSabiDos CreateDos = new CreatorSabiDos();
+            //CreateDos.CreateSabiDosPDF();
+
+            //Console.WriteLine("PDF Generado");
+
+
+            //            using (var context = new CicloAutoclave()) //entidad de data entity
+
+            //            {
+
+            //               Console.WriteLine( context.Database.Connection.ConnectionString);
+
+            //}
 
 
 

@@ -118,33 +118,113 @@ namespace HojaResumen.Servicios.PDFCreator
 
                         graph.DrawString("Registrado  " + q.FechaRegistro, font, XBrushes.Black, new XRect(400, 20, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                         graph.DrawString("Impreso  " + DateTime.Now, font, XBrushes.Black, new XRect(400, 40, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                           // graph.DrawString("Impreso  " + , font, XBrushes.Black, new XRect(400, 20, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                        //graph.DrawString("Impreso  " +q.FechaRegistro , font, XBrushes.Black, new XRect(400, 20, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
                         tf.DrawString(q.ErrorCiclo, fontDos, XBrushes.Black, rect, XStringFormats.TopLeft);
 
 
                         string nombreArchivo = "AutoClave" + q.IdAutoclave + q.NumeroCiclo + ".pdf";
-                        string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\";
+                       
+                        if (q.IdAutoclave == "NF8387A")
+                        {
+                            string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveA";
+                            nombreArchivo = Path.GetFileName(nombreArchivo);
+                            rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
+                            pdf.Save(rutaAbsoluta);
+                        }
 
-                        nombreArchivo = Path.GetFileName(nombreArchivo);
-                        rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
+                        if (q.IdAutoclave == "8388B")
+                        {
+                            string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveB";
+                            nombreArchivo = Path.GetFileName(nombreArchivo);
+                            rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
+                            pdf.Save(rutaAbsoluta);
+                        }
+
+                        if (q.IdAutoclave == "8389C")
+                        {
+                            string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveC";
+                            nombreArchivo = Path.GetFileName(nombreArchivo);
+                            rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
+                            pdf.Save(rutaAbsoluta);
+                        }
+
+                        if (q.IdAutoclave == "8607D")
+                        {
+                            string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveD";
+                            nombreArchivo = Path.GetFileName(nombreArchivo);
+                            rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
+                            pdf.Save(rutaAbsoluta);
+                        }
+
+                        if (q.IdAutoclave == "NF1029E")
+                        {
+                            string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveE";
+                            nombreArchivo = Path.GetFileName(nombreArchivo);
+                            rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
+                            pdf.Save(rutaAbsoluta);
+                        }
+
+                        if (q.IdAutoclave == "NF1030F")
+                        {
+                            string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveF";
+                            nombreArchivo = Path.GetFileName(nombreArchivo);
+                            rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
+                            pdf.Save(rutaAbsoluta);
+                        }
+
+                        if (q.IdAutoclave == "NF1031G")
+                        {
+                            string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveG";
+                            nombreArchivo = Path.GetFileName(nombreArchivo);
+                            rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
+                            pdf.Save(rutaAbsoluta);
+                        }
+
+                        if (q.IdAutoclave == "NA0658EGH")
+                        {
+                            string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveH";
+                            nombreArchivo = Path.GetFileName(nombreArchivo);
+                            rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
+                            pdf.Save(rutaAbsoluta);
+                        }
+
+                        if (q.IdAutoclave == "NA0672EGI")
+                        {
+                            string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveI";
+                            nombreArchivo = Path.GetFileName(nombreArchivo);
+                            rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
+                            pdf.Save(rutaAbsoluta);
+                        }
+
+                        if (q.IdAutoclave == "NA0611EFM")
+                        {
+                            string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveM";
+                            nombreArchivo = Path.GetFileName(nombreArchivo);
+                            rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
+                            pdf.Save(rutaAbsoluta);
+                        }
+
+
+
 
 
                         // string pdfFilename = "C:\\Users\\fuenteI3\\Desktop\\PDFGenerados\\HojaResumenAutoclaveI.pdf ";
 
                         //Process.Start(pdfFilename);
-                        pdf.Save(rutaAbsoluta);  //Guarda el PDF
+                        //Guarda el PDF
 
                     }
-                    catch { Console.WriteLine("Registros no existentes"); }
+                    catch { Console.WriteLine("Registros no existentes" ); }
 
                 }
 
-                    //}
 
 
-                    
-                }
+
+            }
         }
+
+
     }
 }
