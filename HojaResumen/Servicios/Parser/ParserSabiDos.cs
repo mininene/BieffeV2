@@ -305,6 +305,8 @@ namespace HojaResumen.Servicios.Parser
                     }
                     context.CiclosSabiDos.Add(ciclos);
                    context.SaveChanges();
+                    
+                    
 
 
 

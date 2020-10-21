@@ -4,9 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0aa07cc0fdc64c3690f6cea4b59f36c2" Name="Diagram1" ZoomLevel="46">
+      <Diagram DiagramId="0aa07cc0fdc64c3690f6cea4b59f36c2" Name="Diagram1" ZoomLevel="48">
         <EntityTypeShape EntityType="CicloAutoclaveModel.CiclosAutoclaves" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CicloAutoclaveModel.CiclosSabiDos" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="CicloAutoclaveModel.MaestroAutoclave" Width="1.5" PointX="5.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -67,5 +67,15 @@ namespace Wrapper
 
         }
 
+
+
+        [DllImport("th4log.dll", CallingConvention = CallingConvention.Cdecl)]
+        static extern uint th4_existsFile(uint handle, [MarshalAs(UnmanagedType.LPStr)] string remoteFile, ref uint apl_exists);
+        public uint GetExistFile(uint handle, string remoteFile, ref uint apl_exists)
+        {
+            return th4_existsFile(handle, remoteFile,ref apl_exists);
+        }
+
+
     }
 }

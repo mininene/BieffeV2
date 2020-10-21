@@ -150,9 +150,24 @@
           <Property Name="ErrorCiclo" Type="varchar(max)" />
           <Property Name="FechaRegistro" Type="datetime" />
         </EntityType>
+        <EntityType Name="MaestroAutoclave">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Matricula" Type="varchar" MaxLength="50" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Version" Type="int" Nullable="false" />
+          <Property Name="IP" Type="varchar" MaxLength="50" />
+          <Property Name="Seccion" Type="varchar" MaxLength="50" />
+          <Property Name="Estado" Type="bit" />
+          <Property Name="UltimoCiclo" Type="varchar" MaxLength="100" />
+          <Property Name="RutaSalida" Type="varchar" MaxLength="300" />
+        </EntityType>
         <EntityContainer Name="CicloAutoclaveModelStoreContainer">
           <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CiclosSabiDos" EntityType="Self.CiclosSabiDos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MaestroAutoclave" EntityType="Self.MaestroAutoclave" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -306,7 +321,22 @@
         <EntityContainer Name="CicloAutoclave" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" />
           <EntitySet Name="CiclosSabiDos" EntityType="Self.CiclosSabiDos" />
+          <EntitySet Name="MaestroAutoclave" EntityType="CicloAutoclaveModel.MaestroAutoclave" />
         </EntityContainer>
+        <EntityType Name="MaestroAutoclave">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Matricula" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Version" Type="Int32" Nullable="false" />
+          <Property Name="IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Seccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <Property Name="UltimoCiclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RutaSalida" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -457,6 +487,21 @@
                 <ScalarProperty Name="AperturaPuerta" ColumnName="AperturaPuerta" />
                 <ScalarProperty Name="TiempoCiclo" ColumnName="TiempoCiclo" />
                 <ScalarProperty Name="ErrorCiclo" ColumnName="ErrorCiclo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MaestroAutoclave">
+            <EntityTypeMapping TypeName="CicloAutoclaveModel.MaestroAutoclave">
+              <MappingFragment StoreEntitySet="MaestroAutoclave">
+                <ScalarProperty Name="RutaSalida" ColumnName="RutaSalida" />
+                <ScalarProperty Name="UltimoCiclo" ColumnName="UltimoCiclo" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Seccion" ColumnName="Seccion" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Version" ColumnName="Version" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

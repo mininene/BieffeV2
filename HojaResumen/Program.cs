@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -23,16 +24,172 @@ namespace HojaResumen
 {
     class Program
     {
-
+    
 
 
         static void Main(string[] args)
         {
 
 
+           
+            Wrapper.ConnectionWrapper con = new Wrapper.ConnectionWrapper();
+
+            using (var context = new CicloAutoclave()) //entidad de data entity
+
+            {
 
 
-            ////Wrapper.ConnectionWrapper con = new Wrapper.ConnectionWrapper();
+                //List<Maestro> RegistroActualizado = new List<Maestro>() {
+
+                //                 new Maestro{Id = 1, Matricula = "NF8387A", Nombre = "AutoA",Version = 4401, IP = "10.109.80.81",  Seccion = "SabiUno", Estado=true, UltimoCiclo= "02503", RutaSalida= @"C:\Users\fuenteI3\Desktop\API\AutoClaveA\"},
+                //                 new Maestro{Id = 2, Matricula = "8388B", Nombre = "AutoB",Version = 4002, IP = "10.109.80.82",  Seccion = "SabiUno", Estado=true, UltimoCiclo= "24157", RutaSalida= @"C:\Users\fuenteI3\Desktop\API\AutoClaveB\"},
+
+                //               };
+
+                ////foreach (var i in RegistroActualizado)
+                ////{
+
+
+                ////    var resultado = context.MaestroAutoclave.FirstOrDefault(b => b.Id == i.Id);
+                ////    if (resultado != null)
+                ////    {
+
+                ////        resultado.UltimoCiclo = i.UltimoCiclo;
+                ////        context.SaveChanges();
+                ////    }
+
+                ////}
+            //    foreach (var i in RegistroActualizado)
+            //    {
+
+            //        async Task Update()
+            //    {
+            //        var resultado = context.MaestroAutoclave.FirstOrDefault(b => b.Id == i.Id);
+            //        if (resultado != null)
+            //        {
+
+
+            //            resultado.UltimoCiclo = i.UltimoCiclo;
+            //            Console.WriteLine(resultado.UltimoCiclo);
+            //            await context.SaveChangesAsync().ConfigureAwait(false);
+
+            //        }
+            //    }
+            //    var Task = Update();
+
+            //}
+
+
+
+            foreach (var s in context.MaestroAutoclave) // tabla MaestroAutoclave
+                {
+                
+                    
+                    string ciclo =  s.Matricula.Trim() + s.UltimoCiclo.Trim()+".LOG";
+                    string rutaSalida = s.RutaSalida.Trim() + ciclo;
+                   
+
+                    Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++");
+                    Console.WriteLine(ciclo);
+                    System.Threading.Thread.Sleep(1000);
+
+                    //get Version
+                    float version = con.get_version();
+                    Console.WriteLine(version);
+
+
+                    //session
+                    uint handle = con.ConnectSession(s.Version, s.IP);
+                    if (handle != 0) { Console.WriteLine("Sesion Iniciada Correctamente"); } else { Console.WriteLine("IP o version Incorrecta"); }
+                    //Console.WriteLine("Valor de Sesion: " + handle);
+
+
+                    // Connection
+                    uint lhandle = con.ConnectApi(handle);
+                    if (lhandle == 0) { Console.WriteLine("Conexión Establecida"); } else { Console.WriteLine("IP o version Incorrecta"); }
+                    //Console.WriteLine("Valor de Conexion: " + lhandle);
+
+
+                    //GetFile
+                    uint result = con.GetData(handle, ciclo, rutaSalida);
+                    if (lhandle == 0)
+                    {
+                        Console.WriteLine("Datos Almacenados en Ruta Destino");
+
+                        var actual = Regex.Replace(s.UltimoCiclo, "\\d+",
+                         m => (int.Parse(m.Value) + 1).ToString(new string('0', m.Value.Length)));
+
+                        List<Maestro> RegistroActuales = new List<Maestro>();
+                        Maestro filas = new Maestro
+                        {
+                            Id = 1,
+                            Matricula = s.Matricula,
+                            Nombre = s.Nombre,
+                            Version = s.Version,
+                            IP = s.IP,
+                            Seccion = s.Seccion,
+                            Estado = s.Estado,
+                            UltimoCiclo = actual,
+                            RutaSalida = s.RutaSalida
+                        };RegistroActuales.Add(filas);
+
+                        foreach(var i in RegistroActuales) {
+                          
+                                Console.WriteLine(i.UltimoCiclo.Trim() + "   " + i.Matricula.Trim());
+
+                            //async Task Update()
+                            //{
+                            //    var resultado = context.MaestroAutoclave.FirstOrDefault(b => b.Id == i.Id);
+                            //    if (resultado != null)
+                            //    {
+
+
+                            //        resultado.UltimoCiclo = i.UltimoCiclo;
+                            //        Console.WriteLine(resultado.UltimoCiclo);
+                            //        await context.SaveChangesAsync();
+
+                            //    }
+                            //}
+
+
+                            //var Task = Update();
+
+
+                        }
+                      
+
+
+                    }
+                    else { Console.WriteLine("El archivo no pudo ser encontrado"); }
+                    // Console.WriteLine("Resultado de getData: " + result);
+                    
+                  
+
+
+                    //LastError
+                    uint lasterror = con.GetError();
+                     Console.WriteLine("Valor Error: " + lasterror);
+
+
+                    //Close Connection
+                    var close = con.CloseConnection(ref handle);
+                    if (close == 0) { Console.WriteLine("Conexion Cerrada"); } else { Console.WriteLine("La conexion no pudo ser cerrada"); }
+                    //Console.WriteLine("Cerrar Conexion valor: " + con.CloseConnection(ref handle));
+                    Console.WriteLine("\n\n");
+                    System.Threading.Thread.Sleep(3000);
+
+
+                    
+
+                    
+                }
+               
+            }
+
+
+
+
+            //Wrapper.ConnectionWrapper con = new Wrapper.ConnectionWrapper();
 
             ////string[] Ids = new string[] { "NF8387A02443", "8388B24068", "8389C22575", "8607D", "NF1029E", "NF1030F", "NF1031G", "NA0658EGH", "NA0672EGI", "0827J", "0828K", "1167L", "NA0611EFM" };
 
@@ -84,78 +241,45 @@ namespace HojaResumen
 
 
 
-            ////    foreach (var item in ListaDatos)
-            ////    {
-            ////        Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++");
-            ////        System.Threading.Thread.Sleep(1000);
+            //    foreach (var item in ListaDatos)
+            //    {
+            //        Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++");
+            //        System.Threading.Thread.Sleep(1000);
 
-            ////        Console.WriteLine(item.Remote);
-            ////        //get Version
-            ////        float version = con.get_version();
-            ////        Console.WriteLine(version);
+            //        Console.WriteLine(item.Remote);
+            //        //get Version
+            //        float version = con.get_version();
+            //        Console.WriteLine(version);
 
-            ////        //session
-            ////        uint handle = con.ConnectSession(item.Version, item.Ip);
-            ////        Console.WriteLine("Valor de Sesion: " + handle);
+            //        //session
+            //        uint handle = con.ConnectSession(item.Version, item.Ip);
+            //        Console.WriteLine("Valor de Sesion: " + handle);
 
-            ////        // Connection
-            ////        uint lhandle = con.ConnectApi(handle);
-            ////        Console.WriteLine("Valor de Conexion: " + lhandle);
+            //        // Connection
+            //        uint lhandle = con.ConnectApi(handle);
+            //        Console.WriteLine("Valor de Conexion: " + lhandle);
 
-            ////        //GetFile
-            ////        uint result = con.GetData(handle, item.Remote, item.Local);
+            //        //GetFile
+            //        uint result = con.GetData(handle, item.Remote, item.Local);
 
-            ////        Console.WriteLine("Resultado de getData: " + result);
+            //        Console.WriteLine("Resultado de getData: " + result);
 
-            ////        //LastError
-            ////        uint lasterror = con.GetError();
-            ////        Console.WriteLine("Valor Error: " + lasterror);
+            //        //LastError
+            //        uint lasterror = con.GetError();
+            //        Console.WriteLine("Valor Error: " + lasterror);
 
-            ////        //Close Connection
-            ////        Console.WriteLine("Cerrar Conexion valor: " + con.CloseConnection(ref handle));
-            ////        Console.WriteLine("\n\n");
-            ////        System.Threading.Thread.Sleep(10000);
-            ////    }
-            ////}
-
-
-
-
-
-
-
-
-            //string cabecera = "NF8387A";
-            //int i = 0;
-            //int ciclo = 2443;
-            //string last = cabecera + ciclo;
-            //if (last.Equals(cabecera + ciclo))
-            //{
-
-            //    string NuevoCiclo = last + i++;
-            //    last = NuevoCiclo;
-            //    Console.WriteLine(last);
-
+            //        //Close Connection
+            //        Console.WriteLine("Cerrar Conexion valor: " + con.CloseConnection(ref handle));
+            //        Console.WriteLine("\n\n");
+            //        System.Threading.Thread.Sleep(10000);
+            //    }
             //}
-            //else { Console.WriteLine("Imprimir"); }
-
-            //string prefijo = "NF8387A";
-            //int proximociclo = 02443;
-
-            //string com = prefijo + proximociclo;
 
 
 
-            //Console.WriteLine(com);
 
-
-
-            // Console.WriteLine(x.Length);
-
-
-
-            IApiConnect con = new ApiConnect();
-            con.ConnectApi();
+            //var connect = new ApiConnect();
+            //connect.ConnectTHLog();
 
 
             //IParser GetData = new Parser();
@@ -209,7 +333,7 @@ namespace HojaResumen
 
 
             Console.ReadKey();
-            }
         }
     }
+ }
 

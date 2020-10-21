@@ -84,9 +84,13 @@
     <Compile Include="Modelo\BaseDatosT\CiclosSabiDos.cs">
       <DependentUpon>CiclosModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\BaseDatosT\MaestroAutoclave.cs">
+      <DependentUpon>CiclosModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\ConnectionData.cs" />
     <Compile Include="Modelo\IdAutoClaveSabiDos.cs" />
     <Compile Include="Modelo\IdAutoclaveSabiUno.cs" />
+    <Compile Include="Modelo\Maestro.cs" />
     <Compile Include="Modelo\ProgramaSabiDos.cs" />
     <Compile Include="Modelo\ProgramaSabiUno.cs" />
     <Compile Include="Program.cs" />

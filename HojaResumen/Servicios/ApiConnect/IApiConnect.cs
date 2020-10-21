@@ -8,6 +8,6 @@ namespace HojaResumen.Servicios.ApiConnect
 {
     public interface IApiConnect
     {
-        void ConnectApi();
+        void ConnectTHLog();
     }
 }
