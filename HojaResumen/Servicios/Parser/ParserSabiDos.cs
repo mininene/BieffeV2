@@ -17,7 +17,7 @@ namespace HojaResumen.Servicios.Parser
             try
             {
 
-                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveJP10100.txt";
+                string path = @"C:\Users\fuenteI3\Desktop\original y pdf\1167L20816.LOG";
                 string Programa = "PROGRAMA";
                 string Programador = "PROGRAMAD.";
                 string Operador = "OPERADOR";
@@ -131,7 +131,7 @@ namespace HojaResumen.Servicios.Parser
                         ProgramaSabiDos row = new ProgramaSabiDos
                         {
                             IdAutoclave = RegistroEncabezado[5].Replace(" ", String.Empty).Substring(10).Trim(),
-                            IdSeccion = texts[4].Trim(),
+                            IdSeccion = texts[3].Trim(),
                             IdUsuario = "SabiDos",
                             TInicio = RegistroPie[0].Substring(19).Trim(),
                             NumeroCiclo = RegistroEncabezado[7].Replace(" ", String.Empty).Substring(12).Trim(),

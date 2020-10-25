@@ -22,7 +22,7 @@ namespace HojaResumen.Servicios.Parser
         {
             try
             {
-                string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveEP8VACIO.txt";
+                string path = @"C:\Users\fuenteI3\Desktop\original y pdf\NF1031G8848.LOG";
                 //string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveIP81000.txt";
                 string Programa = "PROGRAMA";
                 string Programador = "PROGRAMAD.";
@@ -151,7 +151,7 @@ namespace HojaResumen.Servicios.Parser
                         ProgramaSabiUno row = new ProgramaSabiUno
                         {
                             IdAutoclave = RegistroEncabezado[5].Replace(" ", String.Empty).Substring(10).Trim(),
-                            IdSeccion = texts[4].Trim(),
+                            IdSeccion = texts[3].Trim(),
                             IdUsuario="SabiUno",
                             TInicio = Tinicio, //Hora Inicio +f2+f3+f4
                             NumeroCiclo = RegistroEncabezado[7].Replace(" ", String.Empty).Substring(12).Trim(),
@@ -161,7 +161,7 @@ namespace HojaResumen.Servicios.Parser
                             Operador = RegistroEncabezado[2].Substring(10).Trim(),
                             CodigoProducto = RegistroEncabezado[3].Replace(" ", String.Empty).Substring(11).Trim(),
                             Lote = RegistroEncabezado[4].Replace(" ", String.Empty).Substring(6).Trim(),
-                            Notas = texts[12] + texts[13],
+                            Notas = texts[12] + texts[13] +texts[14],
 
                             Fase1 = RegistroCiclos[1].Substring(12).Trim(),
                             Fase2 = RegistroCiclos[6].Substring(12).Trim(),
