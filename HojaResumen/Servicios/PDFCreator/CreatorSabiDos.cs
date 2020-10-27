@@ -81,16 +81,16 @@ namespace HojaResumen.Servicios.PDFCreator
                     graph.DrawString("N.PROGRESIVO: " + "               " + q.NumeroCiclo, font, XBrushes.Black, new XRect(20, 125, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
                     graph.DrawString("FASE 1:  " + q.Fase1 + "                       " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF1 + " " + "min.s", font, XBrushes.Black, new XRect(20, 145, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                    graph.DrawString("FASE 2:  " + q.Fase2 + "                                            " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF2 + " " + "min.s", font, XBrushes.Black, new XRect(20, 160, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                    graph.DrawString("FASE 2:  " + q.Fase2 + "                                            " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF2 + " " + "min.s" + "          " + q.TInicio + "     " + "[  ]", font, XBrushes.Black, new XRect(20, 160, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("TIEMPO TP  TE2  TE3  TE4  TE9 TE10   " + q.TIF2 + "      " + q.TISubF2, font, XBrushes.Black, new XRect(20, 175, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("TIEMPO TP  TE2  TE3  TE4  TE9 TE10   " + q.TFF2 + "      " + q.TFSubF2, font, XBrushes.Black, new XRect(20, 190, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                    graph.DrawString("FASE 3:  " + q.Fase3 + "                                            " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF3 + " " + "min.s", font, XBrushes.Black, new XRect(20, 205, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                    graph.DrawString("FASE 3:  " + q.Fase3 + "                                            " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF3 + " " + "min.s" + "     " + "[  ]", font, XBrushes.Black, new XRect(20, 205, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("TIEMPO TP  TE2  TE3  TE4  TE9 TE10   " + q.TIF3 + "      " + q.TISubF3, font, XBrushes.Black, new XRect(20, 220, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("TIEMPO TP  TE2  TE3  TE4  TE9 TE10   " + q.TFF3 + "      " + q.TFSubF3, font, XBrushes.Black, new XRect(20, 235, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("FASE 4:  " + q.Fase4 + "                                   " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF4 + " " + "min.s", font, XBrushes.Black, new XRect(20, 250, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("TIEMPO TP  TE2  TE3  TE4  TE9 TE10   " + q.TIF4 + "      " + q.TISubF4, font, XBrushes.Black, new XRect(20, 265, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
-                    graph.DrawString("FASE 5:  " + q.Fase5 + "                " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF5 , font, XBrushes.Black, new XRect(20, 280, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                    graph.DrawString("FASE 5:  " + q.Fase5 + "                " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF5 + " " + "min.s", font, XBrushes.Black, new XRect(20, 280, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("FASE 6:  " + q.Fase6 + "                       " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF6 + " " + "min.s", font, XBrushes.Black, new XRect(20, 295, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("FASE 7:  " + q.Fase7A + "                " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF7A + " " + "min.s", font, XBrushes.Black, new XRect(20, 310, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("FASE 8:  " + q.Fase8A + "                       " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF8A + " " + "min.s", font, XBrushes.Black, new XRect(20, 325, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
@@ -103,21 +103,23 @@ namespace HojaResumen.Servicios.PDFCreator
                     graph.DrawString("FASE 10: " + q.Fase10 + "              " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF10 + " " + "min.s", font, XBrushes.Black, new XRect(20, 415, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("FASE 11: " + q.Fase11 + "                " + "DURAC.TOTAL FASE:  " + q.DuracionTotalF11 + " " + "min.s", font, XBrushes.Black, new XRect(20, 430, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("FASE 12: " + q.Fase12 , font, XBrushes.Black, new XRect(20, 445, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                    graph.DrawString("TIEMPO TP  TE2  TE3  TE4  TE9 TE10   " + q.TIF12 + "      " + q.TISubF12, font, XBrushes.Black, new XRect(20, 460, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                    graph.DrawString("TIEMPO TP  TE2  TE3  TE4  TE9 TE10   " + q.TIF12 + "      " + q.TISubF12 + "     " + "[  ]", font, XBrushes.Black, new XRect(20, 460, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
 
                     graph.DrawString("HORA COMIEN.PROGR : " + "               " + q.HoraInicio, font, XBrushes.Black, new XRect(20, 480, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("HORA FIN.PROGR : " + "                      " + q.HoraFin, font, XBrushes.Black, new XRect(20, 495, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("ESTERILIZACION N. : " + "                   " + q.EsterilizacionN, font, XBrushes.Black, new XRect(20, 510, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                    graph.DrawString("TEMP.MIN.ESTERILIZACION: " + "        " + "°C  " + q.TMinima, font, XBrushes.Black, new XRect(20, 525, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                    graph.DrawString("TEMP.MAX.ESTERILIZACION: " + "        " + "°C  " + q.TMaxima, font, XBrushes.Black, new XRect(20, 540, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                    graph.DrawString("TEMP.MIN.ESTERILIZACION: " + "        " + "°C  " + q.TMinima + "     " + "[  ]", font, XBrushes.Black, new XRect(20, 525, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                    graph.DrawString("TEMP.MAX.ESTERILIZACION: " + "        " + "°C  " + q.TMaxima + "     " + "[  ]", font, XBrushes.Black, new XRect(20, 540, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("DURACION FASE DE ESTER.: " + "        " + q.DuracionTotal + " " + "min.s", font, XBrushes.Black, new XRect(20, 555, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("F(T,z) MIN.: " + "                                " + q.FtzMin, font, XBrushes.Black, new XRect(20, 570, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                     graph.DrawString("F(T,z) MAX.: " + "                               " + q.FtzMax, font, XBrushes.Black, new XRect(20, 585, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                    graph.DrawString(q.AperturaPuerta, font, XBrushes.Black, new XRect(20, 600, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                    graph.DrawString("Dif F(T,z) : " + "                                  " + q.DifMaxMin, font, XBrushes.Black, new XRect(20, 600, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
-                    graph.DrawString("FIRMA OPERADOR        _______________________ ", font, XBrushes.Black, new XRect(20, 630, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                    graph.DrawString("FIRMA GAR.DE CALID.   _______________________ ", font, XBrushes.Black, new XRect(20, 660, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                    graph.DrawString(q.AperturaPuerta, font, XBrushes.Black, new XRect(20, 615, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+
+                    graph.DrawString("FIRMA OPERADOR        _______________________ ", font, XBrushes.Black, new XRect(20, 645, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                    graph.DrawString("FIRMA GAR.DE CALID.   _______________________ ", font, XBrushes.Black, new XRect(20, 675, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
                   //  graph.DrawString("Registrado  " + q.FechaRegistro, font, XBrushes.Black, new XRect(400, 20, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                    // graph.DrawString("Impreso  " + DateTime.Now, font, XBrushes.Black, new XRect(400, 40, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);

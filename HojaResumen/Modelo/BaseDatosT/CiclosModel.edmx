@@ -73,6 +73,7 @@
           <Property Name="DuracionTotal" Type="varchar" MaxLength="100" />
           <Property Name="FtzMin" Type="varchar" MaxLength="100" />
           <Property Name="FtzMax" Type="varchar" MaxLength="100" />
+          <Property Name="DifMaxMin" Type="varchar" MaxLength="100" />
           <Property Name="AperturaPuerta" Type="varchar" MaxLength="100" />
           <Property Name="TiempoCiclo" Type="varchar" MaxLength="100" />
           <Property Name="ErrorCiclo" Type="varchar(max)" />
@@ -145,6 +146,7 @@
           <Property Name="DuracionTotal" Type="varchar" MaxLength="100" />
           <Property Name="FtzMin" Type="varchar" MaxLength="100" />
           <Property Name="FtzMax" Type="varchar" MaxLength="100" />
+          <Property Name="DifMaxMin" Type="varchar" MaxLength="100" />
           <Property Name="AperturaPuerta" Type="varchar" MaxLength="100" />
           <Property Name="TiempoCiclo" Type="varchar" MaxLength="100" />
           <Property Name="ErrorCiclo" Type="varchar(max)" />
@@ -245,6 +247,7 @@
           <Property Name="TiempoCiclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ErrorCiclo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="DifMaxMin" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="CiclosSabiDos">
           <Key>
@@ -317,6 +320,7 @@
           <Property Name="TiempoCiclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ErrorCiclo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="DifMaxMin" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityContainer Name="CicloAutoclave" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" />
@@ -346,6 +350,7 @@
           <EntitySetMapping Name="CiclosAutoclaves">
             <EntityTypeMapping TypeName="CicloAutoclaveModel.CiclosAutoclaves">
               <MappingFragment StoreEntitySet="CiclosAutoclaves">
+                <ScalarProperty Name="DifMaxMin" ColumnName="DifMaxMin" />
                 <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdAutoclave" ColumnName="IdAutoclave" />
@@ -420,6 +425,7 @@
           <EntitySetMapping Name="CiclosSabiDos">
             <EntityTypeMapping TypeName="CicloAutoclaveModel.CiclosSabiDos">
               <MappingFragment StoreEntitySet="CiclosSabiDos">
+                <ScalarProperty Name="DifMaxMin" ColumnName="DifMaxMin" />
                 <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="IdAutoclave" ColumnName="IdAutoclave" />

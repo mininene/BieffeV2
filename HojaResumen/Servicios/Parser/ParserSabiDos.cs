@@ -3,6 +3,7 @@ using HojaResumen.Modelo.BaseDatosT;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,7 @@ namespace HojaResumen.Servicios.Parser
             try
             {
 
-                string path = @"C:\Users\fuenteI3\Desktop\original y pdf\1167L20816.LOG";
+                string path = @"C:\Users\fuenteI3\Desktop\original y pdf\AutoClaveLP10.txt";
                 string Programa = "PROGRAMA";
                 string Programador = "PROGRAMAD.";
                 string Operador = "OPERADOR";
@@ -102,7 +103,7 @@ namespace HojaResumen.Servicios.Parser
                     RegistroAlarma = texts.Where(lines => lines.StartsWith("*")).ToList();
 
                     string combin = string.Join("\n", RegistroAlarma);
-                   // Console.WriteLine(combin);
+                    // Console.WriteLine(combin);
 
 
                     //for (int i = 0; i < con.Length; i++)
@@ -121,6 +122,10 @@ namespace HojaResumen.Servicios.Parser
 
                     //RegistroDatosFF.ForEach(r => Console.WriteLine(r.ToArray()));
                     //Console.WriteLine((TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))));
+
+                    string Max = RegistroPie[7].Replace(" ", String.Empty).Substring(11, 4);
+                    string Min = RegistroPie[6].Replace(" ", String.Empty).Substring(11, 4);
+                    var Dif = (Convert.ToDecimal(Max, CultureInfo.GetCultureInfo("en-US")) - Convert.ToDecimal(Min, CultureInfo.GetCultureInfo("en-US"))).ToString().Replace(",", "."); 
 
 
 
@@ -141,7 +146,7 @@ namespace HojaResumen.Servicios.Parser
                             Operador = RegistroEncabezado[2].Substring(10).Trim(),
                             CodigoProducto = RegistroEncabezado[3].Replace(" ", String.Empty).Substring(11).Trim(),
                             Lote = RegistroEncabezado[4].Replace(" ", String.Empty).Substring(6).Trim(),
-                            Notas = texts[12] + texts[13],
+                            Notas = texts[12] + texts[13] + texts[14],
 
                             Fase1 = RegistroCiclos[1].Substring(12).Trim(),
                             Fase2 = RegistroCiclos[6].Substring(12).Trim(),
@@ -199,6 +204,7 @@ namespace HojaResumen.Servicios.Parser
                             DuracionTotal = RegistroPie[5].Replace(" ", String.Empty).Substring(25).Trim(),
                             FtzMin = RegistroPie[6].Replace(" ", String.Empty).Substring(11).Trim(),
                             FtzMax = RegistroPie[7].Replace(" ", String.Empty).Substring(11).Trim(),
+                            DifMaxMin = Dif,
                             AperturaPuerta = RegistroPie[8].Trim(),
                             TiempoCiclo = RegistroCiclos[68].Substring(2,6).ToString().Trim(), 
                             ErrorCiclo = combin,
@@ -297,6 +303,7 @@ namespace HojaResumen.Servicios.Parser
                         ciclos.DuracionTotal = s.DuracionTotal;
                         ciclos.FtzMin = s.FtzMin;
                         ciclos.FtzMax = s.FtzMax;
+                        ciclos.DifMaxMin = s.DifMaxMin;
                         ciclos.AperturaPuerta = s.AperturaPuerta;
                         ciclos.TiempoCiclo = s.TiempoCiclo;
                         ciclos.ErrorCiclo = s.ErrorCiclo;

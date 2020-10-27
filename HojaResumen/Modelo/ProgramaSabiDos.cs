@@ -71,6 +71,7 @@ namespace HojaResumen.Modelo
         public string DuracionTotal { get; set; }
         public string FtzMin { get; set; }
         public string FtzMax { get; set; }
+        public string DifMaxMin { get; set; }
         public string AperturaPuerta { get; set; }
         public string TiempoCiclo { get; set; }
         public string ErrorCiclo { get; set; }

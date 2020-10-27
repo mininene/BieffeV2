@@ -81,5 +81,6 @@ namespace HojaResumen.Modelo.BaseDatosT
         public string TiempoCiclo { get; set; }
         public string ErrorCiclo { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
+        public string DifMaxMin { get; set; }
     }
 }

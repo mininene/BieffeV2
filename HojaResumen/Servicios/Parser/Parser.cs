@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -22,7 +23,7 @@ namespace HojaResumen.Servicios.Parser
         {
             try
             {
-                string path = @"C:\Users\fuenteI3\Desktop\original y pdf\NF1031G8848.LOG";
+                string path = @"C:\Users\fuenteI3\Desktop\original y pdf\AutoClaveMP1000.txt";
                 //string path = @"C:\Users\fuenteI3\Desktop\RegistrosAutoclaves\AutoClaveIP81000.txt";
                 string Programa = "PROGRAMA";
                 string Programador = "PROGRAMAD.";
@@ -129,7 +130,7 @@ namespace HojaResumen.Servicios.Parser
                     //}
 
                    
-                  // RegistroEncabezado.ForEach(r => Console.WriteLine(r.ToArray()));
+                 // RegistroPie.ForEach(r => Console.WriteLine(r.ToArray()));
                  
                     //Console.WriteLine((TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))));
 
@@ -144,6 +145,11 @@ namespace HojaResumen.Servicios.Parser
 
                     var Tinicio = RegistroPie[0].Substring(19,12).Trim()+"  " + TimeSpan.Parse(RegistroPie[0].Substring(30).Trim()).Add(TimeSpan.Parse("00:" + RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))
                         + TimeSpan.Parse("00:" + RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21))+TimeSpan.Parse("00:" + RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))).ToString();
+
+                    string Max= RegistroPie[7].Replace(" ", String.Empty).Substring(11, 4);
+                    string Min = RegistroPie[6].Replace(" ", String.Empty).Substring(11, 4);
+                    var Dif = (Convert.ToDecimal(Max, CultureInfo.GetCultureInfo("en-US")) - Convert.ToDecimal(Min, CultureInfo.GetCultureInfo("en-US"))).ToString().Replace(",", "."); 
+                  
 
                     List <ProgramaSabiUno> RegistroFinal = new List<ProgramaSabiUno>(); //declaro la lista que quiero cargar
                     try
@@ -227,6 +233,7 @@ namespace HojaResumen.Servicios.Parser
                             DuracionTotal = RegistroPie[5].Replace(" ", String.Empty).Substring(25).Trim(),
                             FtzMin = RegistroPie[6].Replace(" ", String.Empty).Substring(11).Trim(),
                             FtzMax = RegistroPie[7].Replace(" ", String.Empty).Substring(11).Trim(),
+                            DifMaxMin= Dif,
                             AperturaPuerta = RegistroPie[8].Trim(),
                             TiempoCiclo = TCicloCalculado,
                             FechaRegistro = DateTime.Now,
@@ -325,6 +332,7 @@ namespace HojaResumen.Servicios.Parser
                         ciclos.DuracionTotal = s.DuracionTotal;
                         ciclos.FtzMin = s.FtzMin;
                         ciclos.FtzMax = s.FtzMax;
+                        ciclos.DifMaxMin = s.DifMaxMin;
                         ciclos.AperturaPuerta = s.AperturaPuerta;
                         ciclos.TiempoCiclo = s.TiempoCiclo;
                         ciclos.ErrorCiclo = s.ErrorCiclo;
