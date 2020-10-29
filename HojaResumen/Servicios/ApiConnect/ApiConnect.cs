@@ -1,4 +1,5 @@
 ﻿using HojaResumen.Modelo;
+using HojaResumen.Modelo.BaseDatosT;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,91 +15,129 @@ namespace HojaResumen.Servicios.ApiConnect
         {
             Wrapper.ConnectionWrapper con = new Wrapper.ConnectionWrapper();
 
-            string IdA = "NF8387A02500";
-            string IdB = "8388B24154";
-            string IdC = "8389C22653";
-
-
-            string[] Ids = new string[] { IdA, IdB, IdC, "8607D", "NF1029E", "NF1030F", "NF1031G", "NA0658EGH", "NA0672EGI", "0827J", "0828K", "1167L", "NA0611EFM" };
-           
-            string[] Id = new string[] { Ids[0], Ids[1], Ids[2] };
-            string[] prefijo = new string[] { Id[0].Substring(0, 7), Id[1].Substring(0, 5), Id[2].Substring(0, 5) };
-            string[] ciclo = new string[] { Id[0].Substring(7), Id[1].Substring(5), Id[2].Substring(5) };
-            string[] last = new string[] { prefijo[0] + ciclo[0], prefijo[1] + ciclo[1], prefijo[2] + ciclo[2] };
-
-            int i = 0;
-            int ls = 0;
-            for (i = 1; i < 3; i++)
-            {
-                
-               
-               var actualA = Regex.Replace(ciclo[0], "\\d+",
-               m => (int.Parse(m.Value) + i).ToString(new string('0', m.Value.Length)));
-                
-
-                var actualB = Regex.Replace(ciclo[1], "\\d+",
-                m => (int.Parse(m.Value) + i).ToString(new string('0', m.Value.Length)));
-
-                var actualC = Regex.Replace(ciclo[2], "\\d+",
-                m => (int.Parse(m.Value) + i).ToString(new string('0', m.Value.Length)));
-
-                string remoteA = prefijo[0] + actualA + ".LOG";
-                string remoteB = prefijo[1] + actualB + ".LOG";
-                string remoteC = prefijo[2] + actualC + ".LOG";
-
-
-             var ListaDatos = new List<ConnectionData>
-             {
-
-                 new ConnectionData { Version=4401, Ip="10.109.80.81", Remote=remoteA, Local=@"C:\Users\fuenteI3\Desktop\API\AutoClaveA\"+ remoteA},
-                 new ConnectionData { Version=4002, Ip="10.109.80.82", Remote=remoteB, Local=@"C:\Users\fuenteI3\Desktop\API\AutoClaveB\"+ remoteB},
-                 new ConnectionData { Version=37, Ip="10.109.80.83", Remote=remoteC, Local=@"C:\Users\fuenteI3\Desktop\API\AutoClaveC\"+ remoteC},
-             
-                //new ConnectionData { Version=4401, Ip="10.109.80.81", Remote="NF8387A02443.LOG", Local="C:\\Users\\fuenteI3\\Desktop\\ReportesGenerados\\P8AutoClaveA_02443.txt" },
-                //new ConnectionData { Version=4002, Ip="10.109.80.89", Remote="NA0672EGI08871.LOG", Local="C:\\Users\\fuenteI3\\Desktop\\ReportesGenerados\\P8AutoClaveI_08871.txt" },
-                //new ConnectionData { Version=4002, Ip="10.109.80.94", Remote="NA0658EGH13977.LOG", Local="C:\\Users\\fuenteI3\\Desktop\\ReportesGenerados\\P8AutoClaveH_13977.txt" },
-                //new ConnectionData { Version=4002, Ip="10.109.80.93", Remote="NA0611EFM05014.LOG", Local="C:\\Users\\fuenteI3\\Desktop\\ReportesGenerados\\P8AutoClaveM_05014.txt" },
-                //new ConnectionData { Version=4002, Ip="10.109.80.90", Remote="0827J07176.LOG", Local="C:\\Users\\fuenteI3\\Desktop\\ReportesGenerados\\AutoClaveJ.txt" },
-                //new ConnectionData { Version=4002, Ip="10.109.80.91", Remote="0828K10597.LOG", Local="C:\\Users\\fuenteI3\\Desktop\\ReportesGenerados\\AutoClaveK.txt" },
-                //new ConnectionData { Version=4001, Ip="10.109.80.92", Remote="1167L20752.LOG", Local="C:\\Users\\fuenteI3\\Desktop\\ReportesGenerados\\AutoClaveL.txt" },
-                
-             };
+            using (var context = new CicloAutoclave())
+            { //entidad de data entity
 
 
 
-                foreach (var item in ListaDatos)
+                foreach (var s in context.MaestroAutoclave) // tabla MaestroAutoclave genero otro contexto
                 {
+
+
+                    string ciclo = s.Matricula.Trim() + s.UltimoCiclo.Trim() + ".LOG";
+                    string rutaSalida = s.RutaSalida.Trim() + ciclo;
+
+
                     Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++");
+                    Console.WriteLine(ciclo);
                     System.Threading.Thread.Sleep(1000);
 
-                    Console.WriteLine(item.Remote);
-                    //Get Version
+                    //get Version
                     float version = con.get_version();
                     Console.WriteLine(version);
 
-                    //Session
-                    uint handle = con.ConnectSession(item.Version, item.Ip);
-                    Console.WriteLine("Valor de Sesion: " + handle);
+
+                    //session
+                    uint handle = con.ConnectSession(s.Version, s.IP);
+                    if (handle != 0) { Console.WriteLine("Sesion Iniciada Correctamente"); } else { Console.WriteLine("IP o version Incorrecta"); }
+                    //Console.WriteLine("Valor de Sesion: " + handle);
+
 
                     //Connection
                     uint lhandle = con.ConnectApi(handle);
-                    Console.WriteLine("Valor de Conexion: " + lhandle);
+                    if (lhandle == 0) { Console.WriteLine("Conexión Establecida"); } else { Console.WriteLine("No se pudo establecer la Conexión - IP o version Incorrecta"); }
+                    //Console.WriteLine("Valor de Conexion: " + lhandle);
+
 
                     //GetFile
-                    uint result = con.GetData(handle, item.Remote, item.Local);
-                    if (result ==3670019 || result !=0) { Console.WriteLine("*****************siguiente Ciclo");  }else { Console.WriteLine("*************Datos Tomados"); IdA = remoteA; IdB = remoteB; IdC = remoteC; } 
-                    Console.WriteLine("Resultado de getData: " + result);
+                    uint result = con.GetData(handle, ciclo, rutaSalida);
+                    if (lhandle == 0)
+                    {
 
-                    //LastError
-                    uint lasterror = con.GetError();
-                    Console.WriteLine("Valor Error: " + lasterror);
+                        using (var db = new CicloAutoclave())
+                        { //entidad de data entity
+
+
+                            switch (result)
+                            {
+
+                                case 0:
+                                    Console.WriteLine("Archivo Recibido con Exito" + "  " + result);
+
+                                    var actual = Regex.Replace(s.UltimoCiclo, "\\d+",
+                                   m => (int.Parse(m.Value) + 1).ToString(new string('0', m.Value.Length)));
+
+                                    List<Maestro> RegistroActuales = new List<Maestro>();
+                                    Maestro filas = new Maestro
+                                    {
+                                        Id = s.Id,
+                                        Matricula = s.Matricula,
+                                        Nombre = s.Nombre,
+                                        Version = s.Version,
+                                        IP = s.IP,
+                                        Seccion = s.Seccion,
+                                        Estado = s.Estado,
+                                        UltimoCiclo = actual,
+                                        RutaSalida = s.RutaSalida
+                                    }; RegistroActuales.Add(filas);
+
+
+                                    foreach (var i in RegistroActuales.ToList())
+                                    {
+                                        Console.WriteLine(i.UltimoCiclo.Trim() + "   " + i.Matricula.Trim());
+                                        var resultado = db.MaestroAutoclave.FirstOrDefault(b => b.Id == i.Id);
+                                        if (resultado != null)
+                                        {
+                                            resultado.UltimoCiclo = i.UltimoCiclo;
+
+                                        }
+                                        db.SaveChanges();
+                                        System.Threading.Thread.Sleep(2000);
+
+                                    }
+                                    break;
+                                case 21:
+                                    Console.WriteLine("El dispositivo no está listo. No se puede crear el archivo." + " " + result);
+                                    break;
+                                case 5:
+                                    Console.WriteLine("Acceso denegado al intentar crear el archivo." + " " + result);
+                                    break;
+                                case 32899128:
+                                    Console.WriteLine("Ya existe una conexion abierta." + " " + result);
+                                    break;
+                                case 32899137:
+                                    Console.WriteLine("Estado de conexion no permitido." + " " + result);
+                                    break;
+                                case 32899138:
+                                    Console.WriteLine("Dispositivo remoto desconocido. Revise el ID o IP" + " " + result);
+                                    break;
+                                case 32899139:
+                                    Console.WriteLine("Handle inválido pasado en la API." + " " + result);
+                                    break;
+                                case 3670019:
+                                    Console.WriteLine("No ha sido Encontrado el archivo." + "  " + result);
+                                    break;
+
+                            }
+
+                        }
+
+
+                    }
 
                     //Close Connection
-                    Console.WriteLine("Cerrar Conexion valor: " + con.CloseConnection(ref handle));
+                    var close = con.CloseConnection(ref handle);
+                    if (close == 0) { Console.WriteLine("Conexion Cerrada"); } else { Console.WriteLine("La conexion no pudo ser cerrada"); }
+                    //Console.WriteLine("Cerrar Conexion valor: " + con.CloseConnection(ref handle));
                     Console.WriteLine("\n\n");
-                    System.Threading.Thread.Sleep(2000);
+                    System.Threading.Thread.Sleep(1000);
+
+
+
                 }
+
             }
+
         }
     }
 }
