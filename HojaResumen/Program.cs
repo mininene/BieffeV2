@@ -52,7 +52,7 @@ namespace HojaResumen
                 ICreator Create = new Creator();
                 Create.CreatePdf();
 
-          
+
                 System.Threading.Thread.Sleep(1000);
                 ICreatorSabiDos CreateDos = new CreatorSabiDos();
                 CreateDos.CreateSabiDosPDF();
@@ -60,7 +60,7 @@ namespace HojaResumen
 
 
                 Console.WriteLine("PDF Generado...");
-                System.Threading.Thread.Sleep(60000);
+                System.Threading.Thread.Sleep(60000); //1 MINUTOS
 
                 // Console.ReadKey();
             } while (true);

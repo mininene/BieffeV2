@@ -332,8 +332,19 @@ namespace HojaResumen.Servicios.Parser
                                     ciclos.FechaRegistro = s.FechaRegistro;
 
                                 }
-                                context.CiclosSabiDos.Add(ciclos);
-                                context.SaveChanges();
+                                var duplicado = context.CiclosSabiDos.Count(a => a.NumeroCiclo == ciclos.NumeroCiclo);
+                                //var control = context.CiclosAutoclaves.Count(e => e.IdAutoclave != "NF8387A"|| e.IdAutoclave != "8388B" || e.IdAutoclave != "8389C"
+                                //|| e.IdAutoclave != "8607D" || e.IdAutoclave != "NF1029E" || e.IdAutoclave != "NF1030F" || e.IdAutoclave != "NF1031G" || e.IdAutoclave != "NA0658EGH"
+                                //|| e.IdAutoclave != "NA0672EGI" || e.IdAutoclave != "NA0611EFM");
+
+                                Console.WriteLine("DATOS SABI DOS------------------------------------------------------------------------");
+                                if (duplicado == 0 )
+                                {
+                                    context.CiclosSabiDos.Add(ciclos);
+                                    context.SaveChanges();
+                                }
+                                else { Console.WriteLine("Duplicado"); }
+                               
                                 System.Threading.Thread.Sleep(2000);
 
                             }

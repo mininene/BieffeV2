@@ -6,6 +6,7 @@ using PdfSharp.Pdf;
 //using HojaResumen.Modelo.BaseDatosT;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Diagnostics;
 using System.Globalization;
@@ -363,8 +364,26 @@ namespace HojaResumen.Servicios.Parser
                                     ciclos.FechaRegistro = s.FechaRegistro;
 
                                 }
-                                context.CiclosAutoclaves.Add(ciclos);
-                                context.SaveChanges();
+                                //var test = new CiclosAutoclaves { NumeroCiclo = ciclos.NumeroCiclo };
+                                //context.Entry(ciclos.NumeroCiclo).State = EntityState.Unchanged;
+                                var duplicado = context.CiclosAutoclaves.Count(a => a.NumeroCiclo == ciclos.NumeroCiclo && a.IdAutoclave==ciclos.IdAutoclave);
+
+                                //var control = context.CiclosAutoclaves.(e => e.IdAutoclave == "1167L" || e.IdAutoclave == "0828K" || e.IdAutoclave == "0827J");
+                               
+                                 var control = context.CiclosAutoclaves.Count(e => e.IdAutoclave == "1167L" || e.IdAutoclave == "0828K" || e.IdAutoclave == "0827J");
+
+                                // Console.WriteLine(control);
+                                Console.WriteLine("DATOS SABI UNO------------------------------------------------------------------------");
+                               if (duplicado==0 )
+                                {
+                                    context.CiclosAutoclaves.Add(ciclos);
+                                    context.SaveChanges();
+                                }
+
+                                if (control > 0) { Console.WriteLine("Registros JKL"); }
+                                else { Console.WriteLine("Registros Duplicados y Registros JKL"); }
+                               
+                                
 
                                 System.Threading.Thread.Sleep(2000);
 
