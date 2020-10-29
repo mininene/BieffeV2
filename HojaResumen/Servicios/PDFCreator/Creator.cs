@@ -134,6 +134,7 @@ namespace HojaResumen.Servicios.PDFCreator
                             nombreArchivo = Path.GetFileName(nombreArchivo);
                             rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                             pdf.Save(rutaAbsoluta);
+                            System.Threading.Thread.Sleep(1000);
                         }
 
                         if (q.IdAutoclave == "8388B")
@@ -142,6 +143,7 @@ namespace HojaResumen.Servicios.PDFCreator
                             nombreArchivo = Path.GetFileName(nombreArchivo);
                             rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                             pdf.Save(rutaAbsoluta);
+                            System.Threading.Thread.Sleep(1000);
                         }
 
                         if (q.IdAutoclave == "8389C")
@@ -150,6 +152,7 @@ namespace HojaResumen.Servicios.PDFCreator
                             nombreArchivo = Path.GetFileName(nombreArchivo);
                             rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                             pdf.Save(rutaAbsoluta);
+                            System.Threading.Thread.Sleep(1000);
                         }
 
                         if (q.IdAutoclave == "8607D")
@@ -158,6 +161,7 @@ namespace HojaResumen.Servicios.PDFCreator
                             nombreArchivo = Path.GetFileName(nombreArchivo);
                             rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                             pdf.Save(rutaAbsoluta);
+                            System.Threading.Thread.Sleep(1000);
                         }
 
                         if (q.IdAutoclave == "NF1029E")
@@ -166,6 +170,7 @@ namespace HojaResumen.Servicios.PDFCreator
                             nombreArchivo = Path.GetFileName(nombreArchivo);
                             rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                             pdf.Save(rutaAbsoluta);
+                            System.Threading.Thread.Sleep(1000);
                         }
 
                         if (q.IdAutoclave == "NF1030F")
@@ -174,6 +179,7 @@ namespace HojaResumen.Servicios.PDFCreator
                             nombreArchivo = Path.GetFileName(nombreArchivo);
                             rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                             pdf.Save(rutaAbsoluta);
+                            System.Threading.Thread.Sleep(1000);
                         }
 
                         if (q.IdAutoclave == "NF1031G")
@@ -182,6 +188,7 @@ namespace HojaResumen.Servicios.PDFCreator
                             nombreArchivo = Path.GetFileName(nombreArchivo);
                             rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                             pdf.Save(rutaAbsoluta);
+                            System.Threading.Thread.Sleep(1000);
                         }
 
                         if (q.IdAutoclave == "NA0658EGH")
@@ -190,6 +197,7 @@ namespace HojaResumen.Servicios.PDFCreator
                             nombreArchivo = Path.GetFileName(nombreArchivo);
                             rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                             pdf.Save(rutaAbsoluta);
+                            System.Threading.Thread.Sleep(1000);
                         }
 
                         if (q.IdAutoclave == "NA0672EGI")
@@ -198,6 +206,7 @@ namespace HojaResumen.Servicios.PDFCreator
                             nombreArchivo = Path.GetFileName(nombreArchivo);
                             rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                             pdf.Save(rutaAbsoluta);
+                            System.Threading.Thread.Sleep(1000);
                         }
 
                         if (q.IdAutoclave == "NA0611EFM")
@@ -206,6 +215,7 @@ namespace HojaResumen.Servicios.PDFCreator
                             nombreArchivo = Path.GetFileName(nombreArchivo);
                             rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                             pdf.Save(rutaAbsoluta);
+                            System.Threading.Thread.Sleep(1000);
                         }
 
 
