@@ -13,16 +13,16 @@ namespace HojaResumen.Servicios.ApiConnect
     {
         public void ConnectTHLog()
         {
-            Wrapper.ConnectionWrapper con = new Wrapper.ConnectionWrapper();
+           
 
             using (var context = new CicloAutoclave())
             { //entidad de data entity
 
-
+                Wrapper.ConnectionWrapper con = new Wrapper.ConnectionWrapper();
 
                 foreach (var s in context.MaestroAutoclave) // tabla MaestroAutoclave genero otro contexto
                 {
-
+                  
 
                     string ciclo = s.Matricula.Trim() + s.UltimoCiclo.Trim() + ".LOG";
                     string rutaSalida = s.RutaSalida.Trim() + ciclo;
@@ -39,13 +39,13 @@ namespace HojaResumen.Servicios.ApiConnect
 
                     //session
                     uint handle = con.ConnectSession(s.Version, s.IP);
-                    if (handle != 0) { Console.WriteLine("Sesion Iniciada Correctamente"); } else { Console.WriteLine("IP o version Incorrecta"); }
+                    if (handle != 0) { Console.WriteLine("Sesion Iniciada Correctamente"); } else { Console.WriteLine("IP o version Incorrecta" + handle); }
                     //Console.WriteLine("Valor de Sesion: " + handle);
 
 
                     //Connection
                     uint lhandle = con.ConnectApi(handle);
-                    if (lhandle == 0) { Console.WriteLine("Conexión Establecida"); } else { Console.WriteLine("No se pudo establecer la Conexión - IP o version Incorrecta"); }
+                    if (lhandle == 0) { Console.WriteLine("Conexión Establecida"); } else { Console.WriteLine("No se pudo establecer la Conexión - IP o version Incorrecta" + lhandle); }
                     //Console.WriteLine("Valor de Conexion: " + lhandle);
 
 
@@ -131,6 +131,8 @@ namespace HojaResumen.Servicios.ApiConnect
                     //Console.WriteLine("Cerrar Conexion valor: " + con.CloseConnection(ref handle));
                     Console.WriteLine("\n\n");
                     System.Threading.Thread.Sleep(1000);
+
+                    var closet = con.CloseConnection(ref handle);
 
 
 

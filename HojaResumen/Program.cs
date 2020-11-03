@@ -60,7 +60,7 @@ namespace HojaResumen
 
 
                 Console.WriteLine("PDF Generado...");
-                System.Threading.Thread.Sleep(60000); //1 MINUTOS
+                System.Threading.Thread.Sleep(30000); //1 MINUTOS
 
                 // Console.ReadKey();
             } while (true);
