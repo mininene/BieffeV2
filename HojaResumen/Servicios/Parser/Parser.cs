@@ -236,7 +236,7 @@ namespace HojaResumen.Servicios.Parser
                                         DuracionTotalF12 = RegistroDatosFF[33].Replace(" ", String.Empty).Substring(21).Trim(),
 
 
-                                        TFF5 = RegistroTF[1].Substring(4).Trim(),
+                                        TFF5 = RegistroTF[1].Substring(3).Trim(),
                                         TFF6 = RegistroCiclos[33].Substring(3).Trim(),//Es el inicio de fase 7 TIF7
                                         TIF7 = RegistroTF[3].Substring(3).Trim(),  // TIF7 realmente es TFF7
                                                                                    //TFF8 = RegistroDatosFF[26],

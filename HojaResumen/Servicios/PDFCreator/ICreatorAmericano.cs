@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace HojaResumen.Servicios.PDFCreator
 {
-    public interface IcreatorNF8387A
+   public interface ICreatorAmericano
     {
-        void creatorNF8387A();
+        void CreateAmericanoPdf();
     }
 }

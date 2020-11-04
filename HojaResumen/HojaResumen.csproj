@@ -102,11 +102,11 @@
     <Compile Include="Servicios\Parser\IParserSabiDos.cs" />
     <Compile Include="Servicios\Parser\Parser.cs" />
     <Compile Include="Servicios\Parser\ParserSabiDos.cs" />
-    <Compile Include="Servicios\PDFCreator\CreatorNF8387A.cs" />
+    <Compile Include="Servicios\PDFCreator\CreatorAmericano.cs" />
     <Compile Include="Servicios\PDFCreator\Creator.cs" />
     <Compile Include="Servicios\PDFCreator\CreatorSabiDos.cs" />
     <Compile Include="Servicios\PDFCreator\ICreator.cs" />
-    <Compile Include="Servicios\PDFCreator\ICreatorNF8387A.cs" />
+    <Compile Include="Servicios\PDFCreator\ICreatorAmericano.cs" />
     <Compile Include="Servicios\PDFCreator\ICreatorSabiDos.cs" />
   </ItemGroup>
   <ItemGroup>
