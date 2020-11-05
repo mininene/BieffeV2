@@ -1,5 +1,6 @@
 ﻿using HojaResumen.Modelo;
 using HojaResumen.Modelo.BaseDatosT;
+using HojaResumen.Servicios.Output;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,43 +12,48 @@ namespace HojaResumen.Servicios.ApiConnect
 {
     public class ApiConnect : IApiConnect
     {
+        
+        ILog _log = new ProductionLog();
+
         public void ConnectTHLog()
         {
-
-
+            try { 
             using (var context = new CicloAutoclave())
             { //entidad de data entity
 
                 Wrapper.ConnectionWrapper con = new Wrapper.ConnectionWrapper();
-
+                _log.WriteLog("++++++++++++++++++++++++Log de Eventos Hoja Resumen++++++++++++++++++++++");
                 foreach (var s in context.MaestroAutoclave) // tabla MaestroAutoclave genero otro contexto
                 {
+                    
                     if (s.Estado == true)
                     {
-                        Console.WriteLine(s.Estado);
+                                            
 
                         string ciclo = s.Matricula.Trim() + s.UltimoCiclo.Trim() + ".LOG";
                         string rutaSalida = s.RutaSalida.Trim() + ciclo;
 
 
-                        Console.WriteLine("++++++++++++++++++++++++++++++++++++++++++++++");
-                        Console.WriteLine(ciclo);
+                      
+                       
+                        _log.WriteLog("Autoclave: " + s.Matricula.Trim() + " Activo");
+                        _log.WriteLog(ciclo);
                         System.Threading.Thread.Sleep(1000);
 
                         //get Version
                         float version = con.get_version();
-                        Console.WriteLine(version);
+                         _log.WriteLog(version.ToString());
 
 
                         //session
                         uint handle = con.ConnectSession(s.Version, s.IP);
-                        if (handle != 0) { Console.WriteLine("Sesion Iniciada Correctamente"); } else { Console.WriteLine("IP o version Incorrecta" + handle); }
+                        if (handle != 0) { _log.WriteLog("Sesion Iniciada Correctamente");  } else { _log.WriteLog("IP o version Incorrecta" + handle);  }
                         //Console.WriteLine("Valor de Sesion: " + handle);
 
 
                         //Connection
                         uint lhandle = con.ConnectApi(handle);
-                        if (lhandle == 0) { Console.WriteLine("Conexión Establecida"); } else { Console.WriteLine("No se pudo establecer la Conexión - IP o version Incorrecta" + lhandle); }
+                        if (lhandle == 0) { _log.WriteLog("Conexión Establecida"); } else { _log.WriteLog("No se pudo establecer la Conexión - IP o version Incorrecta" + lhandle); }
                         //Console.WriteLine("Valor de Conexion: " + lhandle);
 
 
@@ -64,7 +70,8 @@ namespace HojaResumen.Servicios.ApiConnect
                                 {
 
                                     case 0:
-                                        Console.WriteLine("Archivo Recibido con Exito" + "  " + result);
+                                      
+                                        _log.WriteLog("Archivo Recibido con Exito" + "  " + result);
 
                                         var actual = Regex.Replace(s.UltimoCiclo, "\\d+",
                                        m => (int.Parse(m.Value) + 1).ToString(new string('0', m.Value.Length)));
@@ -83,10 +90,11 @@ namespace HojaResumen.Servicios.ApiConnect
                                             RutaSalida = s.RutaSalida
                                         }; RegistroActuales.Add(filas);
 
-
-                                        foreach (var i in RegistroActuales.ToList())
+                                        Parallel.ForEach(RegistroActuales, i =>
+                                        //foreach (var i in RegistroActuales.ToList())
                                         {
-                                            Console.WriteLine(i.UltimoCiclo.Trim() + "   " + i.Matricula.Trim());
+
+                                            _log.WriteLog(i.UltimoCiclo.Trim() + "   " + i.Matricula.Trim());
                                             var resultado = db.MaestroAutoclave.FirstOrDefault(b => b.Id == i.Id);
                                             if (resultado != null)
                                             {
@@ -96,28 +104,28 @@ namespace HojaResumen.Servicios.ApiConnect
                                             db.SaveChanges();
                                             System.Threading.Thread.Sleep(2000);
 
-                                        }
+                                        });
                                         break;
                                     case 21:
-                                        Console.WriteLine("El dispositivo no está listo. No se puede crear el archivo." + " " + result);
+                                        _log.WriteLog("El dispositivo no está listo. No se puede crear el archivo." + " " + result);
                                         break;
                                     case 5:
-                                        Console.WriteLine("Acceso denegado al intentar crear el archivo." + " " + result);
+                                        _log.WriteLog("Acceso denegado al intentar crear el archivo." + " " + result);
                                         break;
                                     case 32899128:
-                                        Console.WriteLine("Ya existe una conexion abierta." + " " + result);
+                                        _log.WriteLog("Ya existe una conexion abierta." + " " + result);
                                         break;
                                     case 32899137:
-                                        Console.WriteLine("Estado de conexion no permitido." + " " + result);
+                                        _log.WriteLog("Estado de conexion no permitido." + " " + result);
                                         break;
                                     case 32899138:
-                                        Console.WriteLine("Dispositivo remoto desconocido. Revise el ID o IP" + " " + result);
+                                        _log.WriteLog("Dispositivo remoto desconocido. Revise el ID o IP" + " " + result);
                                         break;
                                     case 32899139:
-                                        Console.WriteLine("Handle inválido pasado en la API." + " " + result);
+                                        _log.WriteLog("Handle inválido pasado en la API." + " " + result);
                                         break;
                                     case 3670019:
-                                        Console.WriteLine("No ha sido Encontrado el archivo." + "  " + result);
+                                       _log.WriteLog("No ha sido Encontrado el archivo." + "  " + result);
                                         break;
 
                                 }
@@ -129,9 +137,9 @@ namespace HojaResumen.Servicios.ApiConnect
 
                         //Close Connection
                         var close = con.CloseConnection(ref handle);
-                        if (close == 0) { Console.WriteLine("Conexion Cerrada"); } else { Console.WriteLine("La conexion no pudo ser cerrada"); }
-                        //Console.WriteLine("Cerrar Conexion valor: " + con.CloseConnection(ref handle));
-                        Console.WriteLine("\n\n");
+                        if (close == 0) { _log.WriteLog("Conexion Cerrada.");  } else { _log.WriteLog("La conexion no pudo ser cerrada"); }
+                       
+                        _log.WriteLog("\n");
                         System.Threading.Thread.Sleep(1000);
 
                         var closet = con.CloseConnection(ref handle);
@@ -139,13 +147,22 @@ namespace HojaResumen.Servicios.ApiConnect
 
 
                     }
-                    else { Console.WriteLine("Autoclave: " + s.Matricula.Trim() + " Desactivado");
-                        Console.WriteLine("\n\n");
+                    else
+                    {
+                       
+                        _log.WriteLog("Autoclave: " + s.Matricula.Trim() + " Desactivado*"); 
+                        _log.WriteLog("\n");
+                        
                     }
 
                 }
 
             }
-        }
+            }
+            catch { _log.WriteLog("Falla de la DLL, verificar el estado de los autoclaves en la tabla maestra"); }
+            }
+
+      
     }
 }
+

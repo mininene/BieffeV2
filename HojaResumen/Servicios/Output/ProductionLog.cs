@@ -13,7 +13,10 @@ namespace HojaResumen.Servicios.Output
 
         public ProductionLog()
         {
-            _path =  AppDomain.CurrentDomain.BaseDirectory + "LogGenerado";
+            // _path =  AppDomain.CurrentDomain.BaseDirectory + "LogGenerado"; //// imprime dentro de bin/debug
+            //_path = AppDomain.CurrentDomain.BaseDirectory + "LogGenerado";
+            // _path = Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "LogGenerado"; //// imprime en el escritorio de cualquier equipo
+            _path = @"C:\Users\fuenteI3\Desktop\LogGenerado";
             Directory.CreateDirectory(_path);
         }
 

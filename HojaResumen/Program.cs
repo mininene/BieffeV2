@@ -1,6 +1,7 @@
 ﻿using HojaResumen.Modelo;
 using HojaResumen.Modelo.BaseDatosT;
 using HojaResumen.Servicios.ApiConnect;
+using HojaResumen.Servicios.Output;
 using HojaResumen.Servicios.Parser;
 using HojaResumen.Servicios.PDFCreator;
 using PdfSharp.Drawing;
@@ -28,11 +29,12 @@ namespace HojaResumen
     class Program
     {
 
-
+       
 
         static void Main(string[] args)
         {
-                    
+            ILog _log = new ProductionLog();
+
             do
             {
                 var connect = new ApiConnect();
@@ -45,9 +47,7 @@ namespace HojaResumen
                 IParserSabiDos GetDataSabiDos = new ParserSabiDos();
                 GetDataSabiDos.ParserSabiDosFile();
 
-                Console.WriteLine("Escribiendo en la base de datos...");
-
-
+                
                 System.Threading.Thread.Sleep(1000);
                 ICreator Create = new Creator();
                 Create.CreatePdf();
@@ -61,10 +61,11 @@ namespace HojaResumen
                 ICreatorSabiDos CreateDos = new CreatorSabiDos();
                 CreateDos.CreateSabiDosPDF();
 
-
-
-                Console.WriteLine("PDF Generado...");
+                _log.WriteLog("PDF Generados...");
                 System.Threading.Thread.Sleep(30000); //1 MINUTOS
+                _log.WriteLog("\n\n");
+
+
 
                 // Console.ReadKey();
             } while (true);
