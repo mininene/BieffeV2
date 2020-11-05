@@ -114,6 +114,8 @@
     <Compile Include="Servicios\PDFCreator\ICreator.cs" />
     <Compile Include="Servicios\PDFCreator\ICreatorAmericano.cs" />
     <Compile Include="Servicios\PDFCreator\ICreatorSabiDos.cs" />
+    <Compile Include="Servicios\Printer\IPrinter.cs" />
+    <Compile Include="Servicios\Printer\Printer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

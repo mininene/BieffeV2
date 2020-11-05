@@ -4,6 +4,7 @@ using HojaResumen.Servicios.ApiConnect;
 using HojaResumen.Servicios.Output;
 using HojaResumen.Servicios.Parser;
 using HojaResumen.Servicios.PDFCreator;
+using HojaResumen.Servicios.Printer;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
@@ -14,6 +15,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
+using System.Drawing.Printing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
@@ -34,9 +36,12 @@ namespace HojaResumen
         static void Main(string[] args)
         {
             ILog _log = new ProductionLog();
+            //IPrinter _print = new Printer();
+            //_print.Printer("AutoClaveNF8387A2556.pdf");
 
             do
             {
+
                 var connect = new ApiConnect();
                 connect.ConnectTHLog();
 
@@ -47,7 +52,7 @@ namespace HojaResumen
                 IParserSabiDos GetDataSabiDos = new ParserSabiDos();
                 GetDataSabiDos.ParserSabiDosFile();
 
-                
+
                 System.Threading.Thread.Sleep(1000);
                 ICreator Create = new Creator();
                 Create.CreatePdf();
@@ -66,8 +71,6 @@ namespace HojaResumen
                 _log.WriteLog("\n\n");
 
 
-
-                // Console.ReadKey();
             } while (true);
         }
             

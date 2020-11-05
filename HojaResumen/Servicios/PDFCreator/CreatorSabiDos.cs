@@ -298,37 +298,10 @@ namespace HojaResumen.Servicios.PDFCreator
                             }
 
 
-                            //string path = @"C:\Users\fuenteI3\Desktop\PDFGenerados\HojaResumenAutoclaveK.pdf";
-                            //foreach (String printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
-                            //{
-                            //    var x = printer.ToString() + System.Environment.NewLine;
-                            //    Console.WriteLine(x);
-                            //}
 
-                            //File.Copy(path, "Microsoft Print to PDF", true);
-
-                            //Process printJob = new Process();
-                            //printJob.StartInfo.FileName = path;
-                            //printJob.StartInfo.UseShellExecute = true;
-                            //printJob.StartInfo.Verb = "printto";
-                            //printJob.StartInfo.CreateNoWindow = true;
-                            //printJob.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                            //printJob.StartInfo.Arguments = "\"" + "Microsoft XPS Document Writer" + "\"";
-                            //printJob.StartInfo.WorkingDirectory = Path.GetDirectoryName(path);
-                            //printJob.Start();
-
-                            //"Microsoft Print to PDF"
-                            // "Microsoft XPS Document Writer"
-                            // "Webex Document Loader"
+                           
 
 
-
-
-
-                            //PrintDocument pd = new PrintDocument();
-                            //pd.PrinterSettings.PrinterName = "#ADMICOLOR (ESSAFILEPRINT01)";
-
-                            //}
                         }
 
                     }
