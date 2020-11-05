@@ -64,6 +64,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InfraestructuraTransversal\ServicesException\ApiException.cs" />
+    <Compile Include="InfraestructuraTransversal\ServicesException\LogException.cs" />
+    <Compile Include="InfraestructuraTransversal\ServicesException\ParserException.cs" />
+    <Compile Include="InfraestructuraTransversal\ServicesException\PrintException.cs" />
     <Compile Include="Modelo\BaseDatosT\CiclosAutoclaves.cs">
       <DependentUpon>CiclosModel.tt</DependentUpon>
     </Compile>
@@ -98,6 +102,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\ApiConnect\ApiConnect.cs" />
     <Compile Include="Servicios\ApiConnect\IApiConnect.cs" />
+    <Compile Include="Servicios\Log\ILog.cs" />
+    <Compile Include="Servicios\Log\ProductionLog.cs" />
     <Compile Include="Servicios\Parser\IParser.cs" />
     <Compile Include="Servicios\Parser\IParserSabiDos.cs" />
     <Compile Include="Servicios\Parser\Parser.cs" />
