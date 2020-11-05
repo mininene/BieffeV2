@@ -158,7 +158,7 @@ namespace HojaResumen.Servicios.Parser
 
 
 
-                                List<ProgramaSabiUno> RegistroFinal = new List<ProgramaSabiUno>(); //declaro la lista que quiero cargar
+                                List<ProgramaSabiUno> RegistroFinal = new List<ProgramaSabiUno>(); //declaro la lista que quiero cargarle
                                 try
                                 {
                                     string combin = string.Join("\n", RegistroAlarma);
