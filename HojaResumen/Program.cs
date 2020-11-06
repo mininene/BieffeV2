@@ -36,8 +36,16 @@ namespace HojaResumen
         static void Main(string[] args)
         {
             ILog _log = new ProductionLog();
-            //IPrinter _print = new Printer();
+            //IPrint _print = new Print();
             //_print.Printer("AutoClaveNF8387A2556.pdf");
+
+            //foreach (String printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
+            //{
+            //    var x = printer.ToString() + System.Environment.NewLine;
+            //    Console.WriteLine(x);
+            //}
+
+           
 
             do
             {
@@ -69,6 +77,7 @@ namespace HojaResumen
                 _log.WriteLog("PDF Generados...");
                 System.Threading.Thread.Sleep(30000); //1 MINUTOS
                 _log.WriteLog("\n\n");
+                _log.WriteLog("dsfsdfsdf");
 
 
             } while (true);

@@ -18,15 +18,16 @@ namespace HojaResumen.Servicios.ApiConnect
         public void ConnectTHLog()
         {
             try { 
-            using (var context = new CicloAutoclave())
-            { //entidad de data entity
-
-                Wrapper.ConnectionWrapper con = new Wrapper.ConnectionWrapper();
-                _log.WriteLog("++++++++++++++++++++++++Log de Eventos Hoja Resumen++++++++++++++++++++++");
-                foreach (var s in context.MaestroAutoclave) // tabla MaestroAutoclave genero otro contexto
+            using (var context = new CicloAutoclave())//entidad de data entity
                 {
-                    
-                    if (s.Estado == true)
+
+                    Wrapper.ConnectionWrapper con = new Wrapper.ConnectionWrapper();
+
+                    foreach (var s in context.MaestroAutoclave) // tabla MaestroAutoclave genero otro contexto
+                {
+                       
+
+                        if (s.Estado == true)
                     {
                                             
 

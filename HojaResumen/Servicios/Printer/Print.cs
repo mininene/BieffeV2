@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace HojaResumen.Servicios.Printer
 {
-    public class Printer : IPrinter
+    public class Print : IPrint
     {
-        void IPrinter.Printer(string archivo, string impresora)
+        void IPrint.Printer(string archivo, string impresora)
         {
             //foreach (String printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
             //{
@@ -20,19 +20,19 @@ namespace HojaResumen.Servicios.Printer
 
 
 
-            string path = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveA\";
+           // string path = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveA\";
             using (Process printJob = new Process())
             {
                 try
                 {
-                    printJob.StartInfo.FileName = path+archivo;
+                    printJob.StartInfo.FileName = archivo;
                     printJob.StartInfo.UseShellExecute = true;
                     printJob.StartInfo.Verb = "printto";
                     printJob.StartInfo.CreateNoWindow = true;
                     printJob.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                     //printJob.StartInfo.Arguments = "\"" + "RRHH" + "\"";
                     printJob.StartInfo.Arguments = "\"" + impresora + "\"";
-                    printJob.StartInfo.WorkingDirectory = Path.GetDirectoryName(path+archivo);
+                    printJob.StartInfo.WorkingDirectory = Path.GetDirectoryName(archivo);
                     printJob.Start();
                     System.Threading.Thread.Sleep(200);
                     //printJob.CloseMainWindow();

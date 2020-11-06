@@ -214,10 +214,10 @@ namespace HojaResumen.Servicios.Parser
                                             DuracionTotalF10 = RegistroDatosFF[33].Replace(" ", String.Empty).Substring(21).Trim(),
                                             DuracionTotalF11 = RegistroDatosFF[36].Replace(" ", String.Empty).Substring(21).Trim(),
 
-                                            TFF2 = RegistroTF[1].Substring(3).Trim(),  //RegistroTF
-                                            TFF3 = RegistroTF[2].Substring(3).Trim(), //RegistroTF
-                                            TIF4 = RegistroTF[3].Substring(3).Trim(), //es Igual TFF4
-                                            TFF9 = RegistroDatosFF[32].Substring(2).Trim(),
+                                            TFF2 = RegistroTF[1].Substring(2).Trim(),  //RegistroTF //cambiado 06/11/20
+                                            TFF3 = RegistroTF[2].Substring(2).Trim(), //RegistroTF  //cambiado 06/11/20
+                                            TIF4 = RegistroTF[3].Substring(2).Trim(), //es Igual TFF4 //cambiado 06/11/20
+                                            TFF9 = RegistroDatosFF[32].Substring(2).Trim(), //cambiado 06/11/20
 
                                             TFSubF2 = RegistroTFSub[1].Substring(14).Trim(),
                                             TFSubF3 = RegistroTFSub[2].Substring(14).Trim(), // TISubF7 es TFSubF7

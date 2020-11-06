@@ -243,12 +243,12 @@ namespace HojaResumen.Servicios.Parser
                                             DuracionTotalF12 = RegistroDatosFF[33].Replace(" ", String.Empty).Substring(21).Trim(),
 
 
-                                            TFF5 = RegistroTF[1].Substring(3).Trim(),
-                                            TFF6 = RegistroCiclos[33].Substring(3).Trim(),//Es el inicio de fase 7 TIF7
-                                            TIF7 = RegistroTF[3].Substring(3).Trim(),  // TIF7 realmente es TFF7
+                                            TFF5 = RegistroTF[1].Substring(2).Trim(),//cambiado el 06/11/2020
+                                            TFF6 = RegistroCiclos[33].Substring(2).Trim(),//Es el inicio de fase 7 TIF7
+                                            TIF7 = RegistroTF[3].Substring(2).Trim(),  // TIF7 realmente es TFF7 // cambiado 06/11/2020
                                                                                        //TFF8 = RegistroDatosFF[26],
-                                            TFF8 = RegistroCiclos[38].Substring(3).Trim(), //TFF8 = TIF8
-                                            TFF9 = RegistroDatosFF[29].Substring(2).Trim(),
+                                            TFF8 = RegistroCiclos[38].Substring(2).Trim(), //TFF8 = TIF8  //cambiado 06/11/2020
+                                            TFF9 = RegistroDatosFF[26].Substring(2).Trim(), //cambie 29 a 25  06/11/2020
 
 
 

@@ -7,6 +7,7 @@ namespace Wrapper
     public class ConnectionWrapper
     {
 
+
         [DllImport("th4log.dll", CallingConvention = CallingConvention.Cdecl)]
         static extern float th4_version();
         public float get_version()

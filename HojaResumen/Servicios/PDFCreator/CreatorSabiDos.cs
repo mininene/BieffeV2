@@ -14,12 +14,14 @@ using System.Drawing;
 using System.Management;
 using HojaResumen.Modelo;
 using HojaResumen.Servicios.Output;
+using HojaResumen.Servicios.Printer;
 
 namespace HojaResumen.Servicios.PDFCreator
 {
     public class CreatorSabiDos : ICreatorSabiDos
     {
         ILog _log = new ProductionLog();
+        IPrint _print = new Print();
         public void CreateSabiDosPDF()
         {
             using (var context = new CicloAutoclave())
@@ -164,7 +166,7 @@ namespace HojaResumen.Servicios.PDFCreator
 
                             graph.DrawString("FASE 7:  " + q.Fase7B, font, XBrushes.Black, new XRect(20, 365, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                             graph.DrawString("DURAC.TOTAL FASE:", font, XBrushes.Black, new XRect(230, 365, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                            graph.DrawString(q.DuracionTotalF7A + " " + "min.s", font, XBrushes.Black, new XRect(320, 365, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                            graph.DrawString(q.DuracionTotalF7B + " " + "min.s", font, XBrushes.Black, new XRect(320, 365, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
                             graph.DrawString("FASE 8:  " + q.Fase8B, font, XBrushes.Black, new XRect(20, 380, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                             graph.DrawString("DURAC.TOTAL FASE:", font, XBrushes.Black, new XRect(230, 380, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
@@ -239,7 +241,7 @@ namespace HojaResumen.Servicios.PDFCreator
 
 
                             string nombreArchivo = "AutoClave" + q.IdAutoclave + q.NumeroCiclo + ".pdf";
-
+                            string impresora = "AdmiCopy_Local";
                             if (q.IdAutoclave == "0827J")
                             {
                                 string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveJ";
@@ -255,6 +257,8 @@ namespace HojaResumen.Servicios.PDFCreator
                                     _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
+                                    System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -275,6 +279,8 @@ namespace HojaResumen.Servicios.PDFCreator
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
+                                    System.Threading.Thread.Sleep(1000);
                                 }
                             }
 
@@ -293,6 +299,8 @@ namespace HojaResumen.Servicios.PDFCreator
                                     _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
+                                    System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }

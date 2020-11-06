@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HojaResumen.Servicios.Printer
 {
-    public interface IPrinter
+    public interface IPrint
     {
         void Printer(string archivo, string impresora);
     }

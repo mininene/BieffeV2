@@ -11,12 +11,15 @@ using System.IO;
 using System.Drawing;
 using HojaResumen.Modelo;
 using HojaResumen.Servicios.Output;
+using HojaResumen.Servicios.Printer;
 
 namespace HojaResumen.Servicios.PDFCreator
 {
     public class Creator : ICreator 
     {
+        IPrint _print = new Print();
         ILog _log = new ProductionLog();
+       
         public void CreatePdf()
         {
             using (var context = new CicloAutoclave())
@@ -256,7 +259,7 @@ namespace HojaResumen.Servicios.PDFCreator
 
 
                             string nombreArchivo = "AutoClave" + q.IdAutoclave + q.NumeroCiclo + ".pdf";
-
+                            string impresora = "AdmiCopy_Local";
                             if (q.IdAutoclave == "NF8387A")
                             {
                                 string rutaAbsoluta = @"C:\Users\fuenteI3\Desktop\PDFGenerados\AutoclaveA";
@@ -272,6 +275,8 @@ namespace HojaResumen.Servicios.PDFCreator
                                     _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
+                                    System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -292,6 +297,8 @@ namespace HojaResumen.Servicios.PDFCreator
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
+                                    System.Threading.Thread.Sleep(1000);
                                 }
                             }
 
@@ -310,6 +317,8 @@ namespace HojaResumen.Servicios.PDFCreator
                                     _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
+                                    System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -330,6 +339,8 @@ namespace HojaResumen.Servicios.PDFCreator
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
+                                    System.Threading.Thread.Sleep(1000);
                                 }
                             }
 
@@ -348,6 +359,8 @@ namespace HojaResumen.Servicios.PDFCreator
                                     _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
+                                    System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -368,6 +381,8 @@ namespace HojaResumen.Servicios.PDFCreator
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
+                                    System.Threading.Thread.Sleep(1000);
                                 }
                             }
 
@@ -386,6 +401,8 @@ namespace HojaResumen.Servicios.PDFCreator
                                     _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
+                                    System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -406,6 +423,8 @@ namespace HojaResumen.Servicios.PDFCreator
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
+                                    System.Threading.Thread.Sleep(1000);
                                 }
                             }
 
@@ -425,6 +444,8 @@ namespace HojaResumen.Servicios.PDFCreator
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
+                                    System.Threading.Thread.Sleep(1000);
                                 }
                             }
 
@@ -443,6 +464,8 @@ namespace HojaResumen.Servicios.PDFCreator
                                     _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
+                                    System.Threading.Thread.Sleep(1000);
+                                    _print.Printer(rutaAbsoluta, impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
