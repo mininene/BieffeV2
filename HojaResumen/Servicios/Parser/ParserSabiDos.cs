@@ -215,12 +215,14 @@ namespace HojaResumen.Servicios.Parser
                                             DuracionTotalF11 = RegistroDatosFF[36].Replace(" ", String.Empty).Substring(21).Trim(),
 
                                             TFF2 = RegistroTF[1].Substring(2).Trim(),  //RegistroTF //cambiado 06/11/20
-                                            TFF3 = RegistroTF[2].Substring(2).Trim(), //RegistroTF  //cambiado 06/11/20
+                                            //TFF3 = RegistroTF[2].Substring(2).Trim(), //RegistroTF  //cambiado 06/11/20
+                                            TFF3 = RegistroCiclos[18].Substring(2).Trim(),//cambiado 06/11/20 = TIF4 16:27
                                             TIF4 = RegistroTF[3].Substring(2).Trim(), //es Igual TFF4 //cambiado 06/11/20
                                             TFF9 = RegistroDatosFF[32].Substring(2).Trim(), //cambiado 06/11/20
 
                                             TFSubF2 = RegistroTFSub[1].Substring(14).Trim(),
-                                            TFSubF3 = RegistroTFSub[2].Substring(14).Trim(), // TISubF7 es TFSubF7
+                                            //TFSubF3 = RegistroTFSub[2].Substring(14).Trim(), // TISubF7 es TFSubF7 cambiado el 06/11
+                                            TFSubF3= RegistroCiclos[19].Substring(14).Trim(), //cambiado el 06/11 16:27 igual TISub4
                                             TISubF4 = RegistroTFSub[3].Substring(14).Trim(), // es igual TFSubF4
 
                                             HoraInicio = RegistroPie[0].Substring(22).Trim(),

@@ -29,14 +29,19 @@ namespace HojaResumen.Servicios.Printer
                     printJob.StartInfo.UseShellExecute = true;
                     printJob.StartInfo.Verb = "printto";
                     printJob.StartInfo.CreateNoWindow = true;
-                    printJob.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                   // printJob.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                     //printJob.StartInfo.Arguments = "\"" + "RRHH" + "\"";
                     printJob.StartInfo.Arguments = "\"" + impresora + "\"";
                     printJob.StartInfo.WorkingDirectory = Path.GetDirectoryName(archivo);
                     printJob.Start();
+                    printJob.StartInfo.WindowStyle = ProcessWindowStyle.Hidden;
                     System.Threading.Thread.Sleep(200);
                     //printJob.CloseMainWindow();
-                    //if (printJob.HasExited == false) printJob.Kill();
+                 //   if (printJob.HasExited == false) { printJob.Kill(); }
+                  // printJob.EnableRaisingEvents = true;
+
+                   printJob.Close();
+                  
 
                     var resultado = from item in System.Diagnostics.Process.GetProcesses()
                                     where item.ProcessName.ToUpper() == "AcroRd32.exe"
@@ -46,7 +51,18 @@ namespace HojaResumen.Servicios.Printer
                        
                     {
                         item.Kill();
+                        item.Kill();
+
                     }
+
+                    //printJob.Kill();
+
+                    //foreach (Process clsProcess in Process.GetProcesses().Where(
+                    //     clsProcess => clsProcess.ProcessName.StartsWith("AcroRd32.exe")))
+                    //{
+                    //    clsProcess.Kill();
+
+                    //}
 
                 }
                 catch { Console.WriteLine("Algo Paso"); }

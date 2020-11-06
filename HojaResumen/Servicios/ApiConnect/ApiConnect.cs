@@ -24,7 +24,8 @@ namespace HojaResumen.Servicios.ApiConnect
                     Wrapper.ConnectionWrapper con = new Wrapper.ConnectionWrapper();
 
                     foreach (var s in context.MaestroAutoclave) // tabla MaestroAutoclave genero otro contexto
-                {
+                    {
+                        
                        
 
                         if (s.Estado == true)
@@ -48,13 +49,15 @@ namespace HojaResumen.Servicios.ApiConnect
 
                         //session
                         uint handle = con.ConnectSession(s.Version, s.IP);
-                        if (handle != 0) { _log.WriteLog("Sesion Iniciada Correctamente");  } else { _log.WriteLog("IP o version Incorrecta" + handle);  }
+                            
+                        if (handle != 0) { _log.WriteLog("Sesion Iniciada Correctamente"); 
+                            } else { _log.WriteLog("Sesion No Iniciada-(Equipo Apagado, IP o version Incorrecta)" + " "+"Error: "+ handle);  }
                         //Console.WriteLine("Valor de Sesion: " + handle);
 
 
                         //Connection
                         uint lhandle = con.ConnectApi(handle);
-                        if (lhandle == 0) { _log.WriteLog("Conexión Establecida"); } else { _log.WriteLog("No se pudo establecer la Conexión - IP o version Incorrecta" + lhandle); }
+                        if (lhandle == 0) { _log.WriteLog("Conexión Establecida"); } else { _log.WriteLog("No se pudo establecer la Conexión - IP o version Incorrecta" + " " + "Error: " + lhandle); lhandle = 0; }
                         //Console.WriteLine("Valor de Conexion: " + lhandle);
 
 
@@ -108,25 +111,25 @@ namespace HojaResumen.Servicios.ApiConnect
                                         });
                                         break;
                                     case 21:
-                                        _log.WriteLog("El dispositivo no está listo. No se puede crear el archivo." + " " + result);
+                                        _log.WriteLog("El dispositivo no está listo. No se puede crear el archivo." + " " + "Error: " + result);
                                         break;
                                     case 5:
-                                        _log.WriteLog("Acceso denegado al intentar crear el archivo." + " " + result);
+                                        _log.WriteLog("Acceso denegado al intentar crear el archivo." + " " + "Error: " + result);
                                         break;
                                     case 32899128:
-                                        _log.WriteLog("Ya existe una conexion abierta." + " " + result);
+                                        _log.WriteLog("Ya existe una conexion abierta." + " " + "Error: " + result);
                                         break;
                                     case 32899137:
-                                        _log.WriteLog("Estado de conexion no permitido." + " " + result);
+                                        _log.WriteLog("Estado de conexion no permitido." + " " + "Error: " + result);
                                         break;
                                     case 32899138:
-                                        _log.WriteLog("Dispositivo remoto desconocido. Revise el ID o IP" + " " + result);
+                                        _log.WriteLog("Dispositivo remoto desconocido. Revise el ID o IP" + " " + "Error: " + result);
                                         break;
                                     case 32899139:
-                                        _log.WriteLog("Handle inválido pasado en la API." + " " + result);
+                                        _log.WriteLog("Handle inválido pasado en la API." + " " + "Error: " + result);
                                         break;
                                     case 3670019:
-                                       _log.WriteLog("No ha sido Encontrado el archivo." + "  " + result);
+                                       _log.WriteLog("No ha sido Encontrado el archivo." + " " + "Error: " + result);
                                         break;
 
                                 }
@@ -144,10 +147,10 @@ namespace HojaResumen.Servicios.ApiConnect
                         System.Threading.Thread.Sleep(1000);
 
                         var closet = con.CloseConnection(ref handle);
+                          
 
 
-
-                    }
+                        }
                     else
                     {
                        

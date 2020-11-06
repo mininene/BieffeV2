@@ -77,7 +77,7 @@ namespace HojaResumen
                 _log.WriteLog("PDF Generados...");
                 System.Threading.Thread.Sleep(30000); //1 MINUTOS
                 _log.WriteLog("\n\n");
-                _log.WriteLog("dsfsdfsdf");
+               
 
 
             } while (true);
