@@ -36,16 +36,7 @@ namespace HojaResumen
         static void Main(string[] args)
         {
             ILog _log = new ProductionLog();
-            //IPrint _print = new Print();
-            //_print.Printer("AutoClaveNF8387A2556.pdf");
-
-            //foreach (String printer in System.Drawing.Printing.PrinterSettings.InstalledPrinters)
-            //{
-            //    var x = printer.ToString() + System.Environment.NewLine;
-            //    Console.WriteLine(x);
-            //}
-
-           
+                   
 
             do
             {

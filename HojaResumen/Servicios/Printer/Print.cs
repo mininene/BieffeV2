@@ -51,7 +51,7 @@ namespace HojaResumen.Servicios.Printer
                        
                     {
                         item.Kill();
-                        item.Kill();
+                       
 
                     }
 
@@ -63,6 +63,9 @@ namespace HojaResumen.Servicios.Printer
                     //    clsProcess.Kill();
 
                     //}
+                    printJob.CloseMainWindow();
+                    printJob.Close();
+                    System.Threading.Thread.Sleep(500);
 
                 }
                 catch { Console.WriteLine("Algo Paso"); }

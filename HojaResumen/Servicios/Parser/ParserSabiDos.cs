@@ -346,15 +346,18 @@ namespace HojaResumen.Servicios.Parser
                                     //|| e.IdAutoclave != "NA0672EGI" || e.IdAutoclave != "NA0611EFM");
 
                                     // Console.WriteLine("DATOS SABI DOS------------------------------------------------------------------------");
-                                    if (duplicado == 0)
-                                    {
-                                        context.CiclosSabiDos.Add(ciclos);
-                                        context.SaveChanges();
+                                    if (ciclos.Programa.Trim().Equals("9") || ciclos.Programa.Trim().Equals("10"))  {
+
+                                        if (duplicado == 0)
+                                        {
+                                            context.CiclosSabiDos.Add(ciclos);
+                                            context.SaveChanges();
+                                        }
+                                        else { /*Console.WriteLine("Duplicado");*/ }
+
+                                        System.Threading.Thread.Sleep(2000);
                                     }
-                                    else { /*Console.WriteLine("Duplicado");*/ }
-
-                                    System.Threading.Thread.Sleep(2000);
-
+                                    else {  }
                                 }
                                 else { Console.WriteLine(path + " " + "El archivo No ha sido creado"); }
                             }

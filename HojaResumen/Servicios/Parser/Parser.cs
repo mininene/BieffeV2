@@ -382,15 +382,17 @@ namespace HojaResumen.Servicios.Parser
 
                                     // Console.WriteLine(control);
                                     //Console.WriteLine("DATOS SABI UNO------------------------------------------------------------------------");
-                                    if (duplicado == 0)
-                                    {
-                                        context.CiclosAutoclaves.Add(ciclos);
-                                        context.SaveChanges();
+                                    if (  ciclos.Programa.Trim().Equals("2") || ciclos.Programa.Trim().Equals("3") || ciclos.Programa.Trim().Equals("4") || ciclos.Programa.Trim().Equals("8") || ciclos.Programa.Trim().Equals("20")) {
+                                        if (duplicado == 0)
+                                        {
+                                            context.CiclosAutoclaves.Add(ciclos);
+                                            context.SaveChanges();
+                                        }
+
+
+                                        else { /*Console.WriteLine("Registros Duplicados y Registros JKL");*/ }
                                     }
-
-                                    if (control > 0) { /*Console.WriteLine("Registros JKL");*/ }
-                                    else { /*Console.WriteLine("Registros Duplicados y Registros JKL");*/ }
-
+                                    else { _log.WriteLog("Pertenece a otro programa" + ciclos.IdAutoclave+ ciclos.NumeroCiclo); }
 
 
                                     System.Threading.Thread.Sleep(2000);
