@@ -1,6 +1,7 @@
 ﻿using HojaResumen.Modelo;
 using HojaResumen.Modelo.BaseDatosT;
 using HojaResumen.Servicios.Output;
+using HojaResumen.Servicios.PrinterEx;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -16,6 +17,8 @@ namespace HojaResumen.Servicios.Parser
     public class ParserSabiDos : IParserSabiDos
     {
         ILog _log = new ProductionLog();
+        string impresora = "AdmiCopy_Local";
+        IPrinterExc _p = new PrinterExc();
         public void ParserSabiDosFile()
         {
             try
@@ -29,8 +32,8 @@ namespace HojaResumen.Servicios.Parser
                 string Lote = "N.LOTE";
                 string IdMaquina = "ID.MAQUINA";
                 string Notas = "NOTAS";
-                string Modelo = "MODELO";
-                string ProgresivoN = "N. PROGRESIVO";
+                 string Modelo = " MODELO";
+                string ProgresivoN = " N. PROGRESIVO";
                 string FaseUno = "FASE    1";
                 string FaseDos = "FASE    2";
                 string FaseTres = "FASE    3";
@@ -222,7 +225,7 @@ namespace HojaResumen.Servicios.Parser
 
                                             TFSubF2 = RegistroTFSub[1].Substring(14).Trim(),
                                             //TFSubF3 = RegistroTFSub[2].Substring(14).Trim(), // TISubF7 es TFSubF7 cambiado el 06/11
-                                            TFSubF3= RegistroCiclos[19].Substring(14).Trim(), //cambiado el 06/11 16:27 igual TISub4
+                                            TFSubF3 = RegistroCiclos[19].Substring(14).Trim(), //cambiado el 06/11 16:27 igual TISub4
                                             TISubF4 = RegistroTFSub[3].Substring(14).Trim(), // es igual TFSubF4
 
                                             HoraInicio = RegistroPie[0].Substring(22).Trim(),
@@ -245,7 +248,8 @@ namespace HojaResumen.Servicios.Parser
                                     catch
                                     {
                                         _log.WriteLog(ciclo + "  " + "El archivo contiene errores de origen no puede ser resumido, debe ser impreso desde el Autoclave");
-
+                                        _log.WriteLog(ciclo + "  " + "Imprimiendo recordatorio de impresion manual");
+                                        _p.PrinterExc(ciclo + "  " + "Debe ser impreso Manualmente", impresora);
                                     }
 
 
@@ -341,25 +345,32 @@ namespace HojaResumen.Servicios.Parser
 
                                     }
                                     var duplicado = context.CiclosSabiDos.Count(a => a.NumeroCiclo == ciclos.NumeroCiclo);
-                                    //var control = context.CiclosAutoclaves.Count(e => e.IdAutoclave != "NF8387A"|| e.IdAutoclave != "8388B" || e.IdAutoclave != "8389C"
-                                    //|| e.IdAutoclave != "8607D" || e.IdAutoclave != "NF1029E" || e.IdAutoclave != "NF1030F" || e.IdAutoclave != "NF1031G" || e.IdAutoclave != "NA0658EGH"
-                                    //|| e.IdAutoclave != "NA0672EGI" || e.IdAutoclave != "NA0611EFM");
 
-                                    // Console.WriteLine("DATOS SABI DOS------------------------------------------------------------------------");
-                                    if (ciclos.Programa.Trim().Equals("9") || ciclos.Programa.Trim().Equals("10"))  {
-
-                                        if (duplicado == 0)
+                                    try
+                                    {
+                                        if (ciclos.Programa != null)
                                         {
-                                            context.CiclosSabiDos.Add(ciclos);
-                                            context.SaveChanges();
-                                        }
-                                        else { /*Console.WriteLine("Duplicado");*/ }
+                                            if (ciclos.Programa.Trim().Equals("9") || ciclos.Programa.Trim().Equals("10"))
+                                            {
 
-                                        System.Threading.Thread.Sleep(2000);
+                                                if (duplicado == 0)
+                                                {
+                                                    context.CiclosSabiDos.Add(ciclos);
+                                                    context.SaveChanges();
+                                                }
+                                                else { /*Console.WriteLine("Duplicado");*/ }
+
+
+                                            }
+                                            else { _log.WriteLog("Pertenece a otro programa" + ciclos.IdAutoclave + ciclos.NumeroCiclo); }
+
+                                            System.Threading.Thread.Sleep(2000);
+                                        }
+                                        else { _log.WriteLog(ciclo + " " + "El archivo todavia No ha sido generado por el Autoclave"); }
+
                                     }
-                                    else {  }
+                                    catch { _log.WriteLog(ciclo + "  " + "El archivo contiene errores de origen no puede ser resumido, debe ser impreso desde el Autoclave"); }
                                 }
-                                else { Console.WriteLine(path + " " + "El archivo No ha sido creado"); }
                             }
                             else { /*_log.WriteLog("");*/ }
                         }

@@ -5,6 +5,7 @@ using HojaResumen.Servicios.Output;
 using HojaResumen.Servicios.Parser;
 using HojaResumen.Servicios.PDFCreator;
 using HojaResumen.Servicios.Printer;
+using HojaResumen.Servicios.PrinterEx;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
@@ -36,7 +37,6 @@ namespace HojaResumen
         static void Main(string[] args)
         {
             ILog _log = new ProductionLog();
-                   
 
             do
             {
@@ -66,9 +66,9 @@ namespace HojaResumen
                 CreateDos.CreateSabiDosPDF();
 
                 _log.WriteLog("PDF Generados...");
-                System.Threading.Thread.Sleep(30000); //1 MINUTOS
+                System.Threading.Thread.Sleep(60000); //1 MINUTOS
                 _log.WriteLog("\n\n");
-               
+
 
 
             } while (true);

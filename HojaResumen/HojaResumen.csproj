@@ -129,6 +129,8 @@
     <Compile Include="Servicios\PDFCreator\ICreator.cs" />
     <Compile Include="Servicios\PDFCreator\ICreatorAmericano.cs" />
     <Compile Include="Servicios\PDFCreator\ICreatorSabiDos.cs" />
+    <Compile Include="Servicios\PrinterEx\IPrinterExc.cs" />
+    <Compile Include="Servicios\PrinterEx\PrinterExc.cs" />
     <Compile Include="Servicios\Printer\IPrint.cs" />
     <Compile Include="Servicios\Printer\Print.cs" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿using HojaResumen.Modelo;
 using HojaResumen.Modelo.BaseDatosT;
 using HojaResumen.Servicios.Output;
+using HojaResumen.Servicios.PrinterEx;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 //using HojaResumen.Modelo.BaseDatos;
@@ -23,6 +24,9 @@ namespace HojaResumen.Servicios.Parser
     public class Parser : IParser
     {
         ILog _log = new ProductionLog();
+        string impresora = "AdmiCopy_Local";
+        IPrinterExc _p = new PrinterExc();
+       
         public void ParserFile()
         {
             try
@@ -36,8 +40,8 @@ namespace HojaResumen.Servicios.Parser
                 string Lote = "N.LOTE";
                 string IdMaquina = "ID.MAQUINA";
                 string Notas = "NOTAS";
-                string Modelo = "MODELO";
-                string ProgresivoN = "N. PROGRESIVO";
+                string Modelo = " MODELO";
+                string ProgresivoN = " N. PROGRESIVO";
                 string FaseUno = "FASE    1";
                 string FaseDos = "FASE    2";
                 string FaseTres = "FASE    3";
@@ -58,6 +62,7 @@ namespace HojaResumen.Servicios.Parser
                 string HoraI = " HORA COMIEN.PROGR.";
                 string HoraF = " HORA FIN PROGRAMA";
                 string EsterN = " ESTERILIZACION N.";
+                string EsterF = " ESTERILIZACION FALLIDA"; //11/11/2020 ´ñadido
                 string TMin = " TEMP.MIN.ESTERILIZACION";
                 string Tmax = " TEMP.MAX.ESTERILIZACION";
                 string DFE = " DURACION FASE DE ESTER.";
@@ -99,6 +104,8 @@ namespace HojaResumen.Servicios.Parser
 
 
                                     var RegistroEncabezado = new List<string>();
+                                    var RegistroProgresivo = new List<string>();
+                                    var RegistroModelo = new List<string>();
                                     var RegistroCiclos = new List<string>();
                                     var RegistroDatosFF = new List<string>();
                                     var RegistroTF = new List<string>();
@@ -113,6 +120,8 @@ namespace HojaResumen.Servicios.Parser
                                     RegistroEncabezado = texts.Where(lines => lines.Contains(IdMaquina) || (lines.Contains(Programa)) || (lines.Contains(Programador)
                                     || (lines.Contains(Operador)) || (lines.Contains(CodigoP)) || (lines.Contains(Lote)) || (lines.Contains(Modelo) || (lines.Contains(ProgresivoN))))).ToList();
 
+                                    RegistroProgresivo = (texts.Where(lines => lines.Contains(ProgresivoN))).ToList();
+                                    RegistroModelo = (texts.Where(lines => lines.Contains(Modelo))).ToList();
 
                                     RegistroCiclos = texts.Where(lines => lines.StartsWith("+")).ToList();
 
@@ -133,13 +142,14 @@ namespace HojaResumen.Servicios.Parser
                                         }
                                     }
 
-                                    RegistroPie = texts.Where(lines => lines.Contains(HoraI) || (lines.Contains(HoraF)) || (lines.Contains(EsterN)
-                                   || (lines.Contains(TMin)) || (lines.Contains(Tmax)) || (lines.Contains(DFE)) || (lines.Contains(Fmin) || (lines.Contains(Fmax) || (lines.Contains(ok)))))).ToList();
+                                    RegistroPie = texts.Where(lines => lines.Contains(HoraI) || (lines.Contains(HoraF)) || (lines.Contains(EsterN) || (lines.Contains(EsterF) 
+                                   || (lines.Contains(TMin)) || (lines.Contains(Tmax)) || (lines.Contains(DFE)) || (lines.Contains(Fmin) || (lines.Contains(Fmax) || (lines.Contains(ok))))))).ToList();
 
 
 
                                     RegistroAlarma = texts.Where(lines => lines.StartsWith("*")).ToList();
 
+                                   
 
 
                                     //Console.WriteLine(combin);
@@ -159,7 +169,7 @@ namespace HojaResumen.Servicios.Parser
                                     //}
 
 
-                                    //  RegistroCiclos.ForEach(r => Console.WriteLine(r.ToArray()));
+                                   // RegistroPie.ForEach(r => Console.WriteLine(r.ToArray()));
 
                                     //Console.WriteLine((TimeSpan.Parse(RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse(RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))));
 
@@ -169,6 +179,7 @@ namespace HojaResumen.Servicios.Parser
                                     try
                                     {
                                         string combin = string.Join("\n", RegistroAlarma);
+
                                         string spanTC = RegistroCiclos[63].Substring(2, 6).ToString().Trim();
 
                                         var td = TimeSpan.FromMinutes(Convert.ToDouble(spanTC.Split(':')[0])).Add(TimeSpan.FromSeconds(Convert.ToDouble((spanTC.Split(':')[1]))))
@@ -180,21 +191,26 @@ namespace HojaResumen.Servicios.Parser
                                         var Tinicio = RegistroPie[0].Substring(19, 12).Trim() + "  " + TimeSpan.Parse(RegistroPie[0].Substring(30).Trim()).Add(TimeSpan.Parse("00:" + RegistroDatosFF[3].Replace(" ", String.Empty).Substring(21))
                                          + TimeSpan.Parse("00:" + RegistroDatosFF[6].Replace(" ", String.Empty).Substring(21)) + TimeSpan.Parse("00:" + RegistroDatosFF[9].Replace(" ", String.Empty).Substring(21))).ToString();
 
-                                        string Max = RegistroPie[7].Replace(" ", String.Empty).Substring(11, 4);
-                                        string Min = RegistroPie[6].Replace(" ", String.Empty).Substring(11, 4);
+                                        //// string Max = RegistroPie[7].Replace(" ", String.Empty).Substring(11, 4);
+                                        // //string Min = RegistroPie[6].Replace(" ", String.Empty).Substring(11, 4);
+                                        string Max = RegistroPie[7].Substring(22, 4).Trim();  //cambiado el 10/711/2020 
+                                        string Min = RegistroPie[6].Substring(22, 4).Trim();
+                                     
                                         var Dif = (Convert.ToDecimal(Max, CultureInfo.GetCultureInfo("en-US")) - Convert.ToDecimal(Min, CultureInfo.GetCultureInfo("en-US"))).ToString().Replace(",", ".");
 
-
-
+                                   
+                                        
                                         ProgramaSabiUno row = new ProgramaSabiUno
                                         {
                                             IdAutoclave = RegistroEncabezado[5].Replace(" ", String.Empty).Substring(10).Trim(),
                                             IdSeccion = texts[3].Trim(),
                                             IdUsuario = "SabiUno",
                                             TInicio = Tinicio, //Hora Inicio +f2+f3+f4
-                                            NumeroCiclo = RegistroEncabezado[7].Replace(" ", String.Empty).Substring(12).Trim(),
+                                           // // NumeroCiclo = RegistroEncabezado[7].Replace(" ", String.Empty).Substring(12).Trim(),  ////problema 24231 autoB 11/11/2020
+                                            NumeroCiclo = RegistroProgresivo[0].Replace(" ", String.Empty).Substring(12).Trim(),  ////problema 24231 autoB 11/11/2020
                                             Programa = RegistroEncabezado[0].Replace(" ", String.Empty).Substring(8).Trim(),
-                                            Modelo = RegistroEncabezado[6].Replace(" ", String.Empty).Substring(6).Trim(),  //modelo
+                                            //Modelo = RegistroEncabezado[6].Replace(" ", String.Empty).Substring(6).Trim(),  //modelo
+                                            Modelo = RegistroModelo[0].Replace(" ", String.Empty).Substring(6).Trim(),  //modelo
                                             Programador = RegistroEncabezado[1].Substring(12).Trim(),
                                             Operador = RegistroEncabezado[2].Substring(10).Trim(),
                                             CodigoProducto = RegistroEncabezado[3].Replace(" ", String.Empty).Substring(11).Trim(),
@@ -274,10 +290,17 @@ namespace HojaResumen.Servicios.Parser
 
                                         }; RegistroFinal.Add(row); //añado elementos
                                     }
-                                    catch
+                                    catch(Exception e)
                                     {
                                         //Console.WriteLine(path +"  "+"Los campos No cumplen con el modelo");
-                                        _log.WriteLog(ciclo + "  " + "El archivo contiene errores de origen no puede ser resumido, debe ser impreso desde el Autoclave");
+                                        _log.WriteLog(ciclo + "  " + "El archivo contiene errores de origen Debe ser impreso Manualmente");
+                                        Console.WriteLine(e.Message.ToString());
+                                        Console.WriteLine(e.StackTrace);
+                                        Console.WriteLine(e.Source);
+                                        //_log.WriteLog(ciclo + "  " + "Imprimiendo recordatorio de impresion manual");
+                                        //_p.PrinterExc(ciclo + "  " + "Debe ser impreso Manualmente", impresora);
+
+
                                     }
 
 
@@ -372,27 +395,34 @@ namespace HojaResumen.Servicios.Parser
                                         ciclos.FechaRegistro = s.FechaRegistro;
 
                                     }
-                                    //var test = new CiclosAutoclaves { NumeroCiclo = ciclos.NumeroCiclo };
-                                    //context.Entry(ciclos.NumeroCiclo).State = EntityState.Unchanged;
-                                    var duplicado = context.CiclosAutoclaves.Count(a => a.NumeroCiclo == ciclos.NumeroCiclo && a.IdAutoclave == ciclos.IdAutoclave);
+                                          var duplicado = context.CiclosAutoclaves.Count(a => a.NumeroCiclo == ciclos.NumeroCiclo && a.IdAutoclave == ciclos.IdAutoclave);
 
-                                    //var control = context.CiclosAutoclaves.(e => e.IdAutoclave == "1167L" || e.IdAutoclave == "0828K" || e.IdAutoclave == "0827J");
-
-                                    var control = context.CiclosAutoclaves.Count(e => e.IdAutoclave == "1167L" || e.IdAutoclave == "0828K" || e.IdAutoclave == "0827J");
 
                                     // Console.WriteLine(control);
                                     //Console.WriteLine("DATOS SABI UNO------------------------------------------------------------------------");
-                                    if (  ciclos.Programa.Trim().Equals("2") || ciclos.Programa.Trim().Equals("3") || ciclos.Programa.Trim().Equals("4") || ciclos.Programa.Trim().Equals("8") || ciclos.Programa.Trim().Equals("20")) {
-                                        if (duplicado == 0)
+
+                                    try
+                                    {
+                                        if (ciclos.Programa != null)
                                         {
-                                            context.CiclosAutoclaves.Add(ciclos);
-                                            context.SaveChanges();
+                                            if (ciclos.Programa.Trim().Equals("2") || ciclos.Programa.Trim().Equals("3") || ciclos.Programa.Trim().Equals("4") || ciclos.Programa.Trim().Equals("8") || ciclos.Programa.Trim().Equals("20"))
+                                            {
+                                                if (duplicado == 0)
+                                                {
+                                                    context.CiclosAutoclaves.Add(ciclos);
+                                                    context.SaveChanges();
+                                                }
+                                                else { /*Console.WriteLine("Registros Duplicados y Registros JKL");*/ }
+
+                                            }
+                                            else { _log.WriteLog("Pertenece a otro programa" + ciclos.IdAutoclave + ciclos.NumeroCiclo); }
                                         }
-
-
-                                        else { /*Console.WriteLine("Registros Duplicados y Registros JKL");*/ }
+                                        
                                     }
-                                    else { _log.WriteLog("Pertenece a otro programa" + ciclos.IdAutoclave+ ciclos.NumeroCiclo); }
+                                    catch {  _log.WriteLog(ciclo + "  " + "El archivo contiene errores de origen no puede ser resumido, debe ser impreso desde el Autoclave");
+                            }
+
+
 
 
                                     System.Threading.Thread.Sleep(2000);
