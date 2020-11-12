@@ -6,6 +6,7 @@ using HojaResumen.Servicios.Parser;
 using HojaResumen.Servicios.PDFCreator;
 using HojaResumen.Servicios.Printer;
 using HojaResumen.Servicios.PrinterEx;
+using HojaResumen.Servicios.PrinterProgramas;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
@@ -37,7 +38,15 @@ namespace HojaResumen
         static void Main(string[] args)
         {
             ILog _log = new ProductionLog();
+            IPrinterPrOchoVeinte _pr820 = new PrinterOchoVeinte();
+            IPrinterDosTresCuatro _pr234 = new PrinterDosTresCuatro();
+            IPrinterNueveDiez _pr910 = new PrinterNueveDiez();
+            
+           
+            string impresora = "";
+           
 
+           
             do
             {
 
@@ -50,6 +59,13 @@ namespace HojaResumen
 
                 IParserSabiDos GetDataSabiDos = new ParserSabiDos();
                 GetDataSabiDos.ParserSabiDosFile();
+
+                //_pr820.printOchoVeinte(impresora);
+                //System.Threading.Thread.Sleep(5000);
+                //_pr234.printDosTresCuatro(impresora);
+                //System.Threading.Thread.Sleep(5000);
+                //_pr910.printNueveDiez(impresora);
+                //System.Threading.Thread.Sleep(5000);
 
 
                 System.Threading.Thread.Sleep(1000);

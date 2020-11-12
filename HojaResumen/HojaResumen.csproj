@@ -67,6 +67,7 @@
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Transactions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -131,6 +132,12 @@
     <Compile Include="Servicios\PDFCreator\ICreatorSabiDos.cs" />
     <Compile Include="Servicios\PrinterEx\IPrinterExc.cs" />
     <Compile Include="Servicios\PrinterEx\PrinterExc.cs" />
+    <Compile Include="Servicios\PrinterProgramas\IPrinterDosTresCuatro.cs" />
+    <Compile Include="Servicios\PrinterProgramas\IPrinterNueveDiez.cs" />
+    <Compile Include="Servicios\PrinterProgramas\IPrinterPrOchoVeinte.cs" />
+    <Compile Include="Servicios\PrinterProgramas\PrinterDosTresCuatro.cs" />
+    <Compile Include="Servicios\PrinterProgramas\PrinterNueveDiez.cs" />
+    <Compile Include="Servicios\PrinterProgramas\PrinterOchoVeinte.cs" />
     <Compile Include="Servicios\Printer\IPrint.cs" />
     <Compile Include="Servicios\Printer\Print.cs" />
   </ItemGroup>

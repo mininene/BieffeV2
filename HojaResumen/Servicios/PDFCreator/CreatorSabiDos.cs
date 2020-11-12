@@ -15,6 +15,7 @@ using System.Management;
 using HojaResumen.Modelo;
 using HojaResumen.Servicios.Output;
 using HojaResumen.Servicios.Printer;
+using HojaResumen.Servicios.PrinterProgramas;
 
 namespace HojaResumen.Servicios.PDFCreator
 {
@@ -22,6 +23,7 @@ namespace HojaResumen.Servicios.PDFCreator
     {
         ILog _log = new ProductionLog();
         IPrint _print = new Print();
+        IPrinterNueveDiez _pr910 = new PrinterNueveDiez();
         public void CreateSabiDosPDF()
         {
             using (var context = new CicloAutoclave())
@@ -264,16 +266,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    // _print.Printer(rutaAbsoluta, impresora);
+                                    _pr910.printNueveDiez(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -285,16 +288,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    //  _print.Printer(rutaAbsoluta, impresora);
+                                    _pr910.printNueveDiez(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -306,16 +310,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    //  _print.Printer(rutaAbsoluta, impresora);
+                                    _pr910.printNueveDiez(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }

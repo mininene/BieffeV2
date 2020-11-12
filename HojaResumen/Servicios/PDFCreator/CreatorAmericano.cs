@@ -2,6 +2,7 @@
 using HojaResumen.Modelo.BaseDatosT;
 using HojaResumen.Servicios.Output;
 using HojaResumen.Servicios.Printer;
+using HojaResumen.Servicios.PrinterProgramas;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
@@ -18,6 +19,7 @@ namespace HojaResumen.Servicios.PDFCreator
     {
         ILog _log = new ProductionLog();
         IPrint _print = new Print();
+        IPrinterDosTresCuatro _pr234 = new PrinterDosTresCuatro();
         public void CreateAmericanoPdf()
         {
             using (var context = new CicloAutoclave())
@@ -285,15 +287,16 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    // _print.Printer(rutaAbsoluta, impresora);
+                                    _pr234.printDosTresCuatro(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                                 
@@ -306,16 +309,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    //  _print.Printer(rutaAbsoluta, impresora);
+                                    _pr234.printDosTresCuatro(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -327,16 +331,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    // _print.Printer(rutaAbsoluta, impresora);
+                                    _pr234.printDosTresCuatro(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -348,16 +353,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    // _print.Printer(rutaAbsoluta, impresora);
+                                    _pr234.printDosTresCuatro(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -369,16 +375,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    // _print.Printer(rutaAbsoluta, impresora);
+                                    _pr234.printDosTresCuatro(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -390,16 +397,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    // _print.Printer(rutaAbsoluta, impresora);
+                                    _pr234.printDosTresCuatro(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -411,16 +419,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    //  _print.Printer(rutaAbsoluta, impresora);
+                                    _pr234.printDosTresCuatro(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -432,16 +441,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    // _print.Printer(rutaAbsoluta, impresora);
+                                    _pr234.printDosTresCuatro(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -453,16 +463,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    //   _print.Printer(rutaAbsoluta, impresora);
+                                    _pr234.printDosTresCuatro(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
@@ -474,16 +485,17 @@ namespace HojaResumen.Servicios.PDFCreator
                                 rutaAbsoluta = Path.Combine(rutaAbsoluta, nombreArchivo);
                                 if (File.Exists(rutaAbsoluta))
                                 {
-                                    _log.WriteLog("El archivo ya fue impreso por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("El archivo ya fue impreso en PDF por Automatico :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
                                 }
 
                                 else
                                 {
-                                    _log.WriteLog("IMPRIMIENDO :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
+                                    _log.WriteLog("IMPRIMIENDO PDF :" + q.IdAutoclave + q.NumeroCiclo + " " + "PROGRAMA" + " " + q.Programa);
 
                                     pdf.Save(rutaAbsoluta);
                                     System.Threading.Thread.Sleep(1000);
-                                    _print.Printer(rutaAbsoluta, impresora);
+                                    //   _print.Printer(rutaAbsoluta, impresora);
+                                    _pr234.printDosTresCuatro(impresora);
                                     System.Threading.Thread.Sleep(1000);
                                 }
                             }
