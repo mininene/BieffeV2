@@ -33,7 +33,7 @@ namespace HojaResumen
     class Program
     {
 
-       
+
 
         static void Main(string[] args)
         {
@@ -44,55 +44,62 @@ namespace HojaResumen
 
 
             string impresora = "";
-     
 
+            using (var context = new CicloAutoclave())
 
-
-            do
             {
-
-                var connect = new ApiConnect();
-                connect.ConnectTHLog();
-
-
-                IParser GetData = new Parser();
-                GetData.ParserFile();
-
-                IParserSabiDos GetDataSabiDos = new ParserSabiDos();
-                GetDataSabiDos.ParserSabiDosFile();
-
-                _log.WriteLog("Impresion directa 8 y 20");
-                _pr820.printOchoVeinte(impresora);
-                System.Threading.Thread.Sleep(1000);
-                _log.WriteLog("Impresion directa 2,3,4");
-                _pr234.printDosTresCuatro(impresora);
-                System.Threading.Thread.Sleep(1000);
-                _log.WriteLog("Impresion directa 9 y 10");
-                _pr910.printNueveDiez(impresora);
-                System.Threading.Thread.Sleep(1000);
-
-                System.Threading.Thread.Sleep(1000);
-                ICreator Create = new Creator();
-                Create.CreatePdf();
-
-                System.Threading.Thread.Sleep(1000);
-                ICreatorAmericano CreateAmericano = new CreatorAmericano();
-                CreateAmericano.CreateAmericanoPdf();
+                foreach (var p in context.Parametros)
+                {
+                    int _time = p.Tiempo * 60000;
 
 
-                System.Threading.Thread.Sleep(1000);
-                ICreatorSabiDos CreateDos = new CreatorSabiDos();
-                CreateDos.CreateSabiDosPDF();
+                    do
+                    {
+
+                        var connect = new ApiConnect();
+                        connect.ConnectTHLog();
+
+
+                        IParser GetData = new Parser();
+                        GetData.ParserFile();
+
+                        IParserSabiDos GetDataSabiDos = new ParserSabiDos();
+                        GetDataSabiDos.ParserSabiDosFile();
+
+                        _log.WriteLog("Impresion directa 8 y 20");
+                        _pr820.printOchoVeinte(impresora);
+                        System.Threading.Thread.Sleep(1000);
+                        _log.WriteLog("Impresion directa 2,3,4");
+                        _pr234.printDosTresCuatro(impresora);
+                        System.Threading.Thread.Sleep(1000);
+                        _log.WriteLog("Impresion directa 9 y 10");
+                        _pr910.printNueveDiez(impresora);
+                        System.Threading.Thread.Sleep(1000);
+
+                        System.Threading.Thread.Sleep(1000);
+                        ICreator Create = new Creator();
+                        Create.CreatePdf();
+
+                        System.Threading.Thread.Sleep(1000);
+                        ICreatorAmericano CreateAmericano = new CreatorAmericano();
+                        CreateAmericano.CreateAmericanoPdf();
+
+
+                        System.Threading.Thread.Sleep(1000);
+                        ICreatorSabiDos CreateDos = new CreatorSabiDos();
+                        CreateDos.CreateSabiDosPDF();
 
 
 
-                _log.WriteLog("PDF Generados...");
-                System.Threading.Thread.Sleep(60000); //1 MINUTOS
-                _log.WriteLog("\n\n");
+                        _log.WriteLog("PDF Generados...");
+                        System.Threading.Thread.Sleep(_time); //1 MINUTOS
+                        _log.WriteLog("\n\n");
 
 
 
-            } while (true);
+                    } while (true);
+                }
+            }
         }
 
     }

@@ -167,8 +167,6 @@
           <Property Name="RutaSalida" Type="varchar" MaxLength="300" />
           <Property Name="RutaSalidaPDF" Type="varchar" MaxLength="300" />
         </EntityType>
-        <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'CiclosAutoclaves.dbo.Parametros' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Parametros">
           <Key>
             <PropertyRef Name="Id" />
@@ -177,21 +175,13 @@ advertencia 6002: La tabla o vista 'CiclosAutoclaves.dbo.Parametros' no tiene de
           <Property Name="ImpresoraSabiUno" Type="varchar" MaxLength="100" />
           <Property Name="ImpresoraSabiDos" Type="varchar" MaxLength="100" />
           <Property Name="RutaLog" Type="varchar" MaxLength="300" />
-          <Property Name="Tiempo" Type="int" />
+          <Property Name="Tiempo" Type="int" Nullable="false" />
         </EntityType>
         <EntityContainer Name="CicloAutoclaveModelStoreContainer">
           <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CiclosSabiDos" EntityType="Self.CiclosSabiDos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaestroAutoclave" EntityType="Self.MaestroAutoclave" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Parametros" EntityType="Self.Parametros" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Parametros].[Id] AS [Id], 
-    [Parametros].[ImpresoraSabiUno] AS [ImpresoraSabiUno], 
-    [Parametros].[ImpresoraSabiDos] AS [ImpresoraSabiDos], 
-    [Parametros].[RutaLog] AS [RutaLog], 
-    [Parametros].[Tiempo] AS [Tiempo]
-    FROM [dbo].[Parametros] AS [Parametros]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Parametros" EntityType="Self.Parametros" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -373,7 +363,7 @@ advertencia 6002: La tabla o vista 'CiclosAutoclaves.dbo.Parametros' no tiene de
           <Property Name="ImpresoraSabiUno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ImpresoraSabiDos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="RutaLog" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="Tiempo" Type="Int32" />
+          <Property Name="Tiempo" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
