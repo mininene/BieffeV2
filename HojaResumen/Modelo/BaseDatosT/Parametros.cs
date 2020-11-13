@@ -12,17 +12,12 @@ namespace HojaResumen.Modelo.BaseDatosT
     using System;
     using System.Collections.Generic;
     
-    public partial class MaestroAutoclave
+    public partial class Parametros
     {
         public int Id { get; set; }
-        public string Matricula { get; set; }
-        public string Nombre { get; set; }
-        public int Version { get; set; }
-        public string IP { get; set; }
-        public string Seccion { get; set; }
-        public Nullable<bool> Estado { get; set; }
-        public string UltimoCiclo { get; set; }
-        public string RutaSalida { get; set; }
-        public string RutaSalidaPDF { get; set; }
+        public string ImpresoraSabiUno { get; set; }
+        public string ImpresoraSabiDos { get; set; }
+        public string RutaLog { get; set; }
+        public Nullable<int> Tiempo { get; set; }
     }
 }

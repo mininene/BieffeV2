@@ -28,5 +28,6 @@ namespace HojaResumen.Modelo.BaseDatosT
         public virtual DbSet<CiclosAutoclaves> CiclosAutoclaves { get; set; }
         public virtual DbSet<CiclosSabiDos> CiclosSabiDos { get; set; }
         public virtual DbSet<MaestroAutoclave> MaestroAutoclave { get; set; }
+        public virtual DbSet<Parametros> Parametros { get; set; }
     }
 }

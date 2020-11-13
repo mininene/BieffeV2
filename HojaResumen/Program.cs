@@ -41,12 +41,13 @@ namespace HojaResumen
             IPrinterPrOchoVeinte _pr820 = new PrinterOchoVeinte();
             IPrinterDosTresCuatro _pr234 = new PrinterDosTresCuatro();
             IPrinterNueveDiez _pr910 = new PrinterNueveDiez();
-            
-           
-            string impresora = "";
-           
 
-           
+
+            string impresora = "";
+     
+
+
+
             do
             {
 
@@ -60,13 +61,15 @@ namespace HojaResumen
                 IParserSabiDos GetDataSabiDos = new ParserSabiDos();
                 GetDataSabiDos.ParserSabiDosFile();
 
-                //_pr820.printOchoVeinte(impresora);
-                //System.Threading.Thread.Sleep(5000);
-                //_pr234.printDosTresCuatro(impresora);
-                //System.Threading.Thread.Sleep(5000);
-                //_pr910.printNueveDiez(impresora);
-                //System.Threading.Thread.Sleep(5000);
-
+                _log.WriteLog("Impresion directa 8 y 20");
+                _pr820.printOchoVeinte(impresora);
+                System.Threading.Thread.Sleep(1000);
+                _log.WriteLog("Impresion directa 2,3,4");
+                _pr234.printDosTresCuatro(impresora);
+                System.Threading.Thread.Sleep(1000);
+                _log.WriteLog("Impresion directa 9 y 10");
+                _pr910.printNueveDiez(impresora);
+                System.Threading.Thread.Sleep(1000);
 
                 System.Threading.Thread.Sleep(1000);
                 ICreator Create = new Creator();
@@ -81,6 +84,8 @@ namespace HojaResumen
                 ICreatorSabiDos CreateDos = new CreatorSabiDos();
                 CreateDos.CreateSabiDosPDF();
 
+
+
                 _log.WriteLog("PDF Generados...");
                 System.Threading.Thread.Sleep(60000); //1 MINUTOS
                 _log.WriteLog("\n\n");
@@ -89,8 +94,8 @@ namespace HojaResumen
 
             } while (true);
         }
-            
-        }
+
+    }
 
     }
 

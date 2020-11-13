@@ -17,5 +17,6 @@ namespace HojaResumen.Modelo
         public Nullable<bool> Estado { get; set; }
         public string UltimoCiclo { get; set; }
         public string RutaSalida { get; set; }
+        public string RutaSalidaPDF { get; set; }
     }
 }

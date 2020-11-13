@@ -165,11 +165,33 @@
           <Property Name="Estado" Type="bit" />
           <Property Name="UltimoCiclo" Type="varchar" MaxLength="100" />
           <Property Name="RutaSalida" Type="varchar" MaxLength="300" />
+          <Property Name="RutaSalidaPDF" Type="varchar" MaxLength="300" />
+        </EntityType>
+        <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'CiclosAutoclaves.dbo.Parametros' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+        <EntityType Name="Parametros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImpresoraSabiUno" Type="varchar" MaxLength="100" />
+          <Property Name="ImpresoraSabiDos" Type="varchar" MaxLength="100" />
+          <Property Name="RutaLog" Type="varchar" MaxLength="300" />
+          <Property Name="Tiempo" Type="int" />
         </EntityType>
         <EntityContainer Name="CicloAutoclaveModelStoreContainer">
           <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CiclosSabiDos" EntityType="Self.CiclosSabiDos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaestroAutoclave" EntityType="Self.MaestroAutoclave" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parametros" EntityType="Self.Parametros" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Parametros].[Id] AS [Id], 
+    [Parametros].[ImpresoraSabiUno] AS [ImpresoraSabiUno], 
+    [Parametros].[ImpresoraSabiDos] AS [ImpresoraSabiDos], 
+    [Parametros].[RutaLog] AS [RutaLog], 
+    [Parametros].[Tiempo] AS [Tiempo]
+    FROM [dbo].[Parametros] AS [Parametros]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -326,6 +348,7 @@
           <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" />
           <EntitySet Name="CiclosSabiDos" EntityType="Self.CiclosSabiDos" />
           <EntitySet Name="MaestroAutoclave" EntityType="CicloAutoclaveModel.MaestroAutoclave" />
+          <EntitySet Name="Parametros" EntityType="CicloAutoclaveModel.Parametros" />
         </EntityContainer>
         <EntityType Name="MaestroAutoclave">
           <Key>
@@ -340,6 +363,17 @@
           <Property Name="Estado" Type="Boolean" />
           <Property Name="UltimoCiclo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="RutaSalida" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="RutaSalidaPDF" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Parametros">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImpresoraSabiUno" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ImpresoraSabiDos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="RutaLog" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="Tiempo" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -499,6 +533,7 @@
           <EntitySetMapping Name="MaestroAutoclave">
             <EntityTypeMapping TypeName="CicloAutoclaveModel.MaestroAutoclave">
               <MappingFragment StoreEntitySet="MaestroAutoclave">
+                <ScalarProperty Name="RutaSalidaPDF" ColumnName="RutaSalidaPDF" />
                 <ScalarProperty Name="RutaSalida" ColumnName="RutaSalida" />
                 <ScalarProperty Name="UltimoCiclo" ColumnName="UltimoCiclo" />
                 <ScalarProperty Name="Estado" ColumnName="Estado" />
@@ -507,6 +542,17 @@
                 <ScalarProperty Name="Version" ColumnName="Version" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parametros">
+            <EntityTypeMapping TypeName="CicloAutoclaveModel.Parametros">
+              <MappingFragment StoreEntitySet="Parametros">
+                <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
+                <ScalarProperty Name="RutaLog" ColumnName="RutaLog" />
+                <ScalarProperty Name="ImpresoraSabiDos" ColumnName="ImpresoraSabiDos" />
+                <ScalarProperty Name="ImpresoraSabiUno" ColumnName="ImpresoraSabiUno" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
