@@ -116,7 +116,8 @@ namespace HojaResumen.Servicios.PrinterProgramas
                                         {
                                             try
                                             {
-                                                _pr.PrinterSettings.PrinterName = _newSettings.PrinterName;
+                                               // _pr.PrinterSettings.PrinterName = _newSettings.PrinterName;
+                                                _pr.PrinterSettings.PrinterName = impresora;
 
                                                 System.Threading.Thread.Sleep(2000);
                                                 _pr.PrintController = _controller;

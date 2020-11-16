@@ -43,20 +43,24 @@ namespace HojaResumen
             IPrinterNueveDiez _pr910 = new PrinterNueveDiez();
 
 
-            string impresora = "";
+           
 
             using (var context = new CicloAutoclave())
 
             {
                 foreach (var p in context.Parametros)
                 {
-                    int _time = p.Tiempo * 60000;
+                    
 
 
                     do
                     {
                         try
                         {
+                            string impresoraSabiUno = p.ImpresoraSabiUno;
+                            string impresoraSabiDos = p.ImpresoraSabiDos;
+                            int _timeOrigin = p.Tiempo;
+                            int _time = p.Tiempo * 60000;
 
                             var connect = new ApiConnect();
                             connect.ConnectTHLog();
@@ -69,13 +73,13 @@ namespace HojaResumen
                             GetDataSabiDos.ParserSabiDosFile();
 
                             _log.WriteLog("Impresion directa 8 y 20");
-                            _pr820.printOchoVeinte(impresora);
+                            _pr820.printOchoVeinte(impresoraSabiUno);
                             System.Threading.Thread.Sleep(1000);
                             _log.WriteLog("Impresion directa 2,3,4");
-                            _pr234.printDosTresCuatro(impresora);
+                            _pr234.printDosTresCuatro(impresoraSabiUno);
                             System.Threading.Thread.Sleep(1000);
                             _log.WriteLog("Impresion directa 9 y 10");
-                            _pr910.printNueveDiez(impresora);
+                            _pr910.printNueveDiez(impresoraSabiDos);
                             System.Threading.Thread.Sleep(1000);
 
                             System.Threading.Thread.Sleep(1000);
@@ -94,6 +98,8 @@ namespace HojaResumen
 
 
                             _log.WriteLog("PDF Generados...");
+                            _log.WriteLog("Ciclo de recoleccion de datos Finalizado...");
+                            _log.WriteLog("Tiempo de Espera :" +_timeOrigin + "m");
                             System.Threading.Thread.Sleep(_time); //1 MINUTOS
                             _log.WriteLog("\n\n");
                         }

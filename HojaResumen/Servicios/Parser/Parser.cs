@@ -293,10 +293,11 @@ namespace HojaResumen.Servicios.Parser
 
                                             }; RegistroFinal.Add(row); //añado elementos
                                         }
-                                        catch (Exception e)
+                                        catch 
                                         {
                                             //Console.WriteLine(path +"  "+"Los campos No cumplen con el modelo");
-                                            _log.WriteLog(ciclo + "  " + "El archivo contiene errores de origen Debe ser impreso Manualmente");
+                                            _log.WriteLog(ciclo + "  " + "El archivo contiene errores de origen no puede ser resumido, debe ser impreso desde el Autoclave");
+
                                             //Console.WriteLine(e.Message.ToString());
                                             //Console.WriteLine(e.StackTrace);
                                             //Console.WriteLine(e.Source);
