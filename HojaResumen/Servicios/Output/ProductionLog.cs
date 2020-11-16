@@ -32,7 +32,7 @@ namespace HojaResumen.Servicios.Output
                 foreach (var t in context.Parametros)
                 {
                     var _path = t.RutaLog ;
-                    Console.WriteLine(_path);
+                    //Console.WriteLine(_path);
                     Directory.CreateDirectory(_path);
 
                     var fecha = DateTime.Now.ToString("dd/MM/yyyy");

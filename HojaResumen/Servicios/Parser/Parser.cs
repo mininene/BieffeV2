@@ -297,9 +297,9 @@ namespace HojaResumen.Servicios.Parser
                                         {
                                             //Console.WriteLine(path +"  "+"Los campos No cumplen con el modelo");
                                             _log.WriteLog(ciclo + "  " + "El archivo contiene errores de origen Debe ser impreso Manualmente");
-                                            Console.WriteLine(e.Message.ToString());
-                                            Console.WriteLine(e.StackTrace);
-                                            Console.WriteLine(e.Source);
+                                            //Console.WriteLine(e.Message.ToString());
+                                            //Console.WriteLine(e.StackTrace);
+                                            //Console.WriteLine(e.Source);
                                             //_log.WriteLog(ciclo + "  " + "Imprimiendo recordatorio de impresion manual");
                                             //_p.PrinterExc(ciclo + "  " + "Debe ser impreso Manualmente", impresora);
 
@@ -454,7 +454,7 @@ namespace HojaResumen.Servicios.Parser
                 {
                     foreach (var validationError in validationErrors.ValidationErrors)
                     {
-                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        //System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                     }
                 }
             }

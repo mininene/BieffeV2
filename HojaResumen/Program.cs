@@ -55,46 +55,49 @@ namespace HojaResumen
 
                     do
                     {
+                        try
+                        {
 
-                        var connect = new ApiConnect();
-                        connect.ConnectTHLog();
-
-
-                        IParser GetData = new Parser();
-                        GetData.ParserFile();
-
-                        IParserSabiDos GetDataSabiDos = new ParserSabiDos();
-                        GetDataSabiDos.ParserSabiDosFile();
-
-                        _log.WriteLog("Impresion directa 8 y 20");
-                        _pr820.printOchoVeinte(impresora);
-                        System.Threading.Thread.Sleep(1000);
-                        _log.WriteLog("Impresion directa 2,3,4");
-                        _pr234.printDosTresCuatro(impresora);
-                        System.Threading.Thread.Sleep(1000);
-                        _log.WriteLog("Impresion directa 9 y 10");
-                        _pr910.printNueveDiez(impresora);
-                        System.Threading.Thread.Sleep(1000);
-
-                        System.Threading.Thread.Sleep(1000);
-                        ICreator Create = new Creator();
-                        Create.CreatePdf();
-
-                        System.Threading.Thread.Sleep(1000);
-                        ICreatorAmericano CreateAmericano = new CreatorAmericano();
-                        CreateAmericano.CreateAmericanoPdf();
+                            var connect = new ApiConnect();
+                            connect.ConnectTHLog();
 
 
-                        System.Threading.Thread.Sleep(1000);
-                        ICreatorSabiDos CreateDos = new CreatorSabiDos();
-                        CreateDos.CreateSabiDosPDF();
+                            IParser GetData = new Parser();
+                            GetData.ParserFile();
+
+                            IParserSabiDos GetDataSabiDos = new ParserSabiDos();
+                            GetDataSabiDos.ParserSabiDosFile();
+
+                            _log.WriteLog("Impresion directa 8 y 20");
+                            _pr820.printOchoVeinte(impresora);
+                            System.Threading.Thread.Sleep(1000);
+                            _log.WriteLog("Impresion directa 2,3,4");
+                            _pr234.printDosTresCuatro(impresora);
+                            System.Threading.Thread.Sleep(1000);
+                            _log.WriteLog("Impresion directa 9 y 10");
+                            _pr910.printNueveDiez(impresora);
+                            System.Threading.Thread.Sleep(1000);
+
+                            System.Threading.Thread.Sleep(1000);
+                            ICreator Create = new Creator();
+                            Create.CreatePdf();
+
+                            System.Threading.Thread.Sleep(1000);
+                            ICreatorAmericano CreateAmericano = new CreatorAmericano();
+                            CreateAmericano.CreateAmericanoPdf();
+
+
+                            System.Threading.Thread.Sleep(1000);
+                            ICreatorSabiDos CreateDos = new CreatorSabiDos();
+                            CreateDos.CreateSabiDosPDF();
 
 
 
-                        _log.WriteLog("PDF Generados...");
-                        System.Threading.Thread.Sleep(_time); //1 MINUTOS
-                        _log.WriteLog("\n\n");
-
+                            _log.WriteLog("PDF Generados...");
+                            System.Threading.Thread.Sleep(_time); //1 MINUTOS
+                            _log.WriteLog("\n\n");
+                        }
+                        catch { _log.WriteLog("No se ha podido conectar a la base de datos"); }
 
 
                     } while (true);

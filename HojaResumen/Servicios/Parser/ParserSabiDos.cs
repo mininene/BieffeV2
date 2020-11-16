@@ -390,7 +390,7 @@ namespace HojaResumen.Servicios.Parser
                 {
                     foreach (var validationError in validationErrors.ValidationErrors)
                     {
-                        System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
+                        //System.Console.WriteLine("Property: {0} Error: {1}", validationError.PropertyName, validationError.ErrorMessage);
                     }
                 }
             }
