@@ -36,81 +36,112 @@ namespace HojaResumen.WindowsService
 
 
 
-                     try { 
-            
+             try {
+               
+                        //do {
+                      
+
+                  while (true) {
+                     
+                        using (var control = new CicloAutoclave()) {
+
+                          foreach (var t in control.Parametros)  {
+
+                            if (t.Reinicio.Value == true)
+                            {
+
+
+                                _log.WriteLog(t.Reinicio.Value.ToString());
+
+                                using (var context = new CicloAutoclave())
+                                {
+
+
+
+                                    foreach (var p in context.Parametros)
+                                    {
+
+
+
+
+                                        string impresoraSabiUno = p.ImpresoraSabiUno;
+                                        string impresoraSabiDos = p.ImpresoraSabiDos;
+                                        int _timeOrigin = p.Tiempo;
+                                        int _time = p.Tiempo * 60000;
+
+                                        IApiConnect connect = new ApiConnect();
+                                        connect.ConnectTHLog();
+
+
+                                        IParser GetData = new Parser();
+                                        GetData.ParserFile();
+
+                                        IParserSabiDos GetDataSabiDos = new ParserSabiDos();
+                                        GetDataSabiDos.ParserSabiDosFile();
+
+                                        _log.WriteLog("Impresion directa 8 y 20");
+                                        _pr820.printOchoVeinte(impresoraSabiUno);
+                                        System.Threading.Thread.Sleep(1000);
+                                        _log.WriteLog("Impresion directa 2,3,4");
+                                        _pr234.printDosTresCuatro(impresoraSabiUno);
+                                        System.Threading.Thread.Sleep(1000);
+                                        _log.WriteLog("Impresion directa 9 y 10");
+                                        _pr910.printNueveDiez(impresoraSabiDos);
+                                        System.Threading.Thread.Sleep(1000);
+
+                                        System.Threading.Thread.Sleep(1000);
+                                        ICreator Create = new Creator();
+                                        Create.CreatePdf();
+
+                                        System.Threading.Thread.Sleep(1000);
+                                        ICreatorAmericano CreateAmericano = new CreatorAmericano();
+                                        CreateAmericano.CreateAmericanoPdf();
+
+
+                                        System.Threading.Thread.Sleep(1000);
+                                        ICreatorSabiDos CreateDos = new CreatorSabiDos();
+                                        CreateDos.CreateSabiDosPDF();
+
+
+
+                                        _log.WriteLog("PDF Generados...");
+                                        _log.WriteLog("Ciclo de recoleccion de datos Finalizado...");
+                                        _log.WriteLog("Tiempo de Espera :" + _timeOrigin + "m");
+                                        System.Threading.Thread.Sleep(_time); //1 MINUTOS
+                                        _log.WriteLog("\n\n");
+
+
+
+                                    }
+                                }
+
+
+                            }
+                            else
+                            {
+
+                               
+                                IApiConnect connect = null;
+                                    //_log.WriteLog("Sistema detenido..."); _log.WriteLog("Colocar reinicio en 1 para continuar...");
+                                    //_log.WriteLog(t.Reinicio.Value.ToString());
+                             }
+                              
+
+
+
+
+
+
+                                /*}*/
+                            }
                        
 
 
-
-
-                        do {
-
-                           using (var context = new CicloAutoclave()) { 
-                    
-
-
-                                foreach (var p in context.Parametros) { 
-                        
-
-
-
-
-                                    string impresoraSabiUno = p.ImpresoraSabiUno;
-                                    string impresoraSabiDos = p.ImpresoraSabiDos;
-                                    int _timeOrigin = p.Tiempo;
-                                    int _time = p.Tiempo * 60000;
-                                    
-                                    var connect = new ApiConnect();
-                                    connect.ConnectTHLog();
-                                    
-                                    
-                                    IParser GetData = new Parser();
-                                    GetData.ParserFile();
-                                    
-                                    IParserSabiDos GetDataSabiDos = new ParserSabiDos();
-                                    GetDataSabiDos.ParserSabiDosFile();
-                                    
-                                    _log.WriteLog("Impresion directa 8 y 20");
-                                    _pr820.printOchoVeinte(impresoraSabiUno);
-                                    System.Threading.Thread.Sleep(1000);
-                                    _log.WriteLog("Impresion directa 2,3,4");
-                                    _pr234.printDosTresCuatro(impresoraSabiUno);
-                                    System.Threading.Thread.Sleep(1000);
-                                    _log.WriteLog("Impresion directa 9 y 10");
-                                    _pr910.printNueveDiez(impresoraSabiDos);
-                                    System.Threading.Thread.Sleep(1000);
-                                    
-                                    System.Threading.Thread.Sleep(1000);
-                                    ICreator Create = new Creator();
-                                    Create.CreatePdf();
-                                    
-                                    System.Threading.Thread.Sleep(1000);
-                                    ICreatorAmericano CreateAmericano = new CreatorAmericano();
-                                    CreateAmericano.CreateAmericanoPdf();
-                                    
-                                    
-                                    System.Threading.Thread.Sleep(1000);
-                                    ICreatorSabiDos CreateDos = new CreatorSabiDos();
-                                    CreateDos.CreateSabiDosPDF();
-                                    
-                                    
-                                    
-                                    _log.WriteLog("PDF Generados...");
-                                    _log.WriteLog("Ciclo de recoleccion de datos Finalizado...");
-                                    _log.WriteLog("Tiempo de Espera :" + _timeOrigin + "m");
-                                    System.Threading.Thread.Sleep(_time); //1 MINUTOS
-                                    _log.WriteLog("\n\n");
-                                    
-
-
-                                }
-                            }
-
-                        }while (true);
-                    
+                      }
+                   }
             
-                      }         
-                        catch { _log.WriteLog("No se ha podido conectar a la base de datos"); }
+             }         
+              catch { _log.WriteLog("No se ha podido conectar a la base de datos"); }
 
 
 

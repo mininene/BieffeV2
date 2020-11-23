@@ -243,7 +243,7 @@ namespace HojaResumen.Servicios.PrinterProgramas
 
                                         graph.DrawString("TIEMPO TP  TE2  TE3  TE4  TE9 TE10", _font, _solid, new RectangleF(20, 400, _pr.DefaultPageSettings.PrintableArea.Width, _pr.DefaultPageSettings.PrintableArea.Height), _tf);
                                         graph.DrawString(q.TFF6.Substring(0, 6), _font, _solid, new RectangleF(300, 400, _pr.DefaultPageSettings.PrintableArea.Width, _pr.DefaultPageSettings.PrintableArea.Height), _tf);
-                                        graph.DrawString(q.TFF6.Substring(6, 6), _negrita, _solid, new RectangleF(345, 400, _pr.DefaultPageSettings.PrintableArea.Width, _pr.DefaultPageSettings.PrintableArea.Height), _tf);
+                                        graph.DrawString(q.TFF6.Substring(6, 6).Trim(), _negrita, _solid, new RectangleF(345, 400, _pr.DefaultPageSettings.PrintableArea.Width, _pr.DefaultPageSettings.PrintableArea.Height), _tf);
                                         graph.DrawString(q.TFF6.Substring(12), _font, _solid, new RectangleF(370, 400, _pr.DefaultPageSettings.PrintableArea.Width, _pr.DefaultPageSettings.PrintableArea.Height), _tf);
                                         graph.DrawString(q.TFSubF6.Substring(0, 2), _font, _solid, new RectangleF(600, 400, _pr.DefaultPageSettings.PrintableArea.Width, _pr.DefaultPageSettings.PrintableArea.Height), _tf);
                                         graph.DrawString(q.TFSubF6.Substring(2) + " " + "<--[  ]", _negrita, _solid, new RectangleF(605, 400, _pr.DefaultPageSettings.PrintableArea.Width, _pr.DefaultPageSettings.PrintableArea.Height), _tf);

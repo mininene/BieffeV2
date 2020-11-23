@@ -19,5 +19,6 @@ namespace HojaResumen.Modelo.BaseDatosT
         public string ImpresoraSabiDos { get; set; }
         public string RutaLog { get; set; }
         public int Tiempo { get; set; }
+        public Nullable<bool> Reinicio { get; set; }
     }
 }

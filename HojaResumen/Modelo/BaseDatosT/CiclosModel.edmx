@@ -176,6 +176,7 @@
           <Property Name="ImpresoraSabiDos" Type="varchar" MaxLength="100" />
           <Property Name="RutaLog" Type="varchar" MaxLength="300" />
           <Property Name="Tiempo" Type="int" Nullable="false" />
+          <Property Name="Reinicio" Type="bit" />
         </EntityType>
         <EntityContainer Name="CicloAutoclaveModelStoreContainer">
           <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" Schema="dbo" store:Type="Tables" />
@@ -364,6 +365,7 @@
           <Property Name="ImpresoraSabiDos" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="RutaLog" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="Tiempo" Type="Int32" Nullable="false" />
+          <Property Name="Reinicio" Type="Boolean" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -539,6 +541,7 @@
           <EntitySetMapping Name="Parametros">
             <EntityTypeMapping TypeName="CicloAutoclaveModel.Parametros">
               <MappingFragment StoreEntitySet="Parametros">
+                <ScalarProperty Name="Reinicio" ColumnName="Reinicio" />
                 <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
                 <ScalarProperty Name="RutaLog" ColumnName="RutaLog" />
                 <ScalarProperty Name="ImpresoraSabiDos" ColumnName="ImpresoraSabiDos" />
