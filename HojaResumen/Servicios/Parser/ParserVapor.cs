@@ -22,7 +22,7 @@ namespace HojaResumen.Servicios.Parser
             {
 
                 // string path = @"C:\Users\fuenteI3\Desktop\original y pdf\AutoClaveLP10.txt";
-                string Programa = "PROGRAMA";
+                string Programa = "PROGRAMA" ;
                 string Programador = "PROGRAMAD.";
                 string Operador = "OPERADOR";
                 string CodigoP = " CODIGO PROD.";
