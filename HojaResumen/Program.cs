@@ -53,7 +53,7 @@ namespace HojaResumen
             {
                 ConfigureService.Configure();
             }
-            catch { _log.WriteLog("No puede COnectar a la base de datos"); }
+            catch { _log.WriteLog("No puede COnectar a la base de datos" ); }
 
             //HostFactory.Run(hostConfig =>
             //   {
