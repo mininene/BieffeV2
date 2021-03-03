@@ -55,7 +55,7 @@ namespace HojaResumen.Servicios.Parser
                 string Tmax = " TEMP.MAX.ESTERILIZACION";
                 string DFE = " DURACION FASE DE ESTER.";
                 string Fmin = " F(T,z) MIN.:";
-                string Fmax = " F(T,z) MAX.:";
+                string Fmax = " F(T,z) MAX.:" ;
                 string ok = "OK APERTURA";
 
 
