@@ -49,14 +49,15 @@ namespace HojaResumen.Servicios.ApiConnect
 
                         //session
                         uint handle = con.ConnectSession(s.Version, s.IP);
-                            
-                        if (handle != 0) { _log.WriteLog("Sesion Iniciada Correctamente"); 
-                            } else { _log.WriteLog("Sesion No Iniciada-(Equipo Apagado, IP o version Incorrecta)" + " "+"Error: "+ handle);  }
-                        //Console.WriteLine("Valor de Sesion: " + handle);
+                            //Console.WriteLine(handle);
+                            if (handle != 0) { _log.WriteLog("Sesion Iniciada Correctamente"); //sesion caida no avanza
+                            }
+                            else { _log.WriteLog("Sesion No Iniciada-(Falla de Comunicación, IP o version Incorrecta)" + " " + "Error: " + handle); }
+                            //Console.WriteLine("Valor de Sesion: " + handle);
 
 
-                        //Connection
-                        uint lhandle = con.ConnectApi(handle);
+                            //Connection
+                            uint lhandle = con.ConnectApi(handle);
                         if (lhandle == 0) { _log.WriteLog("Conexión Establecida"); } else { _log.WriteLog("No se pudo establecer la Conexión - IP o version Incorrecta" + " " + "Error: " + lhandle); lhandle = 0; }
                         //Console.WriteLine("Valor de Conexion: " + lhandle);
 
@@ -138,9 +139,10 @@ namespace HojaResumen.Servicios.ApiConnect
 
 
                         }
+                           
 
-                        //Close Connection
-                        var close = con.CloseConnection(ref handle);
+                            //Close Connection
+                            var close = con.CloseConnection(ref handle);
                         if (close == 0) { _log.WriteLog("Conexion Cerrada.");  } else { _log.WriteLog("La conexion no pudo ser cerrada"); }
                        
                         _log.WriteLog("\n");

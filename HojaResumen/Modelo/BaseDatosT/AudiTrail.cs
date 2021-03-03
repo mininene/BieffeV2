@@ -12,17 +12,17 @@ namespace HojaResumen.Modelo.BaseDatosT
     using System;
     using System.Collections.Generic;
     
-    public partial class Parametros
+    public partial class AudiTrail
     {
         public int Id { get; set; }
-        public string ImpresoraSabiUno { get; set; }
-        public string ImpresoraSabiDos { get; set; }
-        public string RutaLog { get; set; }
-        public int Tiempo { get; set; }
-        public Nullable<bool> Reinicio { get; set; }
-        public Nullable<int> TSesion { get; set; }
-        public string GUsers { get; set; }
-        public string GSupervisors { get; set; }
-        public string GAdmins { get; set; }
+        public string Usuario { get; set; }
+        public string Tabla { get; set; }
+        public Nullable<System.DateTime> FechaHora { get; set; }
+        public string Evento { get; set; }
+        public string Campo { get; set; }
+        public string Valor { get; set; }
+        public string ValorActualizado { get; set; }
+        public string Comentario { get; set; }
+        public Nullable<System.DateTime> Tiempo { get; set; }
     }
 }

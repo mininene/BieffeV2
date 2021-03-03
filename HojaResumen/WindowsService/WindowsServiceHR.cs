@@ -7,9 +7,11 @@ using HojaResumen.Servicios.PrinterProgramas;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceProcess;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace HojaResumen.WindowsService
 {
@@ -79,6 +81,14 @@ namespace HojaResumen.WindowsService
                                         IParserSabiDos GetDataSabiDos = new ParserSabiDos();
                                         GetDataSabiDos.ParserSabiDosFile();
 
+                                        System.Threading.Thread.Sleep(500);
+                                        IParserAgua agua = new ParserAgua();
+                                        agua.ParserWater();
+
+                                        System.Threading.Thread.Sleep(500);
+                                        IParserVapor vapor = new ParserVapor();
+                                        vapor.ParserVapor();
+
                                         _log.WriteLog("Impresion directa 8 y 20");
                                         _pr820.printOchoVeinte(impresoraSabiUno);
                                         System.Threading.Thread.Sleep(1000);
@@ -109,9 +119,22 @@ namespace HojaResumen.WindowsService
                                         _log.WriteLog("Tiempo de Espera :" + _timeOrigin + "m");
                                         System.Threading.Thread.Sleep(_time); //1 MINUTOS
                                         _log.WriteLog("\n\n");
+                                        System.Threading.Thread.Sleep(10000);
 
+                                        try
+                                        {
+                                            //System.Threading.Thread.Sleep(1000);
+                                            //Environment.Exit(0);
+                                            Stop();
+                                            System.Threading.Thread.Sleep(1000);
+                                            Environment.Exit(0);
+                                            // System.Threading.Thread.Sleep(10000);
 
+                                            //Application.Restart();
+                                            //System.Threading.Thread.Sleep(200);
 
+                                        }
+                                        catch { }
                                     }
                                 }
 
@@ -119,21 +142,26 @@ namespace HojaResumen.WindowsService
                             }
                             else
                             {
-
                                
-                                IApiConnect connect = null;
-                                    //_log.WriteLog("Sistema detenido..."); _log.WriteLog("Colocar reinicio en 1 para continuar...");
-                                    //_log.WriteLog(t.Reinicio.Value.ToString());
-                             }
-                              
+                                
 
+                                //IApiConnect connect = null;
+                                //_log.WriteLog("Sistema detenido..."); _log.WriteLog("Colocar reinicio en 1 para continuar...");
+                                //_log.WriteLog(t.Reinicio.Value.ToString());
+                                //System.Diagnostics.Process.Start(Application.ExecutablePath);
+                                //System.Threading.Thread.Sleep(2000);
+                                //Environment.Exit(0);
 
-
-
-
-
-                                /*}*/
                             }
+
+
+
+
+
+
+
+                            /*}*/
+                        }
                        
 
 

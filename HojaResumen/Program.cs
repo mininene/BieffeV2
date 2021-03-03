@@ -54,6 +54,7 @@ namespace HojaResumen
                 ConfigureService.Configure();
             }
             catch { _log.WriteLog("No puede COnectar a la base de datos"); }
+
             //HostFactory.Run(hostConfig =>
             //   {
             //       hostConfig.Service<WindowsServiceHR>(serviceConfig =>
@@ -73,7 +74,7 @@ namespace HojaResumen
 
             //   });
 
-         
+
 
 
 
@@ -89,77 +90,84 @@ namespace HojaResumen
 
 
 
-            //    using (var context = new CicloAutoclave())
+            //using (var context = new CicloAutoclave())
 
+            //{
+            //    foreach (var p in context.Parametros)
             //    {
-            //        foreach (var p in context.Parametros)
+
+
+
+            //        do
             //        {
-
-
-
-            //            do
+            //            try
             //            {
-            //                try
-            //                {
-            //                    string impresoraSabiUno = p.ImpresoraSabiUno;
-            //                    string impresoraSabiDos = p.ImpresoraSabiDos;
-            //                    int _timeOrigin = p.Tiempo;
-            //                    int _time = p.Tiempo * 60000;
+            //                //string impresoraSabiUno = p.ImpresoraSabiUno;
+            //                //string impresoraSabiDos = p.ImpresoraSabiDos;
+            //                //int _timeOrigin = p.Tiempo;
+            //                //int _time = p.Tiempo * 60000;
 
-            //                    var connect = new ApiConnect();
-            //                    connect.ConnectTHLog();
+            //                //var connect = new ApiConnect();
+            //                //connect.ConnectTHLog();
+            //                //Console.WriteLine("Iniciado agua");
+            //                //IParserAgua agua = new ParserAgua();
+            //                //agua.ParserWater();
 
+            //                //System.Threading.Thread.Sleep(3000);
+            //                //Console.WriteLine("Iniciado vapor");
+            //                //IParserVapor vapor = new ParserVapor();
+            //                //vapor.ParserVapor();
 
-            //                    IParser GetData = new Parser();
-            //                    GetData.ParserFile();
+            //                //IParser GetData = new Parser();
+            //                //GetData.ParserFile();
 
-            //                    IParserSabiDos GetDataSabiDos = new ParserSabiDos();
-            //                    GetDataSabiDos.ParserSabiDosFile();
+            //                //IParserSabiDos GetDataSabiDos = new ParserSabiDos();
+            //                //GetDataSabiDos.ParserSabiDosFile();
 
-            //                    _log.WriteLog("Impresion directa 8 y 20");
-            //                    _pr820.printOchoVeinte(impresoraSabiUno);
-            //                    System.Threading.Thread.Sleep(1000);
-            //                    _log.WriteLog("Impresion directa 2,3,4");
-            //                    _pr234.printDosTresCuatro(impresoraSabiUno);
-            //                    System.Threading.Thread.Sleep(1000);
-            //                    _log.WriteLog("Impresion directa 9 y 10");
-            //                    _pr910.printNueveDiez(impresoraSabiDos);
-            //                    System.Threading.Thread.Sleep(1000);
+            //                //_log.WriteLog("Impresion directa 8 y 20");
+            //                //_pr820.printOchoVeinte(impresoraSabiUno);
+            //                //System.Threading.Thread.Sleep(1000);
+            //                //_log.WriteLog("Impresion directa 2,3,4");
+            //                //_pr234.printDosTresCuatro(impresoraSabiUno);
+            //                //System.Threading.Thread.Sleep(1000);
+            //                //_log.WriteLog("Impresion directa 9 y 10");
+            //                //_pr910.printNueveDiez(impresoraSabiDos);
+            //                //System.Threading.Thread.Sleep(1000);
 
-            //                    System.Threading.Thread.Sleep(1000);
-            //                    ICreator Create = new Creator();
-            //                    Create.CreatePdf();
+            //                //System.Threading.Thread.Sleep(1000);
+            //                //ICreator Create = new Creator();
+            //                //Create.CreatePdf();
 
-            //                    System.Threading.Thread.Sleep(1000);
-            //                    ICreatorAmericano CreateAmericano = new CreatorAmericano();
-            //                    CreateAmericano.CreateAmericanoPdf();
-
-
-            //                    System.Threading.Thread.Sleep(1000);
-            //                    ICreatorSabiDos CreateDos = new CreatorSabiDos();
-            //                    CreateDos.CreateSabiDosPDF();
-
-
-
-            //                    _log.WriteLog("PDF Generados...");
-            //                    _log.WriteLog("Ciclo de recoleccion de datos Finalizado...");
-            //                    _log.WriteLog("Tiempo de Espera :" +_timeOrigin + "m");
-            //                    System.Threading.Thread.Sleep(_time); //1 MINUTOS
-            //                    _log.WriteLog("\n\n");
-            //                }
-            //                catch { _log.WriteLog("No se ha podido conectar a la base de datos"); }
+            //                //System.Threading.Thread.Sleep(1000);
+            //                //ICreatorAmericano CreateAmericano = new CreatorAmericano();
+            //                //CreateAmericano.CreateAmericanoPdf();
 
 
-            //            } while (true);
-            //        }
+            //                //System.Threading.Thread.Sleep(1000);
+            //                //ICreatorSabiDos CreateDos = new CreatorSabiDos();
+            //                //CreateDos.CreateSabiDosPDF();
+
+
+
+            //                //_log.WriteLog("PDF Generados...");
+            //                //_log.WriteLog("Ciclo de recoleccion de datos Finalizado...");
+            //                //_log.WriteLog("Tiempo de Espera :" + _timeOrigin + "m");
+            //                //System.Threading.Thread.Sleep(_time); //1 MINUTOS
+            //                //_log.WriteLog("\n\n");
+            //            }
+            //            catch { /*_log.WriteLog("No se ha podido conectar a la base de datos");*/ }
+
+
+            //        } while (true);
             //    }
             //}
-
-            //}
-
         }
+
     }
+
 }
+    
+
 
 
 

@@ -89,6 +89,13 @@
     <Compile Include="InfraestructuraTransversal\ServicesException\LogException.cs" />
     <Compile Include="InfraestructuraTransversal\ServicesException\ParserException.cs" />
     <Compile Include="InfraestructuraTransversal\ServicesException\PrintException.cs" />
+    <Compile Include="Modelo\Audi.cs" />
+    <Compile Include="Modelo\BaseDatosT\Agua.cs">
+      <DependentUpon>CiclosModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modelo\BaseDatosT\AudiTrail.cs">
+      <DependentUpon>CiclosModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\BaseDatosT\CiclosAutoclaves.cs">
       <DependentUpon>CiclosModel.tt</DependentUpon>
     </Compile>
@@ -116,22 +123,33 @@
     <Compile Include="Modelo\BaseDatosT\Parametros.cs">
       <DependentUpon>CiclosModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Modelo\BaseDatosT\Vapor.cs">
+      <DependentUpon>CiclosModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Modelo\ConnectionData.cs" />
     <Compile Include="Modelo\IdAutoClaveSabiDos.cs" />
     <Compile Include="Modelo\IdAutoclaveSabiUno.cs" />
     <Compile Include="Modelo\Maestro.cs" />
+    <Compile Include="Modelo\ProgramaAgua.cs" />
     <Compile Include="Modelo\ProgramaSabiDos.cs" />
     <Compile Include="Modelo\ProgramaSabiUno.cs" />
+    <Compile Include="Modelo\ProgramaVapor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\ApiConnect\ApiConnect.cs" />
     <Compile Include="Servicios\ApiConnect\IApiConnect.cs" />
+    <Compile Include="Servicios\LogRecord\ILogRecord.cs" />
+    <Compile Include="Servicios\LogRecord\LgRecord.cs" />
     <Compile Include="Servicios\Output\ILog.cs" />
     <Compile Include="Servicios\Output\ProductionLog.cs" />
     <Compile Include="Servicios\Parser\IParser.cs" />
+    <Compile Include="Servicios\Parser\IParserAgua.cs" />
     <Compile Include="Servicios\Parser\IParserSabiDos.cs" />
+    <Compile Include="Servicios\Parser\IParserVapor.cs" />
     <Compile Include="Servicios\Parser\Parser.cs" />
+    <Compile Include="Servicios\Parser\ParserAgua.cs" />
     <Compile Include="Servicios\Parser\ParserSabiDos.cs" />
+    <Compile Include="Servicios\Parser\ParserVapor.cs" />
     <Compile Include="Servicios\PDFCreator\CreatorAmericano.cs" />
     <Compile Include="Servicios\PDFCreator\Creator.cs" />
     <Compile Include="Servicios\PDFCreator\CreatorSabiDos.cs" />

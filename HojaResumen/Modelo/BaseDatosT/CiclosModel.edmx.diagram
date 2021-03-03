@@ -9,6 +9,9 @@
         <EntityTypeShape EntityType="CicloAutoclaveModel.CiclosSabiDos" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="CicloAutoclaveModel.MaestroAutoclave" Width="1.5" PointX="5.375" PointY="0.75" />
         <EntityTypeShape EntityType="CicloAutoclaveModel.Parametros" Width="1.5" PointX="5.375" PointY="4.75" />
+        <EntityTypeShape EntityType="CicloAutoclaveModel.AudiTrail" Width="1.5" PointX="8.25" PointY="1.25" />
+        <EntityTypeShape EntityType="CicloAutoclaveModel.Agua" Width="1.5" PointX="7.375" PointY="5.75" />
+        <EntityTypeShape EntityType="CicloAutoclaveModel.Vapor" Width="1.5" PointX="9.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

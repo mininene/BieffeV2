@@ -5,6 +5,68 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="CicloAutoclaveModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Agua">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idAutoclave" Type="varchar" MaxLength="100" />
+          <Property Name="NCarro" Type="varchar" MaxLength="100" />
+          <Property Name="NProgresivo" Type="varchar" MaxLength="100" />
+          <Property Name="NPrograma" Type="int" />
+          <Property Name="CodProducto" Type="varchar" MaxLength="100" />
+          <Property Name="Lote" Type="varchar" MaxLength="100" />
+          <Property Name="HoraInicio" Type="datetime" />
+          <Property Name="HoraFin" Type="datetime" />
+          <Property Name="DuracionF1" Type="float" />
+          <Property Name="DuracionF2" Type="float" />
+          <Property Name="DuracionF3" Type="float" />
+          <Property Name="DuracionF4" Type="float" />
+          <Property Name="DuracionF5" Type="float" />
+          <Property Name="PInicialF5" Type="float" />
+          <Property Name="DuracionF6" Type="float" />
+          <Property Name="PInicialF6" Type="float" />
+          <Property Name="TE2IF6" Type="float" />
+          <Property Name="TE3IF6" Type="float" />
+          <Property Name="TE4IF6" Type="float" />
+          <Property Name="PFinalF6" Type="float" />
+          <Property Name="TE2FF6" Type="float" />
+          <Property Name="TE3FF6" Type="float" />
+          <Property Name="TE4FF6" Type="float" />
+          <Property Name="FoTE2FF6" Type="float" />
+          <Property Name="FoTE3FF6" Type="float" />
+          <Property Name="FoTE4FF6" Type="float" />
+          <Property Name="TMinimaEst" Type="float" />
+          <Property Name="TMaximaEst" Type="float" />
+          <Property Name="DuracionF7" Type="float" />
+          <Property Name="PFinalF7" Type="float" />
+          <Property Name="DuracionF8" Type="float" />
+          <Property Name="DuracionF9" Type="float" />
+          <Property Name="DuracionF10" Type="float" />
+          <Property Name="DuracionF11" Type="float" />
+          <Property Name="DuracionF12" Type="float" />
+          <Property Name="TTotal" Type="float" />
+          <Property Name="TCalculado" Type="float" />
+          <Property Name="FoTE2FF13" Type="float" />
+          <Property Name="FoTE3FF13" Type="float" />
+          <Property Name="FoTE4FF13" Type="float" />
+          <Property Name="DifFoMaxFoMin" Type="float" />
+        </EntityType>
+        <EntityType Name="AudiTrail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="100" />
+          <Property Name="Tabla" Type="varchar" MaxLength="100" />
+          <Property Name="FechaHora" Type="datetime" />
+          <Property Name="Evento" Type="varchar" MaxLength="100" />
+          <Property Name="Campo" Type="varchar" MaxLength="100" />
+          <Property Name="Valor" Type="varchar" MaxLength="100" />
+          <Property Name="ValorActualizado" Type="varchar" MaxLength="100" />
+          <Property Name="Comentario" Type="varchar" MaxLength="100" />
+          <Property Name="Tiempo" Type="datetime" />
+        </EntityType>
         <EntityType Name="CiclosAutoclaves">
           <Key>
             <PropertyRef Name="Id" />
@@ -176,13 +238,65 @@
           <Property Name="ImpresoraSabiDos" Type="varchar" MaxLength="100" />
           <Property Name="RutaLog" Type="varchar" MaxLength="300" />
           <Property Name="Tiempo" Type="int" Nullable="false" />
+          <Property Name="TSesion" Type="int" />
           <Property Name="Reinicio" Type="bit" />
+          <Property Name="GUsers" Type="varchar" MaxLength="100" />
+          <Property Name="GSupervisors" Type="varchar" MaxLength="100" />
+          <Property Name="GAdmins" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Vapor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idAutoclave" Type="varchar" MaxLength="100" />
+          <Property Name="NCarro" Type="varchar" MaxLength="100" />
+          <Property Name="NProgresivo" Type="varchar" MaxLength="100" />
+          <Property Name="NPrograma" Type="int" />
+          <Property Name="CodProducto" Type="varchar" MaxLength="100" />
+          <Property Name="Lote" Type="varchar" MaxLength="100" />
+          <Property Name="HoraInicio" Type="datetime" />
+          <Property Name="HoraFin" Type="datetime" />
+          <Property Name="DuracionF1" Type="float" />
+          <Property Name="DuracionF2" Type="float" />
+          <Property Name="DuracionF3" Type="float" />
+          <Property Name="PInicialF3" Type="float" />
+          <Property Name="TE2IF3" Type="float" />
+          <Property Name="TE3IF3" Type="float" />
+          <Property Name="TE4IF3" Type="float" />
+          <Property Name="PFinalF3" Type="float" />
+          <Property Name="TE2FF3" Type="float" />
+          <Property Name="TE3FF3" Type="float" />
+          <Property Name="TE4FF3" Type="float" />
+          <Property Name="FoTE2FF3" Type="float" />
+          <Property Name="FoTE3FF3" Type="float" />
+          <Property Name="FoTE4FF3" Type="float" />
+          <Property Name="TMinimaEst" Type="float" />
+          <Property Name="TMaximaEst" Type="float" />
+          <Property Name="DuracionF4" Type="float" />
+          <Property Name="DuracionF5" Type="float" />
+          <Property Name="DuracionF6" Type="float" />
+          <Property Name="DuracionF7A" Type="float" />
+          <Property Name="DuracionF8A" Type="float" />
+          <Property Name="DuracionF7B" Type="float" />
+          <Property Name="DuracionF8B" Type="float" />
+          <Property Name="DuracionF9" Type="float" />
+          <Property Name="DuracionF10" Type="float" />
+          <Property Name="DuracionF11" Type="float" />
+          <Property Name="TTotal" Type="float" />
+          <Property Name="FoTE2FF12" Type="float" />
+          <Property Name="FoTE3FF12" Type="float" />
+          <Property Name="FoTE4FF12" Type="float" />
+          <Property Name="DifFoMaxFoMin" Type="float" />
         </EntityType>
         <EntityContainer Name="CicloAutoclaveModelStoreContainer">
+          <EntitySet Name="Agua" EntityType="Self.Agua" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AudiTrail" EntityType="Self.AudiTrail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CiclosAutoclaves" EntityType="Self.CiclosAutoclaves" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CiclosSabiDos" EntityType="Self.CiclosSabiDos" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MaestroAutoclave" EntityType="Self.MaestroAutoclave" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Parametros" EntityType="Self.Parametros" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vapor" EntityType="Self.Vapor" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -340,6 +454,9 @@
           <EntitySet Name="CiclosSabiDos" EntityType="Self.CiclosSabiDos" />
           <EntitySet Name="MaestroAutoclave" EntityType="CicloAutoclaveModel.MaestroAutoclave" />
           <EntitySet Name="Parametros" EntityType="CicloAutoclaveModel.Parametros" />
+          <EntitySet Name="AudiTrail" EntityType="CicloAutoclaveModel.AudiTrail" />
+          <EntitySet Name="Agua" EntityType="CicloAutoclaveModel.Agua" />
+          <EntitySet Name="Vapor" EntityType="CicloAutoclaveModel.Vapor" />
         </EntityContainer>
         <EntityType Name="MaestroAutoclave">
           <Key>
@@ -366,6 +483,117 @@
           <Property Name="RutaLog" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
           <Property Name="Tiempo" Type="Int32" Nullable="false" />
           <Property Name="Reinicio" Type="Boolean" />
+          <Property Name="TSesion" Type="Int32" />
+          <Property Name="GUsers" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GSupervisors" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GAdmins" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="AudiTrail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tabla" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FechaHora" Type="DateTime" Precision="3" />
+          <Property Name="Evento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Campo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Valor" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ValorActualizado" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Comentario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Tiempo" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Agua">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAutoclave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NCarro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NProgresivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NPrograma" Type="Int32" />
+          <Property Name="CodProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Lote" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HoraInicio" Type="DateTime" Precision="3" />
+          <Property Name="HoraFin" Type="DateTime" Precision="3" />
+          <Property Name="DuracionF1" Type="Double" />
+          <Property Name="DuracionF2" Type="Double" />
+          <Property Name="DuracionF3" Type="Double" />
+          <Property Name="DuracionF4" Type="Double" />
+          <Property Name="DuracionF5" Type="Double" />
+          <Property Name="PInicialF5" Type="Double" />
+          <Property Name="DuracionF6" Type="Double" />
+          <Property Name="PInicialF6" Type="Double" />
+          <Property Name="TE2IF6" Type="Double" />
+          <Property Name="TE3IF6" Type="Double" />
+          <Property Name="TE4IF6" Type="Double" />
+          <Property Name="PFinalF6" Type="Double" />
+          <Property Name="TE2FF6" Type="Double" />
+          <Property Name="TE3FF6" Type="Double" />
+          <Property Name="TE4FF6" Type="Double" />
+          <Property Name="FoTE2FF6" Type="Double" />
+          <Property Name="FoTE3FF6" Type="Double" />
+          <Property Name="FoTE4FF6" Type="Double" />
+          <Property Name="TMinimaEst" Type="Double" />
+          <Property Name="TMaximaEst" Type="Double" />
+          <Property Name="DuracionF7" Type="Double" />
+          <Property Name="PFinalF7" Type="Double" />
+          <Property Name="DuracionF8" Type="Double" />
+          <Property Name="DuracionF9" Type="Double" />
+          <Property Name="DuracionF10" Type="Double" />
+          <Property Name="DuracionF11" Type="Double" />
+          <Property Name="DuracionF12" Type="Double" />
+          <Property Name="TTotal" Type="Double" />
+          <Property Name="TCalculado" Type="Double" />
+          <Property Name="FoTE2FF13" Type="Double" />
+          <Property Name="FoTE3FF13" Type="Double" />
+          <Property Name="FoTE4FF13" Type="Double" />
+          <Property Name="DifFoMaxFoMin" Type="Double" />
+        </EntityType>
+        <EntityType Name="Vapor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idAutoclave" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NCarro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NProgresivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NPrograma" Type="Int32" />
+          <Property Name="CodProducto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Lote" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="HoraInicio" Type="DateTime" Precision="3" />
+          <Property Name="HoraFin" Type="DateTime" Precision="3" />
+          <Property Name="DuracionF1" Type="Double" />
+          <Property Name="DuracionF2" Type="Double" />
+          <Property Name="DuracionF3" Type="Double" />
+          <Property Name="PInicialF3" Type="Double" />
+          <Property Name="TE2IF3" Type="Double" />
+          <Property Name="TE3IF3" Type="Double" />
+          <Property Name="TE4IF3" Type="Double" />
+          <Property Name="PFinalF3" Type="Double" />
+          <Property Name="TE2FF3" Type="Double" />
+          <Property Name="TE3FF3" Type="Double" />
+          <Property Name="TE4FF3" Type="Double" />
+          <Property Name="FoTE2FF3" Type="Double" />
+          <Property Name="FoTE3FF3" Type="Double" />
+          <Property Name="FoTE4FF3" Type="Double" />
+          <Property Name="TMinimaEst" Type="Double" />
+          <Property Name="TMaximaEst" Type="Double" />
+          <Property Name="DuracionF4" Type="Double" />
+          <Property Name="DuracionF5" Type="Double" />
+          <Property Name="DuracionF6" Type="Double" />
+          <Property Name="DuracionF7A" Type="Double" />
+          <Property Name="DuracionF8A" Type="Double" />
+          <Property Name="DuracionF7B" Type="Double" />
+          <Property Name="DuracionF8B" Type="Double" />
+          <Property Name="DuracionF9" Type="Double" />
+          <Property Name="DuracionF10" Type="Double" />
+          <Property Name="DuracionF11" Type="Double" />
+          <Property Name="TTotal" Type="Double" />
+          <Property Name="FoTE2FF12" Type="Double" />
+          <Property Name="FoTE3FF12" Type="Double" />
+          <Property Name="FoTE4FF12" Type="Double" />
+          <Property Name="DifFoMaxFoMin" Type="Double" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -541,11 +769,125 @@
           <EntitySetMapping Name="Parametros">
             <EntityTypeMapping TypeName="CicloAutoclaveModel.Parametros">
               <MappingFragment StoreEntitySet="Parametros">
+                <ScalarProperty Name="GAdmins" ColumnName="GAdmins" />
+                <ScalarProperty Name="GSupervisors" ColumnName="GSupervisors" />
+                <ScalarProperty Name="GUsers" ColumnName="GUsers" />
+                <ScalarProperty Name="TSesion" ColumnName="TSesion" />
                 <ScalarProperty Name="Reinicio" ColumnName="Reinicio" />
                 <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
                 <ScalarProperty Name="RutaLog" ColumnName="RutaLog" />
                 <ScalarProperty Name="ImpresoraSabiDos" ColumnName="ImpresoraSabiDos" />
                 <ScalarProperty Name="ImpresoraSabiUno" ColumnName="ImpresoraSabiUno" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AudiTrail">
+            <EntityTypeMapping TypeName="CicloAutoclaveModel.AudiTrail">
+              <MappingFragment StoreEntitySet="AudiTrail">
+                <ScalarProperty Name="Tiempo" ColumnName="Tiempo" />
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="ValorActualizado" ColumnName="ValorActualizado" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Campo" ColumnName="Campo" />
+                <ScalarProperty Name="Evento" ColumnName="Evento" />
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
+                <ScalarProperty Name="Tabla" ColumnName="Tabla" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Agua">
+            <EntityTypeMapping TypeName="CicloAutoclaveModel.Agua">
+              <MappingFragment StoreEntitySet="Agua">
+                <ScalarProperty Name="DifFoMaxFoMin" ColumnName="DifFoMaxFoMin" />
+                <ScalarProperty Name="FoTE4FF13" ColumnName="FoTE4FF13" />
+                <ScalarProperty Name="FoTE3FF13" ColumnName="FoTE3FF13" />
+                <ScalarProperty Name="FoTE2FF13" ColumnName="FoTE2FF13" />
+                <ScalarProperty Name="TCalculado" ColumnName="TCalculado" />
+                <ScalarProperty Name="TTotal" ColumnName="TTotal" />
+                <ScalarProperty Name="DuracionF12" ColumnName="DuracionF12" />
+                <ScalarProperty Name="DuracionF11" ColumnName="DuracionF11" />
+                <ScalarProperty Name="DuracionF10" ColumnName="DuracionF10" />
+                <ScalarProperty Name="DuracionF9" ColumnName="DuracionF9" />
+                <ScalarProperty Name="DuracionF8" ColumnName="DuracionF8" />
+                <ScalarProperty Name="PFinalF7" ColumnName="PFinalF7" />
+                <ScalarProperty Name="DuracionF7" ColumnName="DuracionF7" />
+                <ScalarProperty Name="TMaximaEst" ColumnName="TMaximaEst" />
+                <ScalarProperty Name="TMinimaEst" ColumnName="TMinimaEst" />
+                <ScalarProperty Name="FoTE4FF6" ColumnName="FoTE4FF6" />
+                <ScalarProperty Name="FoTE3FF6" ColumnName="FoTE3FF6" />
+                <ScalarProperty Name="FoTE2FF6" ColumnName="FoTE2FF6" />
+                <ScalarProperty Name="TE4FF6" ColumnName="TE4FF6" />
+                <ScalarProperty Name="TE3FF6" ColumnName="TE3FF6" />
+                <ScalarProperty Name="TE2FF6" ColumnName="TE2FF6" />
+                <ScalarProperty Name="PFinalF6" ColumnName="PFinalF6" />
+                <ScalarProperty Name="TE4IF6" ColumnName="TE4IF6" />
+                <ScalarProperty Name="TE3IF6" ColumnName="TE3IF6" />
+                <ScalarProperty Name="TE2IF6" ColumnName="TE2IF6" />
+                <ScalarProperty Name="PInicialF6" ColumnName="PInicialF6" />
+                <ScalarProperty Name="DuracionF6" ColumnName="DuracionF6" />
+                <ScalarProperty Name="PInicialF5" ColumnName="PInicialF5" />
+                <ScalarProperty Name="DuracionF5" ColumnName="DuracionF5" />
+                <ScalarProperty Name="DuracionF4" ColumnName="DuracionF4" />
+                <ScalarProperty Name="DuracionF3" ColumnName="DuracionF3" />
+                <ScalarProperty Name="DuracionF2" ColumnName="DuracionF2" />
+                <ScalarProperty Name="DuracionF1" ColumnName="DuracionF1" />
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+                <ScalarProperty Name="NPrograma" ColumnName="NPrograma" />
+                <ScalarProperty Name="NProgresivo" ColumnName="NProgresivo" />
+                <ScalarProperty Name="NCarro" ColumnName="NCarro" />
+                <ScalarProperty Name="idAutoclave" ColumnName="idAutoclave" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vapor">
+            <EntityTypeMapping TypeName="CicloAutoclaveModel.Vapor">
+              <MappingFragment StoreEntitySet="Vapor">
+                <ScalarProperty Name="DifFoMaxFoMin" ColumnName="DifFoMaxFoMin" />
+                <ScalarProperty Name="FoTE4FF12" ColumnName="FoTE4FF12" />
+                <ScalarProperty Name="FoTE3FF12" ColumnName="FoTE3FF12" />
+                <ScalarProperty Name="FoTE2FF12" ColumnName="FoTE2FF12" />
+                <ScalarProperty Name="TTotal" ColumnName="TTotal" />
+                <ScalarProperty Name="DuracionF11" ColumnName="DuracionF11" />
+                <ScalarProperty Name="DuracionF10" ColumnName="DuracionF10" />
+                <ScalarProperty Name="DuracionF9" ColumnName="DuracionF9" />
+                <ScalarProperty Name="DuracionF8B" ColumnName="DuracionF8B" />
+                <ScalarProperty Name="DuracionF7B" ColumnName="DuracionF7B" />
+                <ScalarProperty Name="DuracionF8A" ColumnName="DuracionF8A" />
+                <ScalarProperty Name="DuracionF7A" ColumnName="DuracionF7A" />
+                <ScalarProperty Name="DuracionF6" ColumnName="DuracionF6" />
+                <ScalarProperty Name="DuracionF5" ColumnName="DuracionF5" />
+                <ScalarProperty Name="DuracionF4" ColumnName="DuracionF4" />
+                <ScalarProperty Name="TMaximaEst" ColumnName="TMaximaEst" />
+                <ScalarProperty Name="TMinimaEst" ColumnName="TMinimaEst" />
+                <ScalarProperty Name="FoTE4FF3" ColumnName="FoTE4FF3" />
+                <ScalarProperty Name="FoTE3FF3" ColumnName="FoTE3FF3" />
+                <ScalarProperty Name="FoTE2FF3" ColumnName="FoTE2FF3" />
+                <ScalarProperty Name="TE4FF3" ColumnName="TE4FF3" />
+                <ScalarProperty Name="TE3FF3" ColumnName="TE3FF3" />
+                <ScalarProperty Name="TE2FF3" ColumnName="TE2FF3" />
+                <ScalarProperty Name="PFinalF3" ColumnName="PFinalF3" />
+                <ScalarProperty Name="TE4IF3" ColumnName="TE4IF3" />
+                <ScalarProperty Name="TE3IF3" ColumnName="TE3IF3" />
+                <ScalarProperty Name="TE2IF3" ColumnName="TE2IF3" />
+                <ScalarProperty Name="PInicialF3" ColumnName="PInicialF3" />
+                <ScalarProperty Name="DuracionF3" ColumnName="DuracionF3" />
+                <ScalarProperty Name="DuracionF2" ColumnName="DuracionF2" />
+                <ScalarProperty Name="DuracionF1" ColumnName="DuracionF1" />
+                <ScalarProperty Name="HoraFin" ColumnName="HoraFin" />
+                <ScalarProperty Name="HoraInicio" ColumnName="HoraInicio" />
+                <ScalarProperty Name="Lote" ColumnName="Lote" />
+                <ScalarProperty Name="CodProducto" ColumnName="CodProducto" />
+                <ScalarProperty Name="NPrograma" ColumnName="NPrograma" />
+                <ScalarProperty Name="NProgresivo" ColumnName="NProgresivo" />
+                <ScalarProperty Name="NCarro" ColumnName="NCarro" />
+                <ScalarProperty Name="idAutoclave" ColumnName="idAutoclave" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

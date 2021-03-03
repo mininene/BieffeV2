@@ -1,5 +1,6 @@
 ﻿using HojaResumen.Modelo;
 using HojaResumen.Modelo.BaseDatosT;
+using HojaResumen.Servicios.LogRecord;
 using HojaResumen.Servicios.Output;
 using HojaResumen.Servicios.PrinterEx;
 using PdfSharp.Drawing;
@@ -24,6 +25,7 @@ namespace HojaResumen.Servicios.Parser
     public class Parser : IParser
     {
         ILog _log = new ProductionLog();
+        ILogRecord _logR = new LgRecord();
         string impresora = "AdmiCopy_Local";
         IPrinterExc _p = new PrinterExc();
        
@@ -296,8 +298,23 @@ namespace HojaResumen.Servicios.Parser
                                         catch 
                                         {
                                             //Console.WriteLine(path +"  "+"Los campos No cumplen con el modelo");
-                                            _log.WriteLog(ciclo + "  " + "El archivo contiene errores de origen no puede ser resumido, debe ser impreso desde el Autoclave");
+                                            _log.WriteLog(ciclo + "  " + "1.El archivo contiene errores de origen no puede ser resumido, debe ser impreso desde el Autoclave");
 
+                                            var dupl = context.AudiTrail.Count(a => a.Evento == ciclo + "Advertencia");
+                                            if (dupl == 0)
+                                            {
+                                                _logR.Writer("Automático", DateTime.Now, ciclo + "Advertencia", "Error de Origen,No puede ser Resumido");
+                                                using (var par = new CicloAutoclave())
+                                                {
+                                                    foreach (var tr in context.Parametros)
+                                                    {
+                                                        string impresoraSabiUno = tr.ImpresoraSabiUno;
+                                                        _p.PrinterExc(ciclo + "  " + "Debe ser impreso desde el Autoclave", impresoraSabiUno);
+                                                    }
+                                                }
+
+                                            }
+                                            else { }
                                             //Console.WriteLine(e.Message.ToString());
                                             //Console.WriteLine(e.StackTrace);
                                             //Console.WriteLine(e.Source);
@@ -409,7 +426,9 @@ namespace HojaResumen.Servicios.Parser
                                         {
                                             if (ciclos.Programa != null)
                                             {
-                                                if (ciclos.Programa.Trim().Equals("2") || ciclos.Programa.Trim().Equals("3") || ciclos.Programa.Trim().Equals("4") || ciclos.Programa.Trim().Equals("8") || ciclos.Programa.Trim().Equals("20"))
+                                                int ciclosInt = Convert.ToInt32(ciclos.Programa.Trim());
+                                               // if (ciclos.Programa.Trim().Equals("2") || ciclos.Programa.Trim().Equals("3") || ciclos.Programa.Trim().Equals("4") || ciclos.Programa.Trim().Equals("8") || ciclos.Programa.Trim().Equals("20"))
+                                               if(ciclosInt > 0)
                                                 {
                                                     if (duplicado == 0)
                                                     {
@@ -419,13 +438,32 @@ namespace HojaResumen.Servicios.Parser
                                                     else { /*Console.WriteLine("Registros Duplicados y Registros JKL");*/ }
 
                                                 }
-                                                else { _log.WriteLog("Pertenece a otro programa" + ciclos.IdAutoclave + ciclos.NumeroCiclo); }
+                                                else { _log.WriteLog(ciclos.IdAutoclave+" "+ "Ciclo: " + ciclos.NumeroCiclo + " "+"Pertenece a otro programa: "+ ciclos.Programa); }
                                             }
 
                                         }
                                         catch
                                         {
-                                            _log.WriteLog(ciclo + "  " + "El archivo contiene errores de origen no puede ser resumido, debe ser impreso desde el Autoclave");
+                                            _log.WriteLog(ciclo + "  " + "2.El archivo contiene errores de origen no puede ser resumido, debe ser impreso desde el Autoclave");
+                                            var dupl = context.AudiTrail.Count(a => a.Evento == ciclo + "Advertencia");
+                                             if (dupl == 0)
+                                              {
+                                                
+
+                                                _logR.Writer("Automático", DateTime.Now, ciclo + "Advertencia", "Error de Origen,No puede ser Resumido");
+                                            using (var par = new CicloAutoclave())
+                                            {
+                                                foreach (var tr in context.Parametros)
+                                                {
+                                                    string impresoraSabiUno = tr.ImpresoraSabiUno;
+                                                    _p.PrinterExc(ciclo + "  " + "Debe ser impreso desde el Autoclave", impresoraSabiUno);
+                                                  }
+                                            }
+
+                                              }
+                                               else { _log.WriteLog(ciclo + "  " + "Duplicado"); }
+
+
                                         }
 
 
