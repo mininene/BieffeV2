@@ -56,7 +56,7 @@ namespace HojaResumen.Servicios.Parser
                 string DFE = " DURACION FASE DE ESTER.";
                 string Fmin = " F(T,z) MIN.:";
                 string Fmax = " F(T,z) MAX.:";
-                string ok = "OK APERTURA";
+                string ok = "OK APERTURA" ;
 
 
                 using (var context = new CicloAutoclave()) //entidad de data entity
