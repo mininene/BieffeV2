@@ -399,7 +399,7 @@ namespace HojaResumen.Servicios.Parser
                                     }
                                     else { /*_log.WriteLog(ciclo + " " + "El archivo todavia No ha sido generado por el Autoclave");*/ }
                                 }
-                                else { /*_log.WriteLog("");*/  }
+                                else { /*_log.WriteLog("");*/ }
 
                                 // catch del nuevo contexto
 
