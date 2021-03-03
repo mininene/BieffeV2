@@ -424,9 +424,9 @@ namespace HojaResumen.Servicios.Parser
 
                                         try
                                         {
-                                            if (ciclos.Programa != null)
+                                            if (ciclos.Programa != null )
                                             {
-                                                int ciclosInt = Convert.ToInt32(ciclos.Programa.Trim());
+                                                int ciclosInt =  Convert.ToInt32(ciclos.Programa.Trim());
                                                // if (ciclos.Programa.Trim().Equals("2") || ciclos.Programa.Trim().Equals("3") || ciclos.Programa.Trim().Equals("4") || ciclos.Programa.Trim().Equals("8") || ciclos.Programa.Trim().Equals("20"))
                                                if(ciclosInt > 0)
                                                 {
