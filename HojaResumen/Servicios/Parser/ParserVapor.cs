@@ -326,7 +326,7 @@ namespace HojaResumen.Servicios.Parser
                                         {
                                             if (ciclos.NPrograma != null)
                                             {
-                                                if (ciclos.NPrograma>=9)
+                                                if (ciclos.NPrograma>0)
                                                 {
 
                                                     if (duplicado == 0)

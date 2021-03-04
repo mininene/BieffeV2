@@ -52,8 +52,9 @@ namespace HojaResumen.Servicios.PrinterProgramas
 
                             if (n.Estado == true)
                             {
-
-                                if (q.Programa.Trim().Equals("9") || q.Programa.Trim().Equals("10"))
+                                int programaInt = Convert.ToInt32(q.Programa.Trim());
+                               // if (q.Programa.Trim().Equals("9") || q.Programa.Trim().Equals("10"))
+                               if(programaInt>0)
                                 {
 
 

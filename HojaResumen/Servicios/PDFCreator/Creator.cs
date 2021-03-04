@@ -59,7 +59,9 @@ namespace HojaResumen.Servicios.PDFCreator
 
                             if (n.Estado == true)
                             {
-                                if (q.Programa.Trim().Equals("8") || q.Programa.Trim().Equals("20"))
+                                int programaInt = Convert.ToInt32(q.Programa.Trim());
+                               // if (q.Programa.Trim().Equals("8") || q.Programa.Trim().Equals("20"))
+                               if(programaInt>=5)
                                 {
                                     //foreach (var q in query)
 
