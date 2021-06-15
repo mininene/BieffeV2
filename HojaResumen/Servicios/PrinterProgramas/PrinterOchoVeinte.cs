@@ -27,7 +27,6 @@ namespace HojaResumen.Servicios.PrinterProgramas
             
 
 
-
                     using (var context = new CicloAutoclave())
 
                     {
