@@ -427,8 +427,8 @@ namespace HojaResumen.Servicios.Parser
                                             if (ciclos.Programa != null )
                                             {
                                                 int ciclosInt =  Convert.ToInt32(ciclos.Programa.Trim());
-                                               // if (ciclos.Programa.Trim().Equals("2") || ciclos.Programa.Trim().Equals("3") || ciclos.Programa.Trim().Equals("4") || ciclos.Programa.Trim().Equals("8") || ciclos.Programa.Trim().Equals("20"))
-                                               if(ciclosInt > 0)
+                                              //  if (ciclos.Programa.Trim().Equals("2") || ciclos.Programa.Trim().Equals("3") || ciclos.Programa.Trim().Equals("4") || ciclos.Programa.Trim().Equals("8") || ciclos.Programa.Trim().Equals("20"))
+                                               if(ciclosInt==2 || ciclosInt == 3 || ciclosInt == 4 || ciclosInt == 8 || ciclosInt == 20)
                                                 {
                                                     if (duplicado == 0)
                                                     {

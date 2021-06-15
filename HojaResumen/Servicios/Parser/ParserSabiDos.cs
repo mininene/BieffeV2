@@ -375,7 +375,7 @@ namespace HojaResumen.Servicios.Parser
                                             {
                                                 // if (ciclos.Programa.Trim().Equals("9") || ciclos.Programa.Trim().Equals("10"))
                                                 int ciclosInt = Convert.ToInt32(ciclos.Programa.Trim());
-                                                if (ciclosInt>=9)
+                                                if (ciclosInt>=9 && ciclosInt<=11)
                                                 {
 
                                                     if (duplicado == 0)

@@ -95,7 +95,7 @@ namespace HojaResumen.WindowsService
                                         _log.WriteLog("Impresion directa 2,3,4");
                                         _pr234.printDosTresCuatro(impresoraSabiUno);
                                         System.Threading.Thread.Sleep(1000);
-                                        _log.WriteLog("Impresion directa 9 y 10");
+                                        _log.WriteLog("Impresion directa 9,10,11");
                                         _pr910.printNueveDiez(impresoraSabiDos);
                                         System.Threading.Thread.Sleep(1000);
 

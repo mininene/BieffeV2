@@ -47,14 +47,20 @@ namespace HojaResumen.Servicios.PDFCreator
 
                         try
                         {
-                            var q = (from x in context.CiclosSabiDos.Where(x => x.IdAutoclave == t.Autoclave)
+                            var actualx = Regex.Replace(n.UltimoCiclo, "\\d+",
+                              m => (int.Parse(m.Value) - 1).ToString(new string('0', m.Value.Length))); // le resto uno al valor del ciclo actual y obtengo el anterior
+                            var num = Convert.ToInt32(actualx).ToString();
+
+                            var q = (from x in context.CiclosSabiDos.Where(x => x.IdAutoclave == t.Autoclave && x.NumeroCiclo==num)
                                      .OrderByDescending(s => s.Id)
                                      select x).First();
 
 
                             if (n.Estado == true)
                             {
-                                if (q.Programa.Trim().Equals("9") || q.Programa.Trim().Equals("10"))
+                                int programaInt = Convert.ToInt32(q.Programa.Trim());
+                               // if (q.Programa.Trim().Equals("9") || q.Programa.Trim().Equals("10"))
+                               if(programaInt>=9 && programaInt<=11)
                                 {
 
                                     //foreach (var q in query)
@@ -118,7 +124,7 @@ namespace HojaResumen.Servicios.PDFCreator
                                     graph.DrawString(q.DuracionTotalF2, negrita, XBrushes.Black, new XRect(320, 175, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                                     graph.DrawString("min.s", font, XBrushes.Black, new XRect(350, 175, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                                     graph.DrawString("<--[  ]", negrita, XBrushes.Black, new XRect(375, 175, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                                    graph.DrawString(q.TInicio, negrita, XBrushes.Black, new XRect(460, 175, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                    graph.DrawString("I " + " " + q.TInicio, negrita, XBrushes.Black, new XRect(460, 175, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
                                     graph.DrawString("TIEMPO TP  TE2  TE3  TE4  TE9 TE10", font, XBrushes.Black, new XRect(20, 190, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                                     graph.DrawString(q.TIF2, font, XBrushes.Black, new XRect(230, 190, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
@@ -199,7 +205,7 @@ namespace HojaResumen.Servicios.PDFCreator
                                     graph.DrawString(q.DuracionTotalF11 + " " + "min.s", font, XBrushes.Black, new XRect(320, 455, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
                                     graph.DrawString("FASE 12: FIN DE CICLO         TIEMPO TP  TE2  TE3  TE4  TE9 TE10", font, XBrushes.Black, new XRect(20, 475, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                                    graph.DrawString(q.TIF12.Substring(0, 6) , font, XBrushes.Black, new XRect(20, 490, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                    graph.DrawString(q.TIF12.Substring(0, 6) + " " + "<--[  ]", negrita, XBrushes.Black, new XRect(20, 490, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                                     graph.DrawString(q.TIF12.Substring(6), font, XBrushes.Black, new XRect(160, 490, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                                     graph.DrawString(q.TISubF12.Substring(0, 2), font, XBrushes.Black, new XRect(460, 490, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                                     graph.DrawString(q.TISubF12.Substring(2) + " " + "<--[  ]", negrita, XBrushes.Black, new XRect(465, 490, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
@@ -247,19 +253,57 @@ namespace HojaResumen.Servicios.PDFCreator
                                     graph.DrawString(q.AperturaPuerta, font, XBrushes.Black, new XRect(20, 645, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                                     graph.DrawString("FIRMA OPERADOR        _______________________ ", font, XBrushes.Black, new XRect(20, 685, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
                                     graph.DrawString("FIRMA GAR.DE CALID.   _______________________ ", font, XBrushes.Black, new XRect(20, 725, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                                    graph.DrawString("Pág 1 de 1  ", font, XBrushes.Black, new XRect(480, 800, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-
+                                   
 
                                     if (q.ErrorCiclo == "")
                                     {
-                                        graph.DrawString("ALARMAS:", fontDos, XBrushes.Black, new XRect(340, 510, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                                        graph.DrawString("* NO EXISTEN ALARMAS REGISTRADAS", fontDos, XBrushes.Black, new XRect(340, 520, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                        graph.DrawString("Pág 1 de 1  ", font, XBrushes.Black, new XRect(480, 800, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+
+                                        //graph.DrawString("ALARMAS:", fontDos, XBrushes.Black, new XRect(340, 510, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                        //graph.DrawString("* NO EXISTEN ALARMAS REGISTRADAS", fontDos, XBrushes.Black, new XRect(340, 520, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
 
                                     }
                                     else
                                     {
-                                        graph.DrawString("ALARMAS:", fontDos, XBrushes.Black, new XRect(340, 510, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
-                                        tf.DrawString(q.ErrorCiclo, fontDos, XBrushes.Black, rect, XStringFormats.TopLeft);
+                                        string[] error = q.ErrorCiclo.Split('\n');
+                                        if (error.Count() > 24)
+                                        {
+                                            PdfPage pdfPage2 = pdf.AddPage();
+                                            XGraphics graph2 = XGraphics.FromPdfPage(pdfPage2);
+                                            graph2.DrawString("ID. MAQUINA:" + "  " + q.IdAutoclave, font, XBrushes.Black, new XRect(20, 5, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                            graph2.DrawString("N.PROGRESIVO:" + "  " + q.NumeroCiclo, font, XBrushes.Black, new XRect(140, 5, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                            graph2.DrawString("Informe de ciclo de esterilización", font, XBrushes.Black, new XRect(270, 5, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                            graph2.DrawString("Impreso: " + DateTime.Now, font, XBrushes.Black, new XRect(440, 5, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                            graph2.DrawString("Por: Automático ", font, XBrushes.Black, new XRect(440, 15, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                            graph.DrawString("ALARMAS:", fontDos, XBrushes.Black, new XRect(340, 510, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+
+                                            for (int i = 0; i < error.Length; i++)
+                                            {
+                                                if (i >= 0 && i <= 24)
+                                                {
+                                                    graph.DrawString(error[i], fontDos, XBrushes.Black, new XRect(340, 520 + i * 10, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                                }
+                                                if (i > 24)
+                                                {
+                                                    graph2.DrawString(error[i], fontDos, XBrushes.Black, new XRect(50, 30 + (i - 25) * 10, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                                }
+
+                                            }
+
+                                            graph.DrawString("Pág 1 de 2  ", font, XBrushes.Black, new XRect(480, 800, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                            graph2.DrawString("Pág 2 de 2  ", font, XBrushes.Black, new XRect(480, 800, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+
+
+                                        }
+                                        else
+                                        {
+                                            graph.DrawString("ALARMAS:", fontDos, XBrushes.Black, new XRect(340, 510, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                            tf.DrawString(q.ErrorCiclo, fontDos, XBrushes.Black, rect, XStringFormats.TopLeft);
+                                            graph.DrawString("Pág 1 de 1  ", font, XBrushes.Black, new XRect(480, 800, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+
+                                        }
+                                        //graph.DrawString("ALARMAS:", fontDos, XBrushes.Black, new XRect(340, 510, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopLeft);
+                                        //tf.DrawString(q.ErrorCiclo, fontDos, XBrushes.Black, rect, XStringFormats.TopLeft);
                                     }
 
 

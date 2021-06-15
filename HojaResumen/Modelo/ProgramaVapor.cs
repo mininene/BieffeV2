@@ -19,6 +19,7 @@ namespace HojaResumen.Modelo
         public Nullable<System.DateTime> HoraFin { get; set; }
         public Nullable<double> DuracionF1 { get; set; }
         public Nullable<double> DuracionF2 { get; set; }
+        public Nullable<double> PFinalF2 { get; set; }
         public Nullable<double> DuracionF3 { get; set; }
         public Nullable<double> PInicialF3 { get; set; }
         public Nullable<double> TE2IF3 { get; set; }

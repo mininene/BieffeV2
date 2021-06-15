@@ -202,18 +202,18 @@ namespace HojaResumen.Servicios.Parser
                                             // var DF13 = Math.Round((int.Parse(F13[0]) + double.Parse(F13[1]) / 60), 2);
                                             // var DF14 = Math.Round((int.Parse(Fc[0]) + double.Parse(Fc[1]) / 60), 2);
                                             Console.WriteLine(RegistroPie[3].Replace(" ", String.Empty).Substring(25, 5).Trim());
-                                            
+
 
                                             ProgramaVapor row = new ProgramaVapor
                                             {
                                                 idAutoclave = RegistroEncabezado[5].Replace(" ", String.Empty).Substring(10).Trim(),
                                                 NProgresivo = RegistroEncabezado[7].Replace(" ", String.Empty).Substring(12).Trim(),
                                                 NPrograma = Convert.ToInt32(RegistroEncabezado[0].Replace(" ", String.Empty).Substring(8).Trim()),
-                                               
+
                                                 CodProducto = RegistroEncabezado[3].Replace(" ", String.Empty).Substring(11).Trim(),
                                                 Lote = RegistroEncabezado[4].Replace(" ", String.Empty).Substring(6).Trim(),
-                                                HoraInicio= Convert.ToDateTime(RegistroPie[0].Substring(22).Trim()),
-                                                HoraFin= Convert.ToDateTime(RegistroPie[1].Substring(22).Trim()),
+                                                HoraInicio = Convert.ToDateTime(RegistroPie[0].Substring(22).Trim()),
+                                                HoraFin = Convert.ToDateTime(RegistroPie[1].Substring(22).Trim()),
                                                 NCarro = texts[12] + texts[13] + texts[14],
 
                                                 DuracionF1 = DF1,
@@ -230,6 +230,8 @@ namespace HojaResumen.Servicios.Parser
                                                 DuracionF10 = DF10,
                                                 DuracionF11 = DF11,
                                                 TTotal = DF12,
+                                                
+                                                PFinalF2 = double.Parse(RegistroTF[1].Substring(2).Trim().Substring(8, 5).Trim(), CultureInfo.InvariantCulture),
 
                                                 PInicialF3 = double.Parse(RegistroCiclos[13].Substring(2).Trim().Substring(8, 5).Trim(), CultureInfo.InvariantCulture),
                                                 TE2IF3 = double.Parse(RegistroCiclos[13].Substring(2).Trim().Substring(14, 5), CultureInfo.InvariantCulture),
@@ -296,6 +298,7 @@ namespace HojaResumen.Servicios.Parser
                                             ciclos.DuracionF11 = s.DuracionF11;
                                             ciclos.TTotal = s.TTotal;
 
+                                            ciclos.PFinalF2 = s.PFinalF2;
                                             ciclos.PInicialF3 = s.PInicialF3;
                                             ciclos.TE2IF3 = s.TE2IF3;
                                             ciclos.TE3IF3 = s.TE3IF3;
@@ -326,7 +329,8 @@ namespace HojaResumen.Servicios.Parser
                                         {
                                             if (ciclos.NPrograma != null)
                                             {
-                                                if (ciclos.NPrograma>=9)
+                                                //if (ciclos.NPrograma>0)
+                                                if(ciclos.NPrograma>=9 && ciclos.NPrograma<=11)
                                                 {
 
                                                     if (duplicado == 0)
