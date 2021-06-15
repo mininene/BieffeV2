@@ -23,8 +23,7 @@ namespace HojaResumen.Servicios.PrinterProgramas
 
         ILog _log = new ProductionLog();
         public void printOchoVeinte(string impresora)
-        {
-            
+        {            
 
 
                     using (var context = new CicloAutoclave())
