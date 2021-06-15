@@ -355,6 +355,7 @@ namespace HojaResumen.Servicios.PrinterProgramas
                                         }
                                         else
                                         {
+
                                             string[] error = q.ErrorCiclo.Split('\n');
                                             if (error.Count() > 24)
                                             {
