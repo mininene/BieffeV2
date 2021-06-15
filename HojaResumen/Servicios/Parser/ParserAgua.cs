@@ -225,11 +225,12 @@ namespace HojaResumen.Servicios.Parser
                                             var PiF5= double.Parse(RegistroTF[1].Substring(8, 9).Trim(), CultureInfo.InvariantCulture);
                                             var PiF6 = double.Parse(RegistroCiclos[28].Substring(8, 9).Trim(), CultureInfo.InvariantCulture);
 
-
+                                            var FoTE4FF6 = RegistroCiclos[34].Substring(15).Trim().Split(new String[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
+                                            var FoTE4FF6s3 = double.Parse(FoTE4FF6[2].Trim(), CultureInfo.InvariantCulture);
 
                                             // decimal DF13 = decimal.Round((int.Parse(F13[0]) + decimal.Parse(F13[1]) / 60), 2);
                                             //Console.WriteLine(decimal.Round(suma,2));
-                                           // Console.WriteLine(RegistroCiclos[64].Substring(15).Trim().Substring(0, 5));
+                                            // Console.WriteLine(RegistroCiclos[64].Substring(15).Trim().Substring(0, 5));
 
                                             ProgramaAgua row = new ProgramaAgua
                                             {
@@ -273,7 +274,8 @@ namespace HojaResumen.Servicios.Parser
 
                                                 FoTE2FF6 = double.Parse(RegistroCiclos[34].Substring(15).Trim().Substring(0, 5), CultureInfo.InvariantCulture),
                                                 FoTE3FF6 = double.Parse(RegistroCiclos[34].Substring(15).Trim().Substring(5, 9), CultureInfo.InvariantCulture),
-                                                FoTE4FF6 = double.Parse(RegistroCiclos[34].Substring(15).Trim().Substring(11, 7), CultureInfo.InvariantCulture),
+                                                //FoTE4FF6 = double.Parse(RegistroCiclos[34].Substring(15).Trim().Substring(11, 7), CultureInfo.InvariantCulture),
+                                                FoTE4FF6=FoTE4FF6s3,
 
                                                 TMinimaEst = double.Parse(RegistroPie[3].Replace(" ", String.Empty).Substring(25, 5).Trim(), CultureInfo.InvariantCulture),
                                                 TMaximaEst = double.Parse(RegistroPie[4].Replace(" ", String.Empty).Substring(25, 5).Trim(), CultureInfo.InvariantCulture),
@@ -368,7 +370,9 @@ namespace HojaResumen.Servicios.Parser
                                             {
 
                                                 //if (ciclos.NPrograma.Equals(2) || ciclos.NPrograma.Equals(3) || ciclos.NPrograma.Equals(4) || ciclos.NPrograma.Equals(8) || ciclos.NPrograma.Equals(20))
-                                                if(ciclos.NPrograma>0)
+                                                //if(ciclos.NPrograma>0)
+                                                if (ciclos.NPrograma == 2 || ciclos.NPrograma == 3 || ciclos.NPrograma == 4 || ciclos.NPrograma == 8 || ciclos.NPrograma == 20)
+
                                                 {
 
                                                     if (duplicado == 0)

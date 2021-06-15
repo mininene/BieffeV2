@@ -90,13 +90,13 @@ namespace HojaResumen.WindowsService
                                         vapor.ParserVapor();
 
                                         _log.WriteLog("Impresion directa 8 y 20");
-                                        _pr820.printOchoVeinte(impresoraSabiUno);
+                                     //   _pr820.printOchoVeinte(impresoraSabiUno);
                                         System.Threading.Thread.Sleep(1000);
                                         _log.WriteLog("Impresion directa 2,3,4");
-                                        _pr234.printDosTresCuatro(impresoraSabiUno);
+                                     //   _pr234.printDosTresCuatro(impresoraSabiUno);
                                         System.Threading.Thread.Sleep(1000);
                                         _log.WriteLog("Impresion directa 9 y 10");
-                                        _pr910.printNueveDiez(impresoraSabiDos);
+                                      //  _pr910.printNueveDiez(impresoraSabiDos);
                                         System.Threading.Thread.Sleep(1000);
 
                                         System.Threading.Thread.Sleep(1000);

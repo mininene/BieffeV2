@@ -259,6 +259,7 @@
           <Property Name="HoraFin" Type="datetime" />
           <Property Name="DuracionF1" Type="float" />
           <Property Name="DuracionF2" Type="float" />
+          <Property Name="PFinalF2" Type="float" />
           <Property Name="DuracionF3" Type="float" />
           <Property Name="PInicialF3" Type="float" />
           <Property Name="TE2IF3" Type="float" />
@@ -594,6 +595,7 @@
           <Property Name="FoTE3FF12" Type="Double" />
           <Property Name="FoTE4FF12" Type="Double" />
           <Property Name="DifFoMaxFoMin" Type="Double" />
+          <Property Name="PFinalF2" Type="Double" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -849,6 +851,7 @@
           <EntitySetMapping Name="Vapor">
             <EntityTypeMapping TypeName="CicloAutoclaveModel.Vapor">
               <MappingFragment StoreEntitySet="Vapor">
+                <ScalarProperty Name="PFinalF2" ColumnName="PFinalF2" />
                 <ScalarProperty Name="DifFoMaxFoMin" ColumnName="DifFoMaxFoMin" />
                 <ScalarProperty Name="FoTE4FF12" ColumnName="FoTE4FF12" />
                 <ScalarProperty Name="FoTE3FF12" ColumnName="FoTE3FF12" />
